@@ -8,7 +8,7 @@ package by.it.karmyzov.jd01_01;
 Для автоматической проверки откройте и запустите класс Test_jd01_01
 */
 
-import java.util.concurrent.LinkedTransferQueue;
+
 
 class TaskA2 {
     public static void main(String[] args) {
