@@ -18,8 +18,10 @@ public class TaskC {
         double last = array[array.length - 1];
         Helper.sort(array);
         //0 1 2 3 4 5 6 7 8 9.99
-        binarySearch(array, first);
-        System.out.printf("\nИндекс элемента %f", first);
+        int indexFirst = binarySearch(array, first);
+        int indexLast = binarySearch(array, last);
+        System.out.printf("\nИндекс первого элемента %d", indexFirst);
+        System.out.printf("\nИндекс последнего элемента %d", indexLast);
     }
 
     static int binarySearch(double[] array, double value){

@@ -9,14 +9,14 @@ public class TaskB {
         int n = scanner.nextInt();
         String[] people = new String[n];
         int sumAllPayments = 0;
-        double quarterlySum = 0;
+        double quarterlySum;
         for (int i = 0; i < n; i++) {
             people[i] = scanner.next();
         }
         int[][] salary = new int[n][4];
         int[] summary = new int[4];
         for (int i = 0; i < n; i++) {
-            System.out.printf("Введите зарплату для %s\n", people[i]);
+            System.out.printf("Введите зарплату для \n", people[i]);
             for (int j = 0; j < 4; j++) {
                 salary[i][j] = scanner.nextInt();
             }
@@ -24,7 +24,7 @@ public class TaskB {
         System.out.println("------------------------------------------------------");
         System.out.println("Фамилия  Квартал1  Квартал2  Квартал3  Квартал4  Итого");
         System.out.println("------------------------------------------------------");
-        for (int i = 0; i < salary.length; i++) {
+        for (int i = 0; i < people.length; i++) {
             int sum = 0;;
 
             for (int j = 0; j < salary[0].length; j++) {
@@ -38,7 +38,7 @@ public class TaskB {
             sumAllPayments+=summary[i];
         }
         System.out.printf("Итого:   %d\n", sumAllPayments);
-        quarterlySum = ((double) sumAllPayments / n /4);
+        quarterlySum = sumAllPayments / 4.0 / n;
         System.out.printf("Средняя:   %.4f", quarterlySum);
     }
 }
