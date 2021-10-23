@@ -3,6 +3,7 @@ package by.it.ena.jd01_02;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+
 // Вывод скорее всего неправильный, переспросить
 public class TaskC {
 
@@ -12,12 +13,7 @@ public class TaskC {
         int n = scanner.nextInt();
         int[][] array = step1(n);
         System.out.println(Arrays.deepToString(array));
-       // for (int i = 0; i < array.length; i++) {
-        //    for (int j = 0; j < array[i].length; j++) {
-        //        System.out.print(array[i][j] + "\t");
-         //   }
-         //   System.out.println();
-        //int sum=step2(array);
+        int sum = step2(array);
         int[][] matrix = step3(array);
         System.out.println(Arrays.deepToString(matrix));
 
@@ -46,60 +42,105 @@ public class TaskC {
         return array;
     }
 
-    // public static int step2(int[][] array) {
-      //  int sum=0;
-     //   for (int i = 0; i < array.length ; i++) {
-     //       sum=0;
-         //   for (int j = 0; j < array[i].length; j++) {
-        //       sum+=array[i][j];
-      //      }
-      //      System.out.println("Сумма элементов " + i + "-й строки: " + sum);
-       // }
-     //   return sum;
-   // }
+    public static int step2(int[][] array) {
+        boolean flag = false;
+        int sum = 0;
+        int counter = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum = 0;
+            for (int j = 0; j < array[i].length; j++) {
+                if (array[i][j] > 0) {
+                    counter++;
+                    if (counter == 2)
+                        break;
+                    flag = true;
+                    continue;
+                }
+                if (flag == true) {
+                    sum += array[i][j];
+                }
+            }
+            counter = 0;
+            flag = false;
+            System.out.println("сумма равняется " + sum);
+        }
+
+        return sum;
+    }
 
     static int[][] step3(int[][] array) {
-        int max=Integer.MIN_VALUE;
-        for (int[]row:array) {
-            for (int element:row) {
-                if(element>max){
-                    max=element;
-                }
-            }
-        }
-        boolean[] skipCols=new boolean[array[0].length];//кол-во столбцов в строке 0
-        boolean[] skipRows=new boolean[array.length];
-        for (int i = 0; i < array.length ; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                if (array[i][j]==max){
-                    skipCols[j]=true;
-                    skipRows[i]=true;
-                }
-            }
-        }
-        int rows=0;
-        for (boolean skipRow: skipRows) {
-            if(!skipRow){
-                rows++;
-            }
-        }
-        int cols=0;
-        for (boolean skipCol: skipCols) {
-            if(!skipCol){
-                cols++;
-            }
-        }
-        int [][]out=new int[rows][cols];
-        for (int i = 0, iOut=0; i < array.length ; i++) {
-            if (!skipRows[i]){
-                for (int j = 0, jOut=0; j < array[i].length; j++) {
-                    if(!skipCols[j]){
-                        out[iOut][jOut++]= array[i][j];
+
+        int max = getMax(array);
+
+        boolean[] skipCols = new boolean[array[0].length];//кол-во столбцов в строке 0
+        boolean[] skipRows = new boolean[array.length];
+
+        extracted(array, max, skipCols, skipRows);
+
+        int rows = getRows(skipRows);
+
+        int cols = getCols(skipCols);
+
+        int[][] out = getOut(array, skipCols, skipRows, rows, cols);
+        return out;
+
+    }
+
+    private static int[][] getOut(int[][] array, boolean[] skipCols, boolean[] skipRows, int rows, int cols) {
+        int[][] out = new int[rows][cols];
+        for (int i = 0, iOut = 0; i < array.length; i++) {
+            if (!skipRows[i]) {
+                for (int j = 0, jOut = 0; j < array[i].length; j++) {
+                    if (!skipCols[j]) {
+                        out[iOut][jOut++] = array[i][j];
                     }
                 }
                 iOut++;
             }
         }
         return out;
+    }
 
-}}
+    private static int getCols(boolean[] skipCols) {
+        int cols = 0;
+        for (boolean skipCol : skipCols) {
+            if (!skipCol) {
+                cols++;
+            }
+        }
+        return cols;
+    }
+
+    private static int getRows(boolean[] skipRows) {
+        int rows = 0;
+        for (boolean skipRow : skipRows) {
+            if (!skipRow) {
+                rows++;
+            }
+        }
+        return rows;
+    }
+
+    private static void extracted(int[][] array, int max, boolean[] skipCols, boolean[] skipRows) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (array[i][j] == max) {
+                    skipCols[j] = true;
+                    skipRows[i] = true;
+                }
+            }
+        }
+    }
+
+    private static int getMax(int[][] array) {
+        int max = Integer.MIN_VALUE;
+        for (int[] row : array) {
+            for (int element : row) {
+                if (element > max) {
+                    max = element;
+                }
+            }
+        }
+        return max;
+    }
+}
