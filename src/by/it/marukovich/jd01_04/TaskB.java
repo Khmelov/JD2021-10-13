@@ -21,9 +21,10 @@ public class TaskB {
                 salary[i][j] = scanner.nextInt();
             }
         }
-        System.out.println("------------------------------------------------------");
+        String line = "-".repeat(54);
+        System.out.println(line);
         System.out.println("Фамилия  Квартал1  Квартал2  Квартал3  Квартал4  Итого");
-        System.out.println("------------------------------------------------------");
+        System.out.println(line);
         for (int i = 0; i < people.length; i++) {
             int sum = 0;;
 
@@ -37,6 +38,7 @@ public class TaskB {
         for (int i = 0; i < summary.length; i++) {
             sumAllPayments+=summary[i];
         }
+        System.out.println(line);
         System.out.printf("Итого:   %d\n", sumAllPayments);
         quarterlySum = sumAllPayments / 4.0 / n;
         System.out.printf("Средняя:   %.4f", quarterlySum);
