@@ -26,36 +26,7 @@ package by.it.malyshchik.jd01_01;
 
 import  java.util.Scanner;
 public class TaskC3 {
-//    public class Main {
-//        private static final double G_EARTH = 9.81;
-//        private static final double G_MARS = 3.86;
-////        public static void main(final String[] args) {
-//            final Scanner scanner = new Scanner(System.in);
-//            final int weight = scanner.nextInt();
-////            System.out.format("%.2f%n", getWeight(weight));
-//        }
-////        public static double getWeight(final int weight) {
-//            return weight * G_MARS / G_EARTH;
-//        }
-//    }
-//    static void getWeight(int weight,  double gmars) {
 
-//      static double getWeight(int weight){
-//           double gmars = 3.86;
-//           double gearth = 9.81;
-//       double weight1 = weight * gmars/gearth;
-//          double roundOff = (int) Math.round(weight1*100)/100;
-//          return roundOff;
-//    }
-//        double mmars = weight/gmars;
-////        double mearth = weight/gearth;
-//        return mmars;
-////        return mearth;
-//    static void gWeight(int weight, double g){
-//        double m = weight * 1.0 / g;
-//        return m;
-//    }
-//    }
     public static void main(String[] args) {
 
         System.out.println("Ввод:");
@@ -64,7 +35,6 @@ public class TaskC3 {
         System.out.println("Вывод:");
 
         System.out.println(getWeight(weight));
-//        System.out.format("%.2f%n", getWeight(weight));
     }
     static double getWeight(int weight){
         double gmars = 3.86;
@@ -75,13 +45,3 @@ public class TaskC3 {
     }
 }
 
-//    public static void main(String[] args) {
-//
-//    }
-//    static double mm=me/9.81*3.86;
-//it mm100 = (int)mm*100;
-//double delta = mm * 100 - mm100;
-// if (delta >=0.5) {
-//     return mm10 + 1)/100.0;
-//         }
-// re
