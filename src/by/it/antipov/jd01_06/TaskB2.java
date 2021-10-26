@@ -17,7 +17,6 @@ public class TaskB2 {
       String []sentences = new String[i];
         int f=0;
         while (match3.find()) { // два одинаковых цикла с мэтч не работают?
-            System.out.println(match3.group());
             String sentence = match3.group();
             System.out.println(sentence);
             Matcher match2 = pattern2.matcher(sentence);
