@@ -1,4 +1,4 @@
-package by.it._tasks_.jd01_01;
+package by.it.oliakhevich.jd01_01;
 
 /*
 Выводим квадрат числа
@@ -23,12 +23,15 @@ import java.util.Scanner;
 
 class TaskB1 {
     public static void main(String[] args) {
+        System.out.println("Введите число");
+        Scanner sc=new Scanner(System.in);
+        int a =sc.nextInt();
+        int k = a * a ;
+        System.out.println(a+ "*" +a+ "=" +k);
+        System.out.println("Thank you!");
+        System.out.println();
 
 
-        Scanner sc = new Scanner(System.in);
-        int i = sc.nextInt();
-        int a = i*i;
-        System.out.println(a);
 
     }
 }
