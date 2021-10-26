@@ -7,7 +7,7 @@ public class TaskB1 {
     public static void main(String[] args) {
         String text = Poem.text;
         String[] wordArray = text.split("[\\s,.!?]");//пробный не прошел
-        Pattern pattern = Pattern.compile("[уеёэоаыяиюУЕЁЭОАЫЯИЮ].*[ЦКЕНГШЩЗХЪЖДЛРПВФЧСМТЬБцкнгшщзхъждлрпвфчсмтьб]");
+        Pattern pattern = Pattern.compile("[ЦКЕНГШЩЗХЪЖДЛРПВФЧСМТЬБцкнгшщзхъждлрпвфчсмтьб].*[уеёэоаыяиюУЕЁЭОАЫЯИЮ]");
         for (String word : wordArray){
             Matcher matcher = pattern.matcher(word);
             if (matcher.find()){
