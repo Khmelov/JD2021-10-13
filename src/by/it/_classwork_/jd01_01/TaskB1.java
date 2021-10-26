@@ -1,4 +1,4 @@
-package by.it._tasks_.jd01_01;
+package by.it._classwork_.jd01_01;
 
 /*
 Выводим квадрат числа
@@ -19,5 +19,13 @@ int i=sc.nextInt();
 
  */
 
+import java.util.Scanner;
+
 class TaskB1 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int value=sc.nextInt();
+        System.out.println(value*value);
+
+    }
 }
