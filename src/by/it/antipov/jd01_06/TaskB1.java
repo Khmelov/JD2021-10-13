@@ -9,62 +9,12 @@ public class TaskB1 {
         Pattern pattern1 = Pattern.compile("[а-яА-ЯёЁ]+");
         Matcher match1 = pattern1.matcher(text1);
         while (match1.find()) {
-            if ((checker1(match1.group()))&(checker2(match1.group()))) {System.out.println(match1.group());}
+            if (checker(match1.group())) {System.out.println(match1.group());}
         }
 
     }
 
-    static boolean checker1(String word) {
-       switch (word.charAt(0)) {
-           case 'а':
-           case 'о':
-           case 'у':
-           case 'э':
-           case 'ы':
-           case 'я':
-           case 'ё':
-           case 'е':
-           case 'ю':
-           case 'и':
-           case 'А':
-           case 'О':
-           case 'У':
-           case 'Э':
-           case 'Ы':
-           case 'Я':
-           case 'Ë':
-           case 'Е':
-           case 'Ю':
-           case 'И':
-               return false;
-           default:
-       return true;}
-    }
-    static boolean checker2 (String word) {
-        switch (word.charAt(word.length()-1)) {
-            case 'а':
-            case 'о':
-            case 'у':
-            case 'э':
-            case 'ы':
-            case 'я':
-            case 'ё':
-            case 'е':
-            case 'ю':
-            case 'и':
-            case 'А':
-            case 'О':
-            case 'У':
-            case 'Э':
-            case 'Ы':
-            case 'Я':
-            case 'Ë':
-            case 'Е':
-            case 'Ю':
-            case 'И':
-                return true;
-            default:
-                return false;}
-
+    static boolean checker(String word) {
+        return (word.charAt(0) != ('а' & 'о' & 'э' & 'е' & 'и' & 'ы' & 'у' & 'ё' & 'ю' & 'я')) & (word.charAt(word.length()-1) == ('я' | 'а' | 'о' | 'э' | 'е' | 'и' | 'ы' | 'у' | 'ё' | 'ю'));
     }
 }
