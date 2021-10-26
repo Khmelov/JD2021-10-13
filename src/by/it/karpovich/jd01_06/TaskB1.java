@@ -14,6 +14,24 @@ public class TaskB1 {
         step1();
     }
 
+   private static void step1() {
+       String text = Poem.text;
+       String[] wordArray = text.split("[\\s,.:!?]+");
+       Pattern pattern = Pattern.compile("\\\\b\n[ЦКЕНГШЩЗХЪЖДЛРПВФЧСМТЬБцкнгшщзхъждлрпвфчсмтьб][а-яА-ЯёЁ]*[уеёэоаыяиюУЕЁЭОАЫЯИЮ]\\\\b");
+       for (String word : wordArray) {
+           Matcher matcher = pattern.matcher(word);
+           if (matcher.find()) {
+               System.out.println(word);
+           }
+       }
+   }
+
+
+
+}
+
+
+
    /* private static void step1(){
         StringBuilder sb = new StringBuilder(Poem.text);
         Pattern pattern = Pattern.compile("[АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя]{1}");
@@ -27,18 +45,3 @@ public class TaskB1 {
         }
         System.out.println(sb);
     }*/
-   private static void step1() {
-       String text = Poem.text;
-       String[] wordArray = text.split("[\\s,.:!?]+");
-       Pattern pattern = Pattern.compile("[^ИаАоОэЭуУыЫеЕёЁюЮяЯ].*[аАоОэЭиИуУыЫеЕёЁюЮяЯ]$");
-       for (String word : wordArray) {
-           Matcher matcher = pattern.matcher(word);
-           if (matcher.find()) {
-               System.out.println(word);
-           }
-       }
-   }
-
-
-
-}
