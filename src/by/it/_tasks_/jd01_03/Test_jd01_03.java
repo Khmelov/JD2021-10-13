@@ -6,12 +6,13 @@ import org.junit.Test;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 @SuppressWarnings("all")
 
 //поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
-public class Test_jd01_03  extends HomeWork {
+public class Test_jd01_03 extends HomeWork {
 
     @Test(timeout = 5000)
     public void testTaskA1__InOut() throws Exception {

@@ -27,7 +27,7 @@ public class TaskC {
             maxCount = 0;
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    arr[j][i] = rand.nextInt(n * 10 + 5) - 2*n;
+                    arr[j][i] = rand.nextInt(n * 10 + 5) - 2 * n;
                 }
             }
 
