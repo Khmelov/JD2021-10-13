@@ -21,7 +21,7 @@ public class TaskB {
 
     private static void step2() {
         double a;
-        double b=0;
+        double b;
         for (double x=-5.5; x<2;x+=0.5){
             if (x/2>-2 && x/2<=-1){
                 b=sin(pow(x,2));
