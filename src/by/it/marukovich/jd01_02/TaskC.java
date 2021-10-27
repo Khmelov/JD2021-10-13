@@ -7,7 +7,7 @@ public class TaskC {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите размер матрицы n");
         int n = scanner.nextInt();
-        int[][] step1;
+        step1(n);
 
     }
 
