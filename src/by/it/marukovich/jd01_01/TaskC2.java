@@ -1,6 +1,5 @@
 package by.it.marukovich.jd01_01;
 
-import java.math.BigInteger;
 import java.util.Scanner;
 
 /* Нужно написать программу, которая вводит два числа с клавиатуры
