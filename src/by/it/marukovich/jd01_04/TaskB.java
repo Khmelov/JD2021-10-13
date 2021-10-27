@@ -26,7 +26,8 @@ public class TaskB {
         System.out.println("Фамилия  Квартал1  Квартал2  Квартал3  Квартал4  Итого");
         System.out.println(line);
         for (int i = 0; i < people.length; i++) {
-            int sum = 0;;
+            int sum = 0;
+            ;
 
             for (int j = 0; j < salary[0].length; j++) {
                 sum += salary[i][j];
@@ -36,7 +37,7 @@ public class TaskB {
             System.out.printf("%7s: %-8d  %-8d  %-8d  %-8d  %-5d\n", people[i], salary[i][0], salary[i][1], salary[i][2], salary[i][3], summary[i]);
         }
         for (int i = 0; i < summary.length; i++) {
-            sumAllPayments+=summary[i];
+            sumAllPayments += summary[i];
         }
         System.out.println(line);
         System.out.printf("Итого:   %d\n", sumAllPayments);
