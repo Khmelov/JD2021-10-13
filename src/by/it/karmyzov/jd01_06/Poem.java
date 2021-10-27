@@ -1,7 +1,7 @@
 package by.it.karmyzov.jd01_06;
 
 class Poem {
-    static final String text=
+    static final String text =
             """
                     У лукоморья дуб зелёный,
                     Златая цепь на дубе том.

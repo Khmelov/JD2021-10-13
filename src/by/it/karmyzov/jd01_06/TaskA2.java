@@ -26,11 +26,11 @@ public class TaskA2 {
             if (p >= 0) {
                 count[p]++;
             } else {
-               int last=w.length;
-               w= Arrays.copyOf(w,last+1);
-               w[last]=word;
-               count=Arrays.copyOf(count,last+1);
-               count[last]=1;
+                int last = w.length;
+                w = Arrays.copyOf(w, last + 1);
+                w[last] = word;
+                count = Arrays.copyOf(count, last + 1);
+                count[last] = 1;
             }
         }
         for (int i = 0; i < w.length; i++) {
