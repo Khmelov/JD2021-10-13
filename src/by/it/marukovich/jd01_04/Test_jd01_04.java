@@ -1,14 +1,16 @@
 package by.it.marukovich.jd01_04;
 
 
+import org.junit.Test;
+
 import java.io.*;
-import java.lang.reflect.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
-
-import org.junit.Test;
 
 import static org.junit.Assert.*;
 

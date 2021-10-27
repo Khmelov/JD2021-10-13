@@ -42,11 +42,11 @@ class TaskC3 {
         System.out.println(mm);
 
 
-
     }
-    static double getWeight(int me){
+
+    static double getWeight(int me) {
         double mm = me / 9.81 * 3.86;
-        return 0.01* (int)(mm*100+0.5);
+        return 0.01 * (int) (mm * 100 + 0.5);
     }
 }
 

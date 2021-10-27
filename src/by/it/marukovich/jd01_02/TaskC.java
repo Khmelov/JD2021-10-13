@@ -10,19 +10,20 @@ public class TaskC {
         int[][] step1;
 
     }
-    static int[][] step1(int n){
 
-        int [][] arr = new int[n][n];
+    static int[][] step1(int n) {
+
+        int[][] arr = new int[n][n];
         boolean isNegativeNHere = false;
         boolean isPositiveNHere = false;
-        do{
+        do {
 
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     arr[i][j] = (int) (Math.random() * (n * 2 + 1)) - n;
-                    if (arr[i][j]==-n){
+                    if (arr[i][j] == -n) {
                         isNegativeNHere = true;
-                    } else if (arr[i][j]==n){
+                    } else if (arr[i][j] == n) {
                         isPositiveNHere = true;
                     }
 
