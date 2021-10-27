@@ -13,6 +13,9 @@ public class Vector extends Var {
         return Arrays.copyOf(values, values.length);
     }
 
+    public Vector(Vector vector){
+        this.values = vector.values;
+    }
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
