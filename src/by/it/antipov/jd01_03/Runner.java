@@ -19,7 +19,7 @@ public class Runner {
                 {3, 4},
                 {5, 6}
         };
-        Helper.multiply(left,vector);
+       Helper.multiply(left,vector);
 
     }
 }
