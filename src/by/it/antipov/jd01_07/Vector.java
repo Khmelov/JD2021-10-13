@@ -12,18 +12,14 @@ public class Vector extends  Var{
         this.value= vector.value;
 
     }
-
-    Vector (String strVector) {
-      String strVector1 = strVector.replace("}"," ");
-        String strVector2 = strVector1.replace("{"," ");
-        String strVector3 = strVector2.trim();
-        String []array=strVector3.split("[,]");
-        double[] values=new double[array.length];
-        for (int i = 0; i < array.length; i++) {
-            values[i]=Double.parseDouble(array[i]);
-        }
-        this.value=values;
+Vector(String strVector) {
+    String []array=strVector.split("[,{} ]+");
+    double[] values=new double[array.length];
+    for (int i = 0; i < array.length; i++) {
+         values[i]=Double.parseDouble(array[i]);
     }
+this.value=values;
+}
 
     @Override
     public String toString() {
