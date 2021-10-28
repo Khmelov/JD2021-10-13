@@ -14,7 +14,7 @@ public class TaskA {
     private static void step1() {
         double a = 756.13;
         double x = 0.3;
-        double part1 = cos(pow((x * x + PI / 6), 5))-sqrt(x * pow(a, 3))-log(abs((a - 1.12 * x) / 4));
+        double part1 = cos(pow((x * x + PI / 6), 5)) - sqrt(x * pow(a, 3)) - log(abs((a - 1.12 * x) / 4));
         System.out.println("z = " + part1);
     }
 
@@ -33,13 +33,12 @@ public class TaskA {
 
     private static void step3() {
         double x = 12.1;
-        for (double a = -5; a <= 12; a=a+3.75){
-            double f = exp(a*x)- 3.45*a;
-            System.out.printf("if = %5.2f f=%g\n",a,f);
+        for (double a = -5; a <= 12; a = a + 3.75) {
+            double f = exp(a * x) - 3.45 * a;
+            System.out.printf("if = %5.2f f=%g\n", a, f);
 
 
         }
-
 
 
     }

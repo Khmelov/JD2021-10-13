@@ -32,6 +32,8 @@ public class TaskA2 {
 
             }
             else {
+
+
                 int last = w.length;
                 w = Arrays.copyOf(w, last + 1);
                 w[last] = word;
