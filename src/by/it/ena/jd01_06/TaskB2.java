@@ -10,6 +10,6 @@ import java.util.regex.Matcher;
 public class TaskB2 {
     public static void main(String[] args) {
         StringBuilder stringBuilder= new StringBuilder(Poem.text);//Pattern.compile("[!,?.:-]").matcher(Poem.text).replaceAll(" ".trim()));
-       
+
     }
 }

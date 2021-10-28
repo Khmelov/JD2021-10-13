@@ -1,10 +1,23 @@
 package by.it.ena.jd01_07;
 
-public class Scalar extends Var {
+class Scalar extends Var {
 
     private double value;
 
-    public Scalar(double value) {
+    Scalar(double value) {
         this.value = value;
+    }
+
+    Scalar(String strScalar){
+        this.value=Double.parseDouble(strScalar);
+    }
+
+    Scalar (Scalar scalar){
+        this.value= scalar.value;
+    }
+
+    @Override
+    public String toString() {
+        return Double.toString(value);
     }
 }
