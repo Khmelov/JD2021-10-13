@@ -1,7 +1,5 @@
 package by.it.shcharbunou.jd01_04;
 
-import java.util.Arrays;
-
 public class TaskC {
     public static void main(String[] args) {
         String line = InOut.getArrayLine();
