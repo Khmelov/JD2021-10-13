@@ -28,7 +28,8 @@ class InOut {
             }
         }
     }
-    public static void matrixPrint2D(double[][] matrix, String name ){
+
+    public static void matrixPrint2D(double[][] matrix, String name) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 System.out.printf(name + "[%1d,%1d]=%-6.1f ", i, j, matrix[i][j]);

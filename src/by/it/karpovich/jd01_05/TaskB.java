@@ -36,7 +36,7 @@ public class TaskB {
             else System.out.println("Выход за пределы");
             //Недопустить b=0
 
-            double a = log10(abs(b+2.74));
+            double a = log10(abs(b + 2.74));
             if (b != 0) System.out.println(a);
         }
     }
