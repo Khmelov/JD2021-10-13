@@ -1,6 +1,7 @@
 package by.it.karpovich.jd01_05;
 
-import static java.lang.Math.*;
+import static java.lang.Math.cbrt;
+import static java.lang.Math.pow;
 
 public class TaskC {
 
@@ -21,8 +22,7 @@ public class TaskC {
 
     private static void step7() {
 
-        }
-
+    }
 
 
 }
