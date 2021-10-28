@@ -22,7 +22,7 @@ public class TaskA {
 
     private static void firstTask() {
         double a = 756.13, x = 0.3, z;
-        String variableName = "z = ";
+        String variableName = "z";
         z = calculatePiecemealExpression(a, x);
         printAnswer(z, variableName);
         z = calculateFullExpression(a, x);
@@ -45,12 +45,12 @@ public class TaskA {
     }
 
     private static void printAnswer(double answer, String name) {
-        System.out.println(name + answer);
+        System.out.println(name + " = " + answer);
     }
 
     private static void secondTask() {
         double a = 1.21, b = 0.371, y;
-        String variableName = "y = ";
+        String variableName = "y";
         y = calculateFunction(a, b);
         printAnswer(y, variableName);
     }
