@@ -5,6 +5,19 @@ public class TaskA {
     public static void main(String[] args) {
         firstTask();
         secondTask();
+        thirdTask();
+    }
+
+    private static void thirdTask() {
+        double x = 12.1, f;
+        for (double a = -5; a <= 12; a += 3.75) {
+            f = Math.exp(a * x) - a * 3.45;
+            printFormatAnswer(a, f);
+        }
+    }
+
+    private static void printFormatAnswer(double a, double f) {
+        System.out.printf("When a = %-7.3f, f = %g\n", a, f);
     }
 
     private static void firstTask() {
