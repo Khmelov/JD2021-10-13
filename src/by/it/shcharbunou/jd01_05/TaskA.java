@@ -4,14 +4,16 @@ public class TaskA {
 
     public static void main(String[] args) {
         firstTask();
+        secondTask();
     }
 
     private static void firstTask() {
         double a = 756.13, x = 0.3, z;
+        String variableName = "z = ";
         z = calculatePiecemealExpression(a, x);
-        printAnswer(z);
+        printAnswer(z, variableName);
         z = calculateFullExpression(a, x);
-        printAnswer(z);
+        printAnswer(z, variableName);
     }
 
     private static double calculatePiecemealExpression(double a, double x) {
@@ -29,7 +31,21 @@ public class TaskA {
         return temporaryValue;
     }
 
-    private static void printAnswer(double answer) {
-        System.out.println("answer = " + answer);
+    private static void printAnswer(double answer, String name) {
+        System.out.println(name + answer);
+    }
+
+    private static void secondTask() {
+        double a = 1.21, b = 0.371, y;
+        String variableName = "y = ";
+        y = calculateFunction(a, b);
+        printAnswer(y, variableName);
+    }
+
+    private static double calculateFunction(double a, double b) {
+        double temporaryValue;
+        temporaryValue = Math.tan(Math.pow(a + b, 2)) - Math.pow(a + 1.5, (double) 1 / 3) + (a * Math.pow(b, 5)) -
+                (b / Math.log(Math.pow(a, 2)));
+        return temporaryValue;
     }
 }
