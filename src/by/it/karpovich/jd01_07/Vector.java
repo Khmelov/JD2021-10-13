@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Vector extends Var {
 
-    private double[] value; // Создаем защиту от вмешательства
+    private final double[] value; // Создаем защиту от вмешательства
 
     // Начало первого конструктора:
     public Vector(double[] value) {
@@ -31,11 +31,11 @@ public class Vector extends Var {
     public String toString() {
         StringBuilder output = new StringBuilder("{");
         String limiter = "";
-        for (double v : value) {
+        for (double out : value) {
             output.append(limiter);
             //Метод java.lang.StringBuilder.append () используется для добавления
             // строкового представления некоторого аргумента в последовательность.
-            output.append(v);
+            output.append(out);
             limiter = ", ";
         }
         output.append("}");

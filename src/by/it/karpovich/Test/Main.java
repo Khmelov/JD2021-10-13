@@ -25,5 +25,6 @@ public class Main {
         System.out.println("Высота: " + oleg.height + "cm");
         System.out.println("Курс студента: " + oleg.course);
 
+        System.out.println("Pi = " + pi);
     }
 }
