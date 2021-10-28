@@ -15,30 +15,30 @@ public class TaskB1 {
     }
 
     static boolean checker1(String word) {
-        switch (word.charAt(0)) {
-            case 'а':
-            case 'о':
-            case 'у':
-            case 'э':
-            case 'ы':
-            case 'я':
-            case 'ё':
-            case 'е':
-            case 'ю':
-            case 'и':
-            case 'А':
-            case 'О':
-            case 'У':
-            case 'Э':
-            case 'Ы':
-            case 'Я':
-            case 'Ë':
-            case 'Е':
-            case 'Ю':
-            case 'И':
-                return false;
-            default:
-                return true;}
+       switch (word.charAt(0)) {
+           case 'а':
+           case 'о':
+           case 'у':
+           case 'э':
+           case 'ы':
+           case 'я':
+           case 'ё':
+           case 'е':
+           case 'ю':
+           case 'и':
+           case 'А':
+           case 'О':
+           case 'У':
+           case 'Э':
+           case 'Ы':
+           case 'Я':
+           case 'Ë':
+           case 'Е':
+           case 'Ю':
+           case 'И':
+               return false;
+           default:
+       return true;}
     }
     static boolean checker2 (String word) {
         switch (word.charAt(word.length()-1)) {
