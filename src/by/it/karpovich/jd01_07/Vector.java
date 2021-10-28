@@ -31,11 +31,11 @@ public class Vector extends Var {
     public String toString() {
         StringBuilder output = new StringBuilder("{");
         String limiter = "";
-        for (int i = 0; i < value.length; i++) {
+        for (double v : value) {
             output.append(limiter);
             //Метод java.lang.StringBuilder.append () используется для добавления
             // строкового представления некоторого аргумента в последовательность.
-            output.append(value[i]);
+            output.append(v);
             limiter = ", ";
         }
         output.append("}");

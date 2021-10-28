@@ -1,7 +1,7 @@
 package by.it.karpovich.jd01_07;
 
 public class Scalar extends Var {
-    private double value; // Создаем защиту от вмешательства
+    private final double value; // Создаем защиту от вмешательства
 
     // Начало первого конструктора:
     public Scalar(double value) {

@@ -1,7 +1,7 @@
 package by.it.karpovich.jd01_07;
 
 public class Matrix extends Var {
-    private double[][] value; // Создаем защиту от вмешательства
+    private final double[][] value; // Создаем защиту от вмешательства
 
     // Начало первого конструктора:
     public Matrix(double[][] value) {
@@ -31,14 +31,14 @@ public class Matrix extends Var {
 
     public String toString() {
         StringBuilder output = new StringBuilder("{");
-        for (int i = 0; i < value.length; i++) {
+        for (double[] doubles : value) {
             String limiter = "";
             //Метод java.lang.StringBuilder.append () используется для добавления
             // строкового представления некоторого аргумента в последовательность.
             output.append("{");
-            for (int j = 0; j < value[i].length; j++) {
+            for (double aDouble : doubles) {
                 output.append(limiter);
-                output.append(value[i][j]);
+                output.append(aDouble);
                 limiter = ", ";
             }
             limiter = "}, ";
