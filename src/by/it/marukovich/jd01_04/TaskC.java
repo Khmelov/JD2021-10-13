@@ -10,10 +10,11 @@ public class TaskC {
 
 
     }
-    static void buildOneDimArray(String line){
+
+    static void buildOneDimArray(String line) {
         //1 2 3 4 5 6 7 8 9.99 0
         double[] array = InOut.getArray(line);
-        InOut.printArray(array, "V",5);
+        InOut.printArray(array, "V", 5);
         double first = array[0];
         double last = array[array.length - 1];
         Helper.sort(array);
@@ -24,7 +25,7 @@ public class TaskC {
         System.out.printf("\nlast element=%d", indexLast);
     }
 
-    static int binarySearch(double[] array, double value){
+    static int binarySearch(double[] array, double value) {
         int mid = array.length / 2;
         if (value == array[mid]) {
             return mid;
