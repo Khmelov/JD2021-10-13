@@ -1,6 +1,6 @@
 package by.it.oliakhevich.jd01_04;
 
-import java.sql.SQLOutput;
+
 import java.util.Scanner;
 
 public class TaskB {
@@ -50,8 +50,6 @@ public class TaskB {
 }
 
 
-// }
 
-//   }
 
 

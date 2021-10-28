@@ -4,6 +4,6 @@ import static java.lang.Math.*;
 
 public class TaskC {
     public static void main(String[] args) {
-       // double f = cos();
+        // double f = cos();
     }
 }
