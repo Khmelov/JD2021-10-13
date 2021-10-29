@@ -1,5 +1,7 @@
 package by.it.karpovich.Test;
 
+import java.util.Objects;
+
 public class Person {
     /* Здесь по дефолту прописан Public*/ int height; // Высота
     /* Public */ float weight; // Вес
@@ -7,6 +9,7 @@ public class Person {
     void say(String str) {
         System.out.println(str);
     }
+
 
     // Создаем первый конструктор:
     public Person(int height, float weight) {
