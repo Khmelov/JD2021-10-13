@@ -1,4 +1,4 @@
-package by.it.karpovich.jd01_07;
+package by.it.karpovich.jd01_08;
 
 public class Scalar extends Var {
     private final double value; // Создаем защиту от вмешательства
