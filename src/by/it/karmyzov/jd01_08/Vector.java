@@ -1,4 +1,4 @@
-package by.it.karmyzov.jd01_07;
+package by.it.karmyzov.jd01_08;
 
 public class Vector extends Var {
 
@@ -8,9 +8,9 @@ public class Vector extends Var {
         this.values = values;
     }
 
-    public Vector(Vector tovector) {this.values = tovector.values;}
-
-
+    public Vector(Vector tovector) {
+        this.values = tovector.values;
+    }
 
 
 

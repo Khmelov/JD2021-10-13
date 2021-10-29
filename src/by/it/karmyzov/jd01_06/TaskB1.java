@@ -9,15 +9,15 @@ public class TaskB1 {
     }
 
     private static void Step1() {
-        String text = Poem.text;
-        String[] wordArray = text.split("[\\s,.:!?]+");
-        Pattern pattern = Pattern.compile("\\b[цкнгшщзхъждлрпвфчсмтб][а-яА-яёЁ]*[йуеэоаыяию]\\b");
-        for (String word : wordArray) {
-            Matcher matcher = pattern.matcher(word);
-            if (matcher.find()) {
+        StringBuilder text = new StringBuilder(Poem.text);
+        Pattern pattern = Pattern.compile("[а-яА-ЯёЁ]+");
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            String word = matcher.group();
+
                 System.out.println(word);
             }
         }
     }
-}
+
 

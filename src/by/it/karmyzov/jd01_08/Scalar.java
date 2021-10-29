@@ -1,4 +1,4 @@
-package by.it.karmyzov.jd01_07;
+package by.it.karmyzov.jd01_08;
 
 public class Scalar extends Var {
     private final double value;
@@ -6,14 +6,12 @@ public class Scalar extends Var {
     Scalar(double value) {
         this.value = value;
     }
-
+    Scalar (String str) {
+        this.value=Double.parseDouble(str);
+    }
 
     Scalar (Scalar scalar) {
         this.value = scalar.value;
-    }
-
-    Scalar (String str) {
-        this.value=Double.parseDouble(str);
     }
     @Override
     public String toString() {
