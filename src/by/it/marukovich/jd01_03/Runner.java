@@ -20,10 +20,10 @@ public class Runner {
         };
         double[] vector = {1, 5, 9, 8};
         double[][] matrix1 = {
-                {1,4,3,2},
-                {2,2,1,2},
-                {1,9,8,6},
-                {2,7,8,1}
+                {1, 4, 3, 2},
+                {2, 2, 1, 2},
+                {1, 9, 8, 6},
+                {2, 7, 8, 1}
         };
         Helper.multiply(matrix, vector);
         InOut.printArray(Helper.multiply(matrix, vector), "Z", 1);
