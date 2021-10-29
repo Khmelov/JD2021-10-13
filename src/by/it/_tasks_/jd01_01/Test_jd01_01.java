@@ -3,8 +3,6 @@ package by.it._tasks_.jd01_01;
 import by.it.HomeWork;
 import org.junit.Test;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Method;
 
 import static org.junit.Assert.assertEquals;
