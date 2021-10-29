@@ -1,7 +1,5 @@
 package by.it.karpovich.jd01_03;
 
-import java.util.Scanner;
-
 public class Helper {
 
     protected static double findMin(double[] array) {
