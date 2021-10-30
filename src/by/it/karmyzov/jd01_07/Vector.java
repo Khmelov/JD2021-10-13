@@ -21,7 +21,7 @@ public class Vector extends Var {
     }
 
     public Vector(String strVector) {
-        // { 1,2,   3.0, 4}
+
         strVector = strVector
                 .replace(LEFT_BRACKET, "")
                 .replace(RIGHT_BRACKET, "")
