@@ -9,9 +9,9 @@ public class Runner {
         Var v2 = new Vector(new double[]{1, 2, 4});
         System.out.println(v2);
 
-        Var v3 = new Matrix(new double[][]{{1.0, 2.0}, {3.0, 4.0}});
-        System.out.println(v3);
+
 
     }
 }
+
 

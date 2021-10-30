@@ -13,7 +13,6 @@ public class Vector extends Var {
     }
 
 
-
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
@@ -27,5 +26,5 @@ public class Vector extends Var {
         out.append("}");
         return out.toString();
     }
-}
 
+}
