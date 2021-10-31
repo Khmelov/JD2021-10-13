@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class TaskA {
     public static void main(String[] args) {
         printMulTable();
-        Scanner scanner =new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
         buildOneDimArray(s);
 
