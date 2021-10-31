@@ -1,8 +1,8 @@
 package by.it.shcharbunou.jd01_06;
 
-public class Runner {
+public class TaskA1 {
 
     public static void main(String[] args) {
-        System.out.println(Poem.text);
+
     }
 }
