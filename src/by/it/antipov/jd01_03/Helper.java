@@ -37,7 +37,7 @@ public class Helper {
 
     static double[] multiply(double[][] matrix, double[] vector) {
 
-        double[] resultArray = new double[vector.length];
+        double[] resultArray = new double[matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             System.out.println();
             for (int j = 0; j < vector.length; j++) {
@@ -47,12 +47,11 @@ public class Helper {
             System.out.print(resultArray[i]);
 
         }
-
         return resultArray;
     }
 
     static double[][] multiply(double[][] matrixLeft, double[][] matrixRight) {
-        double[][] resultArray = new double[matrixLeft.length][matrixLeft[0].length];
+        double[][] resultArray = new double[matrixLeft.length][matrixRight[0].length];
         for (int i = 0; i < resultArray.length; i++) {System.out.println();
             for (int j = 0; j < resultArray[0].length; j++) {
                 for (int k = 0; k < matrixRight.length; k++) {
