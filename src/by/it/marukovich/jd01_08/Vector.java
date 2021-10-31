@@ -13,7 +13,21 @@ public class Vector extends Var {
         return Arrays.copyOf(values, values.length);
     }
 
+    public Vector(Vector vector){
+        this(vector.values);
+    }
 
+    public Vector(String strVector){
+        strVector = strVector
+                .replace("{", "")
+                .replace("}", "")
+                .trim();
+        String[] strings = strVector.split(",\\s*");
+        values = new double[strings.length];
+        for (int i = 0; i < values.length; i++) {
+            values[i]=Double.parseDouble(strings[i]);
+        }
+    }
     @Override
     public Var add(Var other) {
         if (other instanceof Scalar scalar) {
@@ -34,6 +48,28 @@ public class Vector extends Var {
             return new Vector(result);
         }
         return super.add(other);
+    }
+
+    @Override
+    public Var sub(Var other) {
+        if (other instanceof Scalar scalar) {
+            double[] result = Arrays.copyOf(values, values.length);
+            for (int i = 0; i < result.length; i++) {
+                result[i] = result[i] - scalar.getValue();
+            }
+            return new Vector(result);
+        }
+        if (other instanceof Vector vector) {
+            if (this.values.length != vector.values.length) {
+                return super.sub(vector);
+            }
+            double[] result = Arrays.copyOf(values, values.length);
+            for (int i = 0; i < result.length; i++) {
+                result[i] = result[i] - vector.values[i];
+            }
+            return new Vector(result);
+        }
+        return super.sub(other);
     }
 
     @Override
