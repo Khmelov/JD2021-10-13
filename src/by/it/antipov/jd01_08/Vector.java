@@ -5,10 +5,6 @@ import java.util.Arrays;
 public class Vector extends Var {
     private double[] value;
 
-    public double[] getValue() {
-        return value;
-    }
-
     @Override
     public Var add(Var other) {
         if (other instanceof Scalar) {
