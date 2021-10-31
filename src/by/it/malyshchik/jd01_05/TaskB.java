@@ -24,7 +24,7 @@ public class TaskB {
                 double a = log10(abs(b + 2.74));
                 System.out.printf("При x/2=%3.2f a=%f\n", x / 2, a);
             } else if (x / 2 <= -2 || x / 2 > 0.2) {
-                System.out.printf("При x/2=%3.2f результат неопределен \n", x / 2);
+                System.out.printf("При x/2=%3.2f результат не определен \n", x / 2);
             }
         }
     }
