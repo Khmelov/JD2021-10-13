@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class TaskB2 {
     public static void main(String[] args) {
-        String text1 = Poem.text.replace("..."," ");
+        String text1 = new String(Poem.text.replace("...", ""));
         Pattern pattern1 = Pattern.compile("[.!]+");
         //  Pattern pattern2 = Pattern.compile("[^а-яА-ЯёЁ]+");
         Pattern pattern3 = Pattern.compile("[^.!]+");
@@ -26,7 +26,7 @@ public class TaskB2 {
             sentence1 = sentence1.replaceAll("[^а-яА-ЯёЁ]+", " ");
             String sentence2 = sentence1.trim();
             sentences[j] = sentence2;
-           // System.out.println(sentences[j]);
+            System.out.println(sentences[j]);
         }
         for (int m = 0; m < sentences.length-1; m++) {for (int j = 0; j < sentences.length-1; j++) {
             if (sentences[j+1].length()<sentences[j].length()) {String buffer = sentences[j+1];
