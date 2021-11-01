@@ -1,7 +1,12 @@
 package by.it.karpovich.jd01_08;
 
 public class Scalar extends Var {
+    public double getValue() {
+        return value;
+    }
+
     private final double value; // Создаем защиту от вмешательства
+
 
     // Начало первого конструктора:
     public Scalar(double value) {
