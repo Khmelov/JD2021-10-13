@@ -10,23 +10,23 @@ public class TaskА2 {
     private static int pos (String word){
         for (int i = 0; i < w.length; i++) {
             if (w[i].equals(word))
-            return i;
+                return i;
         }
-return  -1;
+        return  -1;
     }
 
     public static void main(String[] args) {
         Pattern pattern1 = Pattern.compile("[а-яА-ЯёЁ]+");
         Matcher matcher = pattern1.matcher(Poem.text);
         while (matcher.find()) {
-String word =matcher.group();
-int p = pos (word);
-if (p>=0) {count[p]++;} else{int last =w.length;
-w= Arrays.copyOf(w,last+1);
-w[last]=word;
-count=Arrays.copyOf(count,last+1);
-count[last]=1;
-        }
+            String word =matcher.group();
+            int p = pos (word);
+            if (p>=0) {count[p]++;} else{int last =w.length;
+                w= Arrays.copyOf(w,last+1);
+                w[last]=word;
+                count=Arrays.copyOf(count,last+1);
+                count[last]=1;
+            }
 
 
         }
