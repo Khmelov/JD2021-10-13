@@ -1,7 +1,7 @@
 package by.it.shcharbunou.jd01_07;
 
 public class Scalar extends Var {
-    private double value;
+    private final double value;
 
     public Scalar(double value) {
         this.value = value;
