@@ -22,8 +22,6 @@ class TaskC1 {
         System.out.println("Sum =" + " " + sum);
 
 
-
-
     }
 
 
