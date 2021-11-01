@@ -1,7 +1,5 @@
 package by.it.karpovich.Test;
 
-import java.util.Objects;
-
 public class Person {
     /* Здесь по дефолту прописан Public*/ int height; // Высота
     /* Public */ float weight; // Вес
