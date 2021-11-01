@@ -10,16 +10,16 @@ public class Runner {
         InOut.printArray(array);
         InOut.printArray(array, "V", 3);
 
-        double min =  Helper.findMin(array);
+        double min = Helper.findMin(array);
         System.out.println("min = " + min);
 
-        double max =  Helper.findMax(array);
+        double max = Helper.findMax(array);
         System.out.println("max = " + max);
 
         Helper.sort(array);
         InOut.printArray(array);
 
-        double[][] m= {
+        double[][] m = {
                 {2, 5, 4, 1},
                 {1, 3, 2, 6},
                 {2, 10, 7, 6},
@@ -27,7 +27,7 @@ public class Runner {
         };
         double[] mult1 = Helper.multiply(m, array);
         InOut.printArray(mult1);
-        }
     }
+}
 
 
