@@ -10,11 +10,11 @@ public class TaskA1 {
         Matcher matcher = pattern.matcher(text);
         while (matcher.find()) {
             int start = matcher.start();
-            text.setCharAt(start+3, '#');
+            text.setCharAt(start + 3, '#');
             String word = matcher.group();
-            if(word.length() >=7) {
-             text.setCharAt(start+6, '#');
-            System.out.println(text);
+            if (word.length() >= 7) {
+                text.setCharAt(start + 6, '#');
+                System.out.println(text);
             }
         }
     }

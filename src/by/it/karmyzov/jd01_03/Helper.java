@@ -45,7 +45,7 @@ public class Helper {
 
     }
 
-    static double[ ] multiply(double[ ][ ] matrix, double[ ] vector) {
+    static double[] multiply(double[][] matrix, double[] vector) {
         double[] z = new double[matrix.length];
         for (int i = 0; i < matrix.length; i++)
             for (int j = 0; j < vector.length; j++) {
@@ -53,7 +53,6 @@ public class Helper {
             }
         return z;
     }
-
 
 
     static double[][] multiply(double[][] matrixLeft, double[][] matrixRight) {
