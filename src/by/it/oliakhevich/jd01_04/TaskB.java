@@ -31,7 +31,7 @@ public class TaskB {
                 System.out.printf("%-10d", salari[i][j]);
                 sum = sum + salari[i][j];
             }
-            System.out.printf("%-10s", sum);
+            System.out.printf("%-10s\n", sum);
             sum = 0;
 
         }
