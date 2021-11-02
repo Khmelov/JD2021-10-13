@@ -23,5 +23,6 @@ public class Runner {
         System.out.println(doubleMatrix);
         System.out.println(matrix);
         System.out.println(stringMatrix);
+        System.out.println(":)");
     }
 }
