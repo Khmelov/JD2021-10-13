@@ -36,7 +36,7 @@ public class Scalar extends Var {
             double difference = this.value - ((Scalar) other).value;
             return new Scalar(difference);
         } else {
-            return new Scalar(-1).mul(other). add(this);
+            return new Scalar(-1).mul(other).add(this);
         }
     }
 
@@ -58,5 +58,9 @@ public class Scalar extends Var {
         } else {
             return super.div(other);
         }
+    }
+
+    public double getValue() {
+        return value;
     }
 }
