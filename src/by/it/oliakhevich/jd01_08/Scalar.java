@@ -1,10 +1,25 @@
 package by.it.oliakhevich.jd01_08;
 
 class Scalar extends Var { //Наследуется от класса Var
-    private double value;
+    private final double value;
+
 
     Scalar(double value) {
         this.value = value;
+
+    }
+
+
+    Scalar(String str) {
+        this.value = Double.parseDouble(str);
+    }
+
+    Scalar(Scalar scalar) {
+        this.value = scalar.value;
+    }
+
+    public double getValue() {
+        return value;
     }
 
     @Override
@@ -48,13 +63,6 @@ class Scalar extends Var { //Наследуется от класса Var
         return super.div(other);
     }
 
-    Scalar(String str) {
-        this.value = Double.parseDouble(str);
-    }
-
-    Scalar(Scalar scalar) {
-        this.value = scalar.value;
-    }
 
     @Override
     public String toString() {
