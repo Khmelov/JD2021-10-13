@@ -22,21 +22,41 @@ public class Scalar extends Var {
 
     @Override
     public Var add(Var other) {
-        return null;
+        if (other instanceof Scalar) {
+            double amount = this.value + ((Scalar) other).value;
+            return new Scalar(amount);
+        } else {
+            return other.add(this);
+        }
     }
 
     @Override
     public Var sub(Var other) {
-        return null;
+        if (other instanceof Scalar) {
+            double difference = this.value - ((Scalar) other).value;
+            return new Scalar(difference);
+        } else {
+            return new Scalar(-1).mul(other). add(this);
+        }
     }
 
     @Override
     public Var mul(Var other) {
-        return null;
+        if (other instanceof Scalar) {
+            double multiplied = this.value * ((Scalar) other).value;
+            return new Scalar(multiplied);
+        } else {
+            return other.mul(this);
+        }
     }
 
     @Override
     public Var div(Var other) {
-        return null;
+        if (other instanceof Scalar) {
+            double quotient = this.value / ((Scalar) other).value;
+            return new Scalar(quotient);
+        } else {
+            return super.div(other);
+        }
     }
 }
