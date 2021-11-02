@@ -67,11 +67,11 @@ public class Vector extends Var {
     @Override
     public Var sub(Var other) {
         if (other instanceof Scalar) {
-            double[] additionVector = Arrays.copyOf(value, value.length);
-            for (int i = 0; i < additionVector.length; i++) {
-                additionVector[i] -= ((Scalar) other).getValue();
+            double[] deductedVector = Arrays.copyOf(value, value.length);
+            for (int i = 0; i < deductedVector.length; i++) {
+                deductedVector[i] -= ((Scalar) other).getValue();
             }
-            return new Vector(additionVector);
+            return new Vector(deductedVector);
         } else if (other instanceof Vector) {
             if (this.value.length == ((Vector) other).value.length) {
                 double[] additionVector = Arrays.copyOf(value, value.length);
@@ -125,5 +125,9 @@ public class Vector extends Var {
         } else {
             return super.div(other);
         }
+    }
+
+    public double[] getValue() {
+        return value;
     }
 }

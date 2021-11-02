@@ -1,5 +1,6 @@
 package by.it.shcharbunou.jd01_08;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -89,21 +90,140 @@ public class Matrix extends Var {
 
     @Override
     public Var add(Var other) {
-        return null;
+        if (other instanceof Scalar) {
+            double[][] additionMatrix = new double[this.value.length][this.value[0].length];
+            for (int i = 0; i < additionMatrix.length; i++) {
+                System.arraycopy(this.value[i], 0, additionMatrix[i], 0, this.value[i].length);
+            }
+            for (int i = 0; i < additionMatrix.length; i++) {
+                for (int j = 0; j < additionMatrix[i].length; j++) {
+                    additionMatrix[i][j] += ((Scalar) other).getValue();
+                }
+            }
+            return new Matrix(additionMatrix);
+        } else if (other instanceof Matrix) {
+            if (this.value.length == ((Matrix) other).value.length && this.value[0].length == ((Matrix) other).value[0].length) {
+                double[][] additionMatrix = new double[this.value.length][this.value[0].length];
+                for (int i = 0; i < additionMatrix.length; i++) {
+                    System.arraycopy(this.value[i], 0, additionMatrix[i], 0, this.value[i].length);
+                }
+                for (int i = 0; i < additionMatrix.length; i++) {
+                    for (int j = 0; j < additionMatrix[i].length; j++) {
+                        additionMatrix[i][j] += ((Matrix) other).value[i][j];
+                    }
+                }
+                return new Matrix(additionMatrix);
+            } else {
+                return super.add(other);
+            }
+        } else {
+            return super.add(other);
+        }
     }
 
     @Override
     public Var sub(Var other) {
-        return null;
+        if (other instanceof Scalar) {
+            double[][] deductedMatrix = new double[this.value.length][this.value[0].length];
+            for (int i = 0; i < deductedMatrix.length; i++) {
+                System.arraycopy(this.value[i], 0, deductedMatrix[i], 0, this.value[i].length);
+            }
+            for (int i = 0; i < deductedMatrix.length; i++) {
+                for (int j = 0; j < deductedMatrix[i].length; j++) {
+                    deductedMatrix[i][j] -= ((Scalar) other).getValue();
+                }
+            }
+            return new Matrix(deductedMatrix);
+        } else if (other instanceof Matrix) {
+            if (this.value.length == ((Matrix) other).value.length && this.value[0].length == ((Matrix) other).value[0].length) {
+                double[][] deductedMatrix = new double[this.value.length][this.value[0].length];
+                for (int i = 0; i < deductedMatrix.length; i++) {
+                    System.arraycopy(this.value[i], 0, deductedMatrix[i], 0, this.value[i].length);
+                }
+                for (int i = 0; i < deductedMatrix.length; i++) {
+                    for (int j = 0; j < deductedMatrix[i].length; j++) {
+                        deductedMatrix[i][j] -= ((Matrix) other).value[i][j];
+                    }
+                }
+                return new Matrix(deductedMatrix);
+            } else {
+                return super.sub(other);
+            }
+        } else {
+            return super.sub(other);
+        }
     }
 
     @Override
     public Var mul(Var other) {
-        return null;
+        if (other instanceof Scalar) {
+            double[][] multipliedMatrix = new double[this.value.length][this.value[0].length];
+            for (int i = 0; i < multipliedMatrix.length; i++) {
+                System.arraycopy(this.value[i], 0, multipliedMatrix[i], 0, this.value[i].length);
+            }
+            for (int i = 0; i < multipliedMatrix.length; i++) {
+                for (int j = 0; j < multipliedMatrix[i].length; j++) {
+                    multipliedMatrix[i][j] *= ((Scalar) other).getValue();
+                }
+            }
+            return new Matrix(multipliedMatrix);
+        } else if (other instanceof Vector) {
+            if (this.value.length == ((Vector) other).getValue().length) {
+                double[] multipliedVector = new double[this.value.length];
+                Arrays.fill(multipliedVector, 0);
+                for (int i = 0; i < this.value.length; i++) {
+                    for (int j = 0; j < multipliedVector.length; j++) {
+                        multipliedVector[i] += this.value[i][j] * ((Vector) other).getValue()[j];
+                    }
+                }
+                return new Vector(multipliedVector);
+            } else {
+                return super.mul(other);
+            }
+        } else if (other instanceof Matrix) {
+            if (this.value[0].length == ((Matrix) other).value.length) {
+                double[][] multipliedMatrix = new double[this.value.length][((Matrix) other).getValue()[0].length];
+                for (int i = 0; i < this.value.length; i++) {
+                    for (int j = 0; j < ((Matrix) other).getValue()[i].length; j++) {
+                        for (int k = 0; k < ((Matrix) other).getValue().length; k++) {
+                            multipliedMatrix[i][j] = multipliedMatrix[i][j] + this.value[i][k]
+                                    * ((Matrix) other).getValue()[k][j];
+                        }
+                    }
+                }
+                return new Matrix(multipliedMatrix);
+            } else {
+                return super.mul(other);
+            }
+        } else {
+            return super.mul(other);
+        }
     }
 
     @Override
     public Var div(Var other) {
-        return null;
+        if (other instanceof Scalar) {
+            double[][] dividedMatrix = new double[this.value.length][this.value[0].length];
+            for (int i = 0; i < dividedMatrix.length; i++) {
+                System.arraycopy(this.value[i], 0, dividedMatrix[i], 0, this.value[i].length);
+            }
+            for (double[] row : dividedMatrix) {
+                if (Arrays.asList(row).contains(0)) {
+                    return super.div(other);
+                }
+            }
+            for (int i = 0; i < dividedMatrix.length; i++) {
+                for (int j = 0; j < dividedMatrix[i].length; j++) {
+                    dividedMatrix[i][j] /= ((Scalar) other).getValue();
+                }
+            }
+            return new Matrix(dividedMatrix);
+        } else {
+            return super.div(other);
+        }
+    }
+
+    public double[][] getValue() {
+        return value;
     }
 }
