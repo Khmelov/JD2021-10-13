@@ -1,11 +1,8 @@
 package by.it.marukovich.jd01_09;
 
-import by.it._classwork_.jd01_09.Var;
-
 import java.util.Scanner;
 
 public class ConsoleRunner {
-
 
     public static final String FINAL_APP_CMD = "end";
 
@@ -21,7 +18,6 @@ public class ConsoleRunner {
             } else {
                 break;
             }
-
         }
         System.out.println("Application closed");
     }

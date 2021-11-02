@@ -3,6 +3,7 @@ package by.it.marukovich.jd01_09;
 import java.util.Arrays;
 
 public class Vector extends Var {
+    public static final String SPACES = ",\\s*";
     private final double[] values;
 
     public Vector(double[] values) {
@@ -17,15 +18,14 @@ public class Vector extends Var {
         this(vector.values);
     }
 
-    public Vector(String strVector) {
-        strVector = strVector
-                .replace("{", "")
-                .replace("}", "")
-                .trim();
-        String[] strings = strVector.split(",\\s*");
-        values = new double[strings.length];
+    public Vector(String stringVar) {
+        String[] strValues = stringVar
+                .replace(Patterns.LEFT_BRACKET, "")
+                .replace(Patterns.RIGHT_BRACKET, "")
+                .split(SPACES);
+        values = new double[strValues.length];
         for (int i = 0; i < values.length; i++) {
-            values[i] = Double.parseDouble(strings[i]);
+            values[i] = Double.parseDouble(strValues[i]);
         }
     }
 
@@ -88,7 +88,7 @@ public class Vector extends Var {
             double[] result = Arrays.copyOf(values, values.length);
             for (int i = 0; i < result.length; i++) {
                 result[i] = result[i] * vector.values[i];
-                sum+=result[i];
+                sum += result[i];
             }
             return new Scalar(sum);
         }
@@ -105,8 +105,7 @@ public class Vector extends Var {
             }
             return new Vector(result);
 
-        }
-        else return super.div(other);
+        } else return super.div(other);
     }
 
     @Override

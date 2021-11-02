@@ -1,7 +1,5 @@
 package by.it.marukovich.jd01_09;
 
-import by.it._classwork_.jd01_09.Var;
-
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
