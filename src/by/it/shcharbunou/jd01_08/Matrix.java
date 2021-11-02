@@ -86,4 +86,24 @@ public class Matrix extends Var {
         stringMatrixPerformance.append('}');
         return stringMatrixPerformance.toString();
     }
+
+    @Override
+    public Var add(Var other) {
+        return null;
+    }
+
+    @Override
+    public Var sub(Var other) {
+        return null;
+    }
+
+    @Override
+    public Var mul(Var other) {
+        return null;
+    }
+
+    @Override
+    public Var div(Var other) {
+        return null;
+    }
 }
