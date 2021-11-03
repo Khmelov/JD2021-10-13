@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 public class InOut {
 
-    private static final Scanner scanner = new Scanner(System.in);
-
-    protected static String getArrayLine() {
+    protected static String getArrayLine(Scanner scanner) {
         boolean isCorrect;
         String line;
         System.out.println("Enter your array:");
@@ -85,7 +83,7 @@ public class InOut {
         }
     }
 
-    protected static double[][] getMatrix(int rows, int columns) {
+    protected static double[][] getMatrix(int rows, int columns, Scanner scanner) {
         double[][] matrix = new double[rows][columns];
         boolean isCorrect;
         for (int i = 0; i < matrix.length; i++) {
@@ -105,7 +103,7 @@ public class InOut {
         return matrix;
     }
 
-    protected static int getNumber() {
+    protected static int getNumber(Scanner scanner) {
         boolean isCorrect;
         int value = 0;
         do {

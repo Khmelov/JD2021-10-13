@@ -1,6 +1,6 @@
-package by.it.rudakova.jd01_08;
+package by.it.rudakova.jd01_09;
 
-public interface Operation {
+interface Operation {
     Var add(Var other);
 
     Var sub(Var other);

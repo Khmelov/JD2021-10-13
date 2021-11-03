@@ -1,10 +1,13 @@
 package by.it.shcharbunou.jd01_04;
 
+import java.util.Scanner;
+
 public class TaskA {
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         printMulTable();
-        String line = InOut.getArrayLine();
+        String line = InOut.getArrayLine(scanner);
         buildOneDimArray(line);
     }
 
