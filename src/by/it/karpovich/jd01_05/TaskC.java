@@ -22,7 +22,6 @@ public class TaskC {
 
     private static void step7() {
 
-    }
-
+        }
 
 }
