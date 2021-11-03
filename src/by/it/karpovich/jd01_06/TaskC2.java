@@ -59,8 +59,8 @@ public class TaskC2 {
             Matcher matcher = pattern.matcher(text);
             while (matcher.find()) {
                 if (random.nextBoolean()) {
-                    longtext.append(matcher.group() + " ");
-                   // longtext.append(" ");
+                    longtext.append(matcher.group());
+                    longtext.append(" ");
                 }
             }
         }
