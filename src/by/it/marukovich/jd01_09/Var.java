@@ -1,6 +1,6 @@
-package by.it.marukovich.jd01_08;
+package by.it.marukovich.jd01_09;
 
-public abstract class Var implements Operation{
+public abstract class Var implements Operation {
     @Override
     public Var add(Var other){
         System.out.printf("Operation %s + %s not supported", this, other);
