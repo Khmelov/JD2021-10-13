@@ -10,6 +10,7 @@ class Scalar extends Var { //Наследуется от класса Var
     }
 
 
+
     Scalar(String str) {
         this.value = Double.parseDouble(str);
     }

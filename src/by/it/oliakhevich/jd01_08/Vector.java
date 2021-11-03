@@ -24,18 +24,17 @@ class Vector extends Var {
         return out.toString();
     }
 
-    // @Override
-    //public Var add(Var other) {
-    // if (other instanceof Scalar) {
-    //   double[] result = Arrays.copyOf(value, value, lenght);
-    //  for (int i = 0; i < result.length; i++) {
-    //        result[i] = result[i] + ((Scalar) other).value;
+    @Override
+    public Var add(Var other) {
+        if (other instanceof Scalar) {
+            double[] result = Arrays.copyOf(value, value.length);
+            for (int i = 0; i < result.length; i++) {
+                result[i] = result[i] + ((Scalar) other).getValue();
 
-
-    //  }
-    //  }
-    //   return super.add(other);
-    //}
+            }
+        }
+        return super.add(other);
+    }
 
 }
 
