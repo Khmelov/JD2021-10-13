@@ -3,36 +3,21 @@ package by.it.marukovich.jd01_10;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-public class PrintMath {
-
-    public static final String LEFT_BRACKET = "(";
-    public static final String SPACE = " ";
-    public static final String EMPTY_STRING = "";
-    public static final String COMMA = ",";
-    public static final String RIGHT_BRACKET = ")";
-
+public class PrintString {
     public static void main(String[] args) {
-        Class<Math> mathClass = Math.class;
-        Method[] methods = mathClass.getDeclaredMethods();
+        Class<String> stringClass = String.class;
+        Method[] methods = stringClass.getDeclaredMethods();
         for (Method method : methods) {
             StringBuilder out = new StringBuilder();
             if (addModifaers(method, out)) continue;
             Class<?> returnType = method.getReturnType();
             String returnClassName = returnType.getSimpleName();
-            out.append(returnClassName).append(SPACE);
+            out.append(returnClassName);
             String methodName = method.getName();
-            out.append(methodName).append(LEFT_BRACKET);
-            Class<?>[] types = method.getParameterTypes();
-            String delimiter = EMPTY_STRING;
-            for (Class<?> type : types) {
-                out.append(delimiter).append(type.getSimpleName());
-                delimiter = COMMA;
-            }
-            out.append(RIGHT_BRACKET);
+            out.append(methodName);
             System.out.println(out);
         }
     }
-
     private static boolean addModifaers(Method method, StringBuilder out) {
         int modifiers = method.getModifiers();
         if (Modifier.isPublic(modifiers)) {
