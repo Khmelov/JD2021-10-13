@@ -1,7 +1,6 @@
 package by.it.shcharbunou.jd01_07;
 
 public class Scalar extends Var {
-
     private final double value;
 
     public Scalar(double value) {
@@ -18,6 +17,6 @@ public class Scalar extends Var {
 
     @Override
     public String toString() {
-        return String.valueOf(value);
+        return Double.toString(value);
     }
 }

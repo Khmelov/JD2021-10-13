@@ -1,8 +1,11 @@
 package by.it.shcharbunou.jd01_04;
 
+import java.util.Scanner;
+
 public class TaskC {
     public static void main(String[] args) {
-        String line = InOut.getArrayLine();
+        Scanner scanner = new Scanner(System.in);
+        String line = InOut.getArrayLine(scanner);
         buildOneDimArray(line);
     }
 
