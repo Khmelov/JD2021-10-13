@@ -1,6 +1,7 @@
-package by.it.malyshchik.jd01_08;
+package by.it.malyshchik.jd01_09;
 
 import java.util.Arrays;
+import java.util.StringJoiner;
 
 class Vector extends Var {
     private double[] value;
@@ -29,6 +30,7 @@ class Vector extends Var {
         }
         this.value = numberArray;
     }
+
 
     @Override
     public Var add(Var other) {
@@ -85,14 +87,20 @@ class Vector extends Var {
             return super.mul(other);
     }
 
-    @Override
     public Var div(Var other) {
         if (other instanceof Scalar) {
-            double[] res = Arrays.copyOf(value, value.length);
-            for (int i = 0; i < res.length; i++) {
-                res[i] = res[i] / ((Scalar) other).getValue();
+            double[] resultVector = Arrays.copyOf(value, value.length);
+            for (int i = 0; i < resultVector.length; i++) {
+                resultVector[i] = resultVector[i] * (1/((Scalar) other).getValue());
             }
-            return new Vector(res);
+            return new Vector(resultVector);
+        }
+        else if (other instanceof Vector) {
+            double sum = 0;
+            for (int i = 0; i < value.length; i++) {
+                sum+= value[i] / ((Vector) other).value[i];
+            }
+            return new Scalar(sum);
         } else
             return super.div(other);
     }
@@ -110,4 +118,5 @@ class Vector extends Var {
         return sb.toString();
 
     }
+
 }
