@@ -5,8 +5,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 public class PrintMath {
-    public static void main(String[] args) {
-        Class<Math> mathClass=Math.class;
+    public static void main(String[] args) throws ClassNotFoundException{
+        Class<?> mathClass=Class.forName("java.lang.Math");;
         Method [] methods=mathClass.getDeclaredMethods();
         for(Method method:methods){
             StringBuilder out=new StringBuilder();

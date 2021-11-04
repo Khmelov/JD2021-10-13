@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 
 public class BeanTester {
     public static void main(String[] args) throws Exception {
-        Class<?> c = Bean.class;
+        Class<?> c = Class.forName("by.it.rudakova.jd01_10.Bean");
         Constructor<?> constructor=c.getConstructor();
         Object finder=constructor.newInstance();
 
