@@ -4,14 +4,12 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 public class PrintString {
-    public static void main(String[] args) {
-        Class<String> structString = String.class;
-        Method[] methods = structString.getDeclaredMethods();
+    public static void main(String[] args) throws ClassNotFoundException {
+        Class<?> stringsClass = Class.forName("java.lang.String");
+        Method[] methods = stringsClass.getDeclaredMethods();
         for (Method method : methods) {
-            //StringBuilder out = new StringBuilder();
-            //int modifiers = method.getModifiers();
-            if ((method.getModifiers() & Modifier.STATIC) != Modifier.STATIC); {
-                System.out.println(method); }
+            if ((method.getModifiers() & Modifier.STATIC) != Modifier.STATIC) {
+                System.out.println(method.getName()); }
 
         }
     }

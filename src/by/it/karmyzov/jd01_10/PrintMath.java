@@ -29,7 +29,7 @@ public class PrintMath {
             }
             System.out.println(out);
         }
-        Field[] fields = mathClass.getDeclaredFields();
+           Field[] fields = mathClass.getDeclaredFields();
         for (Field field : fields) {
             StringBuilder out = new StringBuilder();
             int modifiers = field.getModifiers();
