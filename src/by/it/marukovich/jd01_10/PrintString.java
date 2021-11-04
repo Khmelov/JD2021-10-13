@@ -9,12 +9,13 @@ public class PrintString {
         Method[] methods = stringClass.getDeclaredMethods();
         for (Method method : methods) {
             StringBuilder out = new StringBuilder();
-            if ((method.getModifiers() & Modifier.STATIC) != Modifier.STATIC) {
-            String methodName = method.getName();
-            out.append(methodName);
-            System.out.println(out);
+            if (Modifier.isStatic(method.getModifiers())) {
+                continue;
+            } else {
+                String methodName = method.getName();
+                out.append(methodName);
+                System.out.println(out);
+            }
         }
         }
     }
-
-}
