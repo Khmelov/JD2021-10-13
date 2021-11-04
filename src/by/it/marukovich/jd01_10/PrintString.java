@@ -9,31 +9,12 @@ public class PrintString {
         Method[] methods = stringClass.getDeclaredMethods();
         for (Method method : methods) {
             StringBuilder out = new StringBuilder();
-            if (addModifaers(method, out)) continue;
-            Class<?> returnType = method.getReturnType();
-            String returnClassName = returnType.getSimpleName();
-            out.append(returnClassName);
+            if ((method.getModifiers() & Modifier.STATIC) != Modifier.STATIC) {
             String methodName = method.getName();
             out.append(methodName);
             System.out.println(out);
         }
+        }
     }
-    private static boolean addModifaers(Method method, StringBuilder out) {
-        int modifiers = method.getModifiers();
-        if (Modifier.isPublic(modifiers)) {
-            out.append("public ");
-        } else {
-            return true;
-        }
-        if (Modifier.isPrivate(modifiers)) {
-            out.append("private ");
-        }
-        if (Modifier.isProtected(modifiers)) {
-            out.append("protected ");
-        }
-        if (Modifier.isStatic(modifiers)) {
-            out.append("static ");
-        }
-        return false;
-    }
+
 }
