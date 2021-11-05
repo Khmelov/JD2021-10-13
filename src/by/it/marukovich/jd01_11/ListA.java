@@ -27,11 +27,6 @@ public class ListA<E> implements List<E> {
     }
 
     @Override
-    public E get(int index) {
-        return null;
-    }
-
-    @Override
     public String toString(){
         StringJoiner out = new StringJoiner(", ", "{", "}");
         for (int i = 0; i < size; i++) {
@@ -39,6 +34,23 @@ public class ListA<E> implements List<E> {
         }
         return Arrays.toString(elements);
     }
+
+    @Override
+    public int indexOf(Object o) {
+        if(Objects.isNull(o)){
+            for (int i = 0; i < size; i++) {
+                if(elements[i]==null);{
+                    return i;
+                }
+            }
+        }
+        return 0;
+    }
+    @Override
+    public E get(int index) {
+        return elements[index];
+    }
+
     @Override
     public int size() {
         return 0;
@@ -46,12 +58,12 @@ public class ListA<E> implements List<E> {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size==0;
     }
 
     @Override
     public boolean contains(Object o) {
-        return false;
+        return indexOf(0)>=0;
     }
 
     @Override
@@ -112,11 +124,6 @@ public class ListA<E> implements List<E> {
     @Override
     public void add(int index, E element) {
 
-    }
-
-    @Override
-    public int indexOf(Object o) {
-        return 0;
     }
 
     @Override
