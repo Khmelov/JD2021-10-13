@@ -1,11 +1,32 @@
 package by.it.shcharbunou.jd01_11;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class ListA<T> implements List<T> {
+    private int capacity = 10;
+    private int size = 0;
+    private T[] elements = (T[]) new Object[capacity];
+
+    @Override
+    public boolean add(T t) {
+        if (size == capacity - 1) {
+            capacity = (capacity * 3) / 2 + 1;
+            elements = Arrays.copyOf(elements, capacity);
+        }
+        size++;
+        elements[size - 1] = t;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        StringJoiner out = new StringJoiner(", ", "[", "]");
+        for (int i = 0; i < size; i++) {
+            out.add(String.valueOf(elements[i]));
+        }
+        return out.toString();
+    }
+
     @Override
     public int size() {
         return 0;
@@ -34,11 +55,6 @@ public class ListA<T> implements List<T> {
     @Override
     public <T1> T1[] toArray(T1[] a) {
         return null;
-    }
-
-    @Override
-    public boolean add(T t) {
-        return false;
     }
 
     @Override
