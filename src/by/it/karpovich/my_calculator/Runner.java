@@ -16,9 +16,9 @@ public class Runner {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите скаляр: ");
-        Double s_1 = scanner.nextDouble();
+        double s_1 = scanner.nextDouble();
         System.out.println("Введите Вектор из нескольких чисел: ");
-        Double v_1 = scanner.nextDouble();
+        double v_1 = scanner.nextDouble();
     //    System.out.println("Введите числа матрицы");
     //    Double m_1 = scanner.nextDouble();
         by.it.karpovich.jd01_08.Var s = new Scalar(s_1);
