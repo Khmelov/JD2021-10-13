@@ -1,4 +1,4 @@
-package by.it.karpovich.Test;
+package by.it.karpovich.Test.Person;
 
 public class Person {
     /* Здесь по дефолту прописан Public*/ int height; // Высота

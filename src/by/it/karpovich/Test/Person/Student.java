@@ -1,4 +1,5 @@
-package by.it.karpovich.Test;
+package by.it.karpovich.Test.Person;
+
 
 public class Student extends Person {
     // у Student есть доступ к Person с защитой public и protected
