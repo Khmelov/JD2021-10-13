@@ -1,5 +1,7 @@
 package by.it.karpovich.jd01_08;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Matrix extends Var {
     private final double[][] value; // Создаем защиту от вмешательства
 
@@ -9,12 +11,12 @@ public class Matrix extends Var {
     }
 
     // Начало второго конструктора:
-    public Matrix(Matrix value) {
+    public Matrix(@NotNull Matrix value) {
         this.value = value.value;
     }
 
     // Начало третьего конструктора:
-    public Matrix(String strMatrix) {
+    public Matrix(@NotNull String strMatrix) {
         String line = strMatrix.substring(2, strMatrix.length() - 2);
         String[] strArrI = line.split("[}][,][{]");
         double[][] outputArray = new double[strArrI.length][strArrI[0].split(",").length];
@@ -33,7 +35,7 @@ public class Matrix extends Var {
         StringBuilder output = new StringBuilder("{");
         for (double[] doubles : value) {
             String limiter = "";
-            //Метод java.lang.StringBuilder.append () используется для добавления
+            //Метод java.lang. StringBuilder.append () используется для добавления
             // строкового представления некоторого аргумента в последовательность.
             output.append("{");
             for (double aDouble : doubles) {
@@ -48,5 +50,7 @@ public class Matrix extends Var {
         output.append("}");
         return output.toString();
     }
+
+
 
 }
