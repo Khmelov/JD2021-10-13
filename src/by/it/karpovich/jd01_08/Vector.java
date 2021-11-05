@@ -1,6 +1,7 @@
 package by.it.karpovich.jd01_08;
 
 import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 
 public class Vector extends Var {
