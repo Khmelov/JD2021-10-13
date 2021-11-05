@@ -61,8 +61,8 @@ package by.it.karpovich.jd01_01;
 import java.util.Scanner;
 
 class TaskC3 {
-    private static double earth = 9.81;
-    private static double mars = 3.86;
+    private static double G_EARTH = 9.81;
+    private static double G_MARS = 3.86;
 
     public static void main(final String[] args) {
         Scanner console = new Scanner(System.in);
@@ -73,7 +73,7 @@ class TaskC3 {
     }
 
     public static double getWeight(int weight) {
-        double weight1 = (int) ((weight * mars / earth) * 100 + 0.5) / 100.0;
+        double weight1 = (int) ((weight * G_MARS / G_EARTH) * 100 + 0.5) / 100.0;
         return weight1;
     }
 }

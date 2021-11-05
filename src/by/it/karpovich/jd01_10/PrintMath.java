@@ -1,6 +1,5 @@
 package by.it.karpovich.jd01_10;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -35,7 +34,7 @@ public class PrintMath {
         }
     }
 
-    private static boolean addModifiers(@NotNull Method method, StringBuilder out) {
+    private static boolean addModifiers(Method method, StringBuilder out) {
         int modifiers = method.getModifiers();
 
         if (Modifier.isPublic(modifiers)) {

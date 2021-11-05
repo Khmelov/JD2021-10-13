@@ -15,7 +15,7 @@ public class TaskB {
 
         int[][] money = new int[workersCount][4];
         for (int i = 0; i < money.length; i++) {
-            System.out.println("Введите зарплату [Квартал1-4] для: " + workers[i]);
+            System.out.println("Введите зарплату [Квартал1-4 через пробел] для: " + workers[i]);
             for (int j = 0; j < 4; j++) {
                 money[i][j] = console.nextInt();
             }
