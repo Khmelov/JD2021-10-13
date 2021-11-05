@@ -11,13 +11,8 @@ public class TaskB2 {
         for (int i = 0; i < sentences.length; i++) {
             sentences[i] = sentences[i].replaceAll("[^а-яА-ЯёЁ]+", " ").trim();
         }
-        Comparator<String> comparable = new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return o1.length() - o2.length();
-            }
-        };
-        Arrays.sort(sentences, comparable);
+        Arrays.sort(sentences, Comparator.comparingInt(String::length));
+        Arrays.sort(sentences, Comparator.comparingInt(String::length));
         for (String sentence : sentences) {
             System.out.println(sentence);
         }
