@@ -1,8 +1,6 @@
 package by.it.karpovich.jd01_04;
 
-import javax.management.ObjectName;
-import java.util.Arrays;
-import java.util.Comparator;
+
 import java.util.Scanner;
 
 public class TaskC {
@@ -36,12 +34,4 @@ public class TaskC {
         }
     }
 
-    static void mergeSort(double[ ] array){
-        ObjectName[] arr = new ObjectName[10];
-        Arrays.sort(arr, new Comparator<ObjectName>() {
-            public int compare(ObjectName o1, ObjectName o2) {
-                return o1.toString().compareTo(o2.toString());
-            }
-        });
-    }
 }
