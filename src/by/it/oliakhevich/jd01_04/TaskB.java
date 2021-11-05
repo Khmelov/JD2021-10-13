@@ -1,6 +1,6 @@
 package by.it.oliakhevich.jd01_04;
 
-import java.sql.SQLOutput;
+
 import java.util.Scanner;
 
 public class TaskB {
@@ -31,7 +31,7 @@ public class TaskB {
                 System.out.printf("%-10d", salari[i][j]);
                 sum = sum + salari[i][j];
             }
-            System.out.printf("%-10s", sum);
+            System.out.printf("%-10s\n", sum);
             sum = 0;
 
         }
@@ -50,8 +50,6 @@ public class TaskB {
 }
 
 
-// }
 
-//   }
 
 
