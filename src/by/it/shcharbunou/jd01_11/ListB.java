@@ -3,7 +3,7 @@ package by.it.shcharbunou.jd01_11;
 import java.util.*;
 
 @SuppressWarnings("unchecked")
-public class ListA<T> implements List<T> {
+public class ListB<T> implements List<T> {
     private int capacity = 10;
     private int size = 0;
     private T[] elements = (T[]) new Object[capacity];
@@ -38,6 +38,43 @@ public class ListA<T> implements List<T> {
         }
         System.out.println("Error: Incorrect index. (ArrayOutOfBoundException, broski ;)");
         return null;
+    }
+
+    @Override
+    public T set(int index, T element) {
+        if (index < size && index > -1) {
+            elements[index] = element;
+            return elements[index];
+        }
+        System.out.println("Error: Incorrect index. (ArrayOutOfBoundException, broski ;)");
+        return null;
+    }
+
+    @Override
+    public void add(int index, T element) {
+        if (index < size && index > -1) {
+            if (size == capacity - 1) {
+                capacity = (capacity * 3) / 2 + 1;
+                elements = Arrays.copyOf(elements, capacity);
+            }
+            System.arraycopy(elements, index, elements, index + 1, size - index - 1);
+            elements[index] = element;
+            size++;
+        } else {
+            System.out.println("Error: Incorrect index. (ArrayOutOfBoundException, broski ;)");
+        }
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends T> c) {
+        T[] collectionArray = (T[]) c.toArray();
+        if (capacity - size < collectionArray.length) {
+            capacity = size + collectionArray.length;
+            elements = Arrays.copyOf(elements, capacity);
+        }
+        System.arraycopy(collectionArray, 0, elements, size, collectionArray.length);
+        size += collectionArray.length;
+        return true;
     }
 
     @Override
@@ -90,11 +127,6 @@ public class ListA<T> implements List<T> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends T> c) {
-        return false;
-    }
-
-    @Override
     public boolean addAll(int index, Collection<? extends T> c) {
         return false;
     }
@@ -111,16 +143,6 @@ public class ListA<T> implements List<T> {
 
     @Override
     public void clear() {
-
-    }
-
-    @Override
-    public T set(int index, T element) {
-        return null;
-    }
-
-    @Override
-    public void add(int index, T element) {
 
     }
 

@@ -1,5 +1,7 @@
 package by.it.shcharbunou.jd01_11;
 
+import java.util.ArrayList;
+
 public class Runner {
 
     public static void main(String[] args) {
@@ -18,9 +20,19 @@ public class Runner {
         list.add(56);
         list.add(34);
         list.add(9);
+        System.out.println(list.size());
         System.out.println(list);
         list.remove(4);
         System.out.println(list);
         System.out.println(list.get(0));
+        ListB<Integer> listB = new ListB<>();
+        ArrayList<Integer> arrayListB = new ArrayList<>();
+        for (int i = 0; i < 14; i++) {
+            arrayListB.add(i);
+        }
+        listB.addAll(arrayListB);
+        listB.set(3, 666);
+        listB.set(0, null);
+        System.out.println(listB);
     }
 }
