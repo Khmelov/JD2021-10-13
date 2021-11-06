@@ -19,6 +19,27 @@ public class ListA<T> implements List<T> {
     }
 
     @Override
+    public T get(int index) {
+        if (index < size && index > -1) {
+            return elements[index];
+        }
+        System.out.println("Error: Incorrect index. (ArrayOutOfBoundException, broski ;)");
+        return null;
+    }
+
+    @Override
+    public T remove(int index) {
+        if (index < size && index > -1) {
+            T deletedElement = elements[index];
+            System.arraycopy(elements, index + 1, elements, index, size - index - 1);
+            size--;
+            return deletedElement;
+        }
+        System.out.println("Error: Incorrect index. (ArrayOutOfBoundException, broski ;)");
+        return null;
+    }
+
+    @Override
     public String toString() {
         StringJoiner out = new StringJoiner(", ", "[", "]");
         for (int i = 0; i < size; i++) {
@@ -93,11 +114,6 @@ public class ListA<T> implements List<T> {
     }
 
     @Override
-    public T get(int index) {
-        return null;
-    }
-
-    @Override
     public T set(int index, T element) {
         return null;
     }
@@ -105,11 +121,6 @@ public class ListA<T> implements List<T> {
     @Override
     public void add(int index, T element) {
 
-    }
-
-    @Override
-    public T remove(int index) {
-        return null;
     }
 
     @Override
