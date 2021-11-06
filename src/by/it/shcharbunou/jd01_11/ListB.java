@@ -43,8 +43,9 @@ public class ListB<T> implements List<T> {
     @Override
     public T set(int index, T element) {
         if (index < size && index > -1) {
+            T oldElement = elements[index];
             elements[index] = element;
-            return elements[index];
+            return oldElement;
         }
         System.out.println("Error: Incorrect index. (ArrayOutOfBoundException, broski ;)");
         return null;
@@ -52,12 +53,12 @@ public class ListB<T> implements List<T> {
 
     @Override
     public void add(int index, T element) {
-        if (index < size && index > -1) {
+        if (index <= size && index > -1) {
             if (size == capacity - 1) {
                 capacity = (capacity * 3) / 2 + 1;
                 elements = Arrays.copyOf(elements, capacity);
             }
-            System.arraycopy(elements, index, elements, index + 1, size - index - 1);
+            System.arraycopy(elements, index, elements, index + 1, size - index);
             elements[index] = element;
             size++;
         } else {

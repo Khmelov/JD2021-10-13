@@ -25,14 +25,13 @@ public class Runner {
         list.remove(4);
         System.out.println(list);
         System.out.println(list.get(0));
-        ListB<Integer> listB = new ListB<>();
+        ListB<Long> listB = new ListB<>();
         ArrayList<Integer> arrayListB = new ArrayList<>();
-        for (int i = 0; i < 14; i++) {
-            arrayListB.add(i);
+        for (int i = 0; i < 10; i++) {
+            listB.add(i * 2L);
         }
-        listB.addAll(arrayListB);
-        listB.set(3, 666);
-        listB.set(0, null);
+        System.out.println(listB);
+        listB.add(9, null);
         System.out.println(listB);
     }
 }
