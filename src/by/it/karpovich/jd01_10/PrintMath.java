@@ -1,6 +1,7 @@
 package by.it.karpovich.jd01_10;
 
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
@@ -13,6 +14,12 @@ public class PrintMath {
 
     public static void main(String[] args) {
         Class<Math> mathClass = Math.class;
+        printMetods(mathClass);
+
+
+    }
+
+    private static void printMetods(Class<Math> mathClass) {
         Method[] methods = mathClass.getDeclaredMethods();
         for (Method method : methods) {
             StringBuilder out = new StringBuilder();
