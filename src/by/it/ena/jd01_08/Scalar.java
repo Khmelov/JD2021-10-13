@@ -1,4 +1,4 @@
-package by.it.ena.jd01_07;
+package by.it.ena.jd01_08;
 
 class Scalar extends Var {
 

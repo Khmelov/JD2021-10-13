@@ -1,6 +1,4 @@
-package by.it.ena.jd01_07;
-
-import java.util.Arrays;
+package by.it.ena.jd01_08;
 
 class Vector extends Var {
 
