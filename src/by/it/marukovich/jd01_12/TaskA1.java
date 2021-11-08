@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 public class TaskA1 {
+    @SuppressWarnings("Java8CollectionRemoveIf")
     void clearBad(List<Integer> grades){
         Iterator<Integer> iterator = grades.iterator();
         while (iterator.hasNext()){

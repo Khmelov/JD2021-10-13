@@ -6,16 +6,16 @@ import java.util.Scanner;
 
 public class TaskA3 {
     public static void main(String[] args) {
-        Scanner scanner = new java.util.Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         List<Integer> values = new ArrayList<>();
         int posZero = 0;
-        for(;;){
+        for (; ; ) {
             String value = scanner.next();
-            if (value.equals("end")){
+            if (!value.equals("end")) {
                 Integer i = Integer.valueOf(value);
-                if(i<0){
+                if (i < 0) {
                     values.add(i);
-                } else if (i>0){
+                } else if (i > 0) {
                     values.add(posZero++, i);
                 } else {
                     values.add(posZero, i);
