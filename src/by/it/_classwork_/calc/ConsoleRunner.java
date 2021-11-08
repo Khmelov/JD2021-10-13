@@ -2,6 +2,7 @@ package by.it._classwork_.calc;
 
 import java.util.Scanner;
 
+@SuppressWarnings("DuplicatedCode")
 public class ConsoleRunner {
 
 
@@ -9,8 +10,8 @@ public class ConsoleRunner {
 
     public static void main(String[] args) {
         Printer printer = new Printer();
-        VarReposistory varReposistory = new VarReposistory();
-        Parser parser = new Parser(varReposistory);
+        VarRepository varRepository = new VarRepository();
+        Parser parser = new Parser(varRepository);
         Scanner scanner = new Scanner(System.in);
         for (; ; ) {
             String expression = scanner.nextLine();

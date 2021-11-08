@@ -2,10 +2,10 @@ package by.it._classwork_.calc;
 
 public class VarCreator {
 
-    private final VarReposistory varReposistory;
+    private final VarRepository varRepository;
 
-    public VarCreator(VarReposistory varReposistory) {
-        this.varReposistory = varReposistory;
+    public VarCreator(VarRepository varRepository) {
+        this.varRepository = varRepository;
     }
 
     Var createVar(String stringVar) {
@@ -16,7 +16,7 @@ public class VarCreator {
         } else if (stringVar.matches(Patterns.MARTIX)) {
             return new Matrix(stringVar);
         } else
-            return varReposistory.load(stringVar);
+            return varRepository.load(stringVar);
     }
 
 }
