@@ -19,6 +19,6 @@ public class HashMapEx1 {
         System.out.println(map1.values());
         Map<String, String> map2 = new HashMap<>();
         map2.put("Sasha", "KKK");
-        System.out.println(map2);
+        System.out.println(map2) ;
     }
 }
