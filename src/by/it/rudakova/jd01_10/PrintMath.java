@@ -47,6 +47,5 @@ public class PrintMath {
             out.append(fieldName);
             System.out.println(out);
         }
-
     }
 }

@@ -8,12 +8,12 @@ class Scalar extends Var {
         this.value = value;
     }
 
-    Scalar(String strScalar){
-        this.value=Double.parseDouble(strScalar);
+    Scalar(String strScalar) {
+        this.value = Double.parseDouble(strScalar);
     }
 
-    Scalar (Scalar scalar){
-        this.value= scalar.value;
+    Scalar(Scalar scalar) {
+        this.value = scalar.value;
     }
 
     @Override

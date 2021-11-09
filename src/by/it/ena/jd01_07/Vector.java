@@ -6,17 +6,25 @@ class Vector extends Var {
 
     private double[] value;
 
-    Vector(double[ ] value){
-        this.value=Arrays.copyOf(value, value.length);
+    Vector(double[] value) {
+        this.value = value;
     }
 
-    Vector(Vector vector){
-        this.value=vector.value;
+    Vector(Vector vector) {
+        this.value = vector.value;
     }
 
-   // Vector(String strVector){
-    //    this.value=
-  // }
+     Vector(String strVector){
+         strVector=strVector.replace("{", "")
+         .replace("}", "")
+         .replace(" ", "");
+         String[] strArray = strVector.split("[,]");
+         double[] newArray = new double[strArray.length];
+         for (int i = 0; i < strArray.length; i++) {
+             newArray[i] = Double.parseDouble(strArray[i]);
+         }
+         this.value = newArray;
+    }
 
 
     @Override
