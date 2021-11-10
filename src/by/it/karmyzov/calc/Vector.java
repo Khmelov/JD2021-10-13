@@ -41,16 +41,17 @@ public class Vector extends Var {
             }
             return new Vector(res);
         }
-        else if (other instanceof Vector) {
-            double[] res = Arrays.copyOf(values, values.length);
-            for (int i = 0; i < res.length; i++) {
-                res[i] = res[i] + ((Vector) other).values[i];
+        if (other instanceof Vector vector) {
+            if (this.values.length != vector.values.length) {
+                return super.add(vector);
             }
-            return new Vector(res);
-        }
-        else
-            return super.add(other);
-
+                double[] res = Arrays.copyOf(values, values.length);
+                for (int i = 0; i < res.length; i++) {
+                    res[i] = res[i] + ((Vector) other).values[i];
+                }
+                return new Vector(res);
+            } else
+                return super.add(other);
         }
 
     @Override
@@ -64,7 +65,7 @@ public class Vector extends Var {
         }
         if (other instanceof Vector vector) {
             if (this.values.length != vector.values.length) {
-                return super.add(vector);
+                return super.sub(vector);
             }
             double[] res = Arrays.copyOf(values, values.length);
             for (int i = 0; i < res.length; i++) {
