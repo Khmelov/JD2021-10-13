@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class TaskB2 {
     public static void main(String[] args) {
-        StringBuilder text1 = new StringBuilder(Poem.text);
+        String text1 = Poem.text.replace("...","");
         Pattern pattern1 = Pattern.compile("[.!]+");
       //  Pattern pattern2 = Pattern.compile("[^а-яА-ЯёЁ]+");
         Pattern pattern3 = Pattern.compile("[^.!]+");

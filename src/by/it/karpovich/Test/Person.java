@@ -8,6 +8,7 @@ public class Person {
         System.out.println(str);
     }
 
+
     // Создаем первый конструктор:
     public Person(int height, float weight) {
         // public должен быть назван так же как и класс. public в принципе можно не писать
