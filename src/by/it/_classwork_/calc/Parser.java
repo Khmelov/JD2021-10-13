@@ -15,7 +15,7 @@ public class Parser {
         this.varCreator = new VarCreator(varRepository);
     }
 
-    Var calc(String expression) {
+    Var calc(String expression) throws CalcException{
         expression = expression.trim().replace(" ", "");
         //2+2
         String[] parts = expression.split(Patterns.OPERATION, 2);
@@ -25,8 +25,7 @@ public class Parser {
         String rightPart = parts[1];
         Var right = varCreator.createVar(rightPart);
         if (Objects.isNull(right)) {
-            System.out.println("Incorrect variable " + rightPart);
-            return right;
+            throw new CalcException("Incorrect variable " + rightPart);
         }
 
         String leftPart = parts[0];
@@ -51,7 +50,6 @@ public class Parser {
                     return left.div(right);
             }
         }
-        System.out.println("Something stupid");
-        return null;
+        throw new CalcException("Something stupid");
     }
 }
