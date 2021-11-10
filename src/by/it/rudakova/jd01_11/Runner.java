@@ -67,52 +67,5 @@ public class Runner {
         listB.addAll(arrayList);
 
         System.out.println("ListB: "+listB);
-
-        HashSet<String> testSet = new HashSet<>();
-        Set<String> set=new SetC<String>();
-
-        set.add("красный");
-        set.add("оранжевый");
-        set.add("желтый");
-        set.add("зеленый");
-        set.add("голубой");
-        set.add("синий");
-        set.add("фиолетовый");
-        set.add("фиолетовый");
-        set.add("фиолетовый");
-
-        System.out.println(set);
-
-        testSet.add("красный");
-        testSet.add("оранжевый");
-        testSet.add("желтый");
-        testSet.add("зеленый");
-        testSet.add("голубой");
-        testSet.add("синий");
-        testSet.add("фиолетовый");
-
-        testSet.toString();
-
-        System.out.println(testSet);
-
-        System.out.println(set.size());
-        System.out.println(set.isEmpty());
-        System.out.println(set.contains("1"));
-        set.remove("красный");
-        System.out.println(set);
-        Set<String> addedSet=new HashSet<>();
-        addedSet.add("первый");
-        addedSet.add("второй");
-        addedSet.add("третий");
-
-        set.addAll(addedSet);
-        System.out.println( set);
-
-        set.removeAll(addedSet);
-        System.out.println(set);
-        System.out.println(set.containsAll(addedSet));
-        set.clear();
-        System.out.println(set);
-
     }
 }
