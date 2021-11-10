@@ -1,21 +1,21 @@
 package by.it.karmyzov.calc;
 
-import by.it.karmyzov.jd01_0901.Patterns;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
- public class Parser {
+class Parser {
 
 
-    public Var calc(String expression) throws CalcExeption {
-        String[] operand=expression.split(Patterns.OPERATION);
+     Var calc(String expression) throws CalcExeption {
+         expression=expression.trim().replaceAll("\\s+","");
+         String[] operand=expression.split(Patterns.OPERATION);
         Var two = Var.createVar(operand[1]);
         if (expression.contains("=")) {
           return Var.saveVar(operand[0],two);
         }
         Var one = Var.createVar(operand[0]);
         if (one==null || two==null)
-            return null;
+            throw new CalcExeption ("Error");
         Pattern p = Pattern.compile(Patterns.OPERATION);
         Matcher m = p.matcher(expression);
         if (m.find()) {
@@ -27,6 +27,6 @@ import java.util.regex.Pattern;
                 case "/": return one.div(two);
             }
         }
-return null;
+throw new CalcExeption("Error");
     }
 }

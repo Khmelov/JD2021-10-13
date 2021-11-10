@@ -11,7 +11,7 @@ abstract class Var implements Operation {
         return var;
     }
 
-    static Var createVar (String operand) {
+    static Var createVar (String operand) throws CalcExeption {
         operand = operand.trim().replace("\\s+", "");
         if (operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
@@ -20,7 +20,7 @@ abstract class Var implements Operation {
         else if (vars.containsKey(operand))
             return vars.get(operand);
 
-        return null;
+        throw new CalcExeption ("Переменной не задано значение");
     }
     @Override
     public Var add(Var other) throws CalcExeption {
