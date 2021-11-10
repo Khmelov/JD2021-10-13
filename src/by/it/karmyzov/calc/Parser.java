@@ -1,10 +1,13 @@
 package by.it.karmyzov.calc;
 
+import by.it.karmyzov.jd01_0901.Patterns;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+ public class Parser {
 
-public class Parser {
-    public Var calc(String expression) {
+
+    public Var calc(String expression) throws CalcExeption {
         String[] operand=expression.split(Patterns.OPERATION);
         Var two = Var.createVar(operand[1]);
         if (expression.contains("=")) {
