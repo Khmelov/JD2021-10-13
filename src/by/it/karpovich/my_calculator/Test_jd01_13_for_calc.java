@@ -1,4 +1,4 @@
-package by.it.karpovich.jd01_13;
+package by.it.karpovich.my_calculator;
 
 
 import by.it.HomeWork;
