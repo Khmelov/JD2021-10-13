@@ -1,9 +1,9 @@
 package by.it.shcharbunou.jd01_12;
 
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.HashMap;
+import java.util.Map;
 
+@SuppressWarnings("all")
 public class TaskB1 {
 
     public static void main(String[] args) {

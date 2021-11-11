@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+@SuppressWarnings("all")
 public class TaskA1 {
 
     private final List<Integer> marksList = new ArrayList<>();

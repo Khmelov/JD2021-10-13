@@ -6,6 +6,7 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@SuppressWarnings("all")
 public class TaskC1 {
 
     public static void main(String[] args) {

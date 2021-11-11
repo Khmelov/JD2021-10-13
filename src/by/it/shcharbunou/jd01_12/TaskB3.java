@@ -2,6 +2,7 @@ package by.it.shcharbunou.jd01_12;
 
 import java.util.*;
 
+@SuppressWarnings("all")
 public class TaskB3 {
 
     public static void main(String[] args) {
