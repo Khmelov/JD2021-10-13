@@ -15,11 +15,11 @@ public class Bean {
 
     @Param(a = 2, b = 5)
     double min(int a, int b) {
-        return a < b ? a : b;
+        return Math.min(a, b);
     }
 
     static double max(int a, int b) {
-        return a > b ? a : b;
+        return Math.max(a, b);
     }
 
 }

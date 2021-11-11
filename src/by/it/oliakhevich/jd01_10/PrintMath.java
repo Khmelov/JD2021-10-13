@@ -8,7 +8,7 @@ public class PrintMath {
         Class<Math> structureMath = Math.class;
         Method[] methods = structureMath.getDeclaredMethods();
         for (Method method : methods) {
-            if ((method.getModifiers() & Modifier.STATIC) == Modifier.STATIC);
+            if ((method.getModifiers() & Modifier.STATIC) == Modifier.STATIC)
             System.out.println(method);
 
         }

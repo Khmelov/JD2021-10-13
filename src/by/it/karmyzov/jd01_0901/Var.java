@@ -1,7 +1,7 @@
 package by.it.karmyzov.jd01_0901;
 
 
-import by.it.karmyzov.jd01_09.Patterns;
+
 
 abstract class Var implements Operation {
 
