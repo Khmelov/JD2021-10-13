@@ -45,12 +45,31 @@ public class ListB<T> implements List<T> {
 
     @Override
     public T set(int index, T element) {
-        return null;
+        if (index < 0) {
+            return null;
+        }
+        else if (index >= size) {
+            return null;
+        }
+        else{
+            T returnedElem=elements[index];
+            this.elements[index]=element;
+            return returnedElem;
+        }
     }
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-
+        T [] newArray =(T[])c.toArray();
+        int numbersElem=newArray.length;
+        if(numbersElem==0){
+            return false;
+        }
+        if(numbersElem>elements.length-size)
+            numbersElem=newArray.length+elements.length;
+        elements= Arrays.copyOf(elements,numbersElem);
+        System.arraycopy(newArray,0,elements,size,newArray.length);
+        size=size+newArray.length;
         return false;
     }
 
