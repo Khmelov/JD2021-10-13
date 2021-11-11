@@ -17,7 +17,7 @@ public class TaskA {
         }
     }
 
-    public static void printRuntimeException(RuntimeException e) {
+    static void printRuntimeException(RuntimeException e) {
         Class<TaskA> taskAClass = TaskA.class;
         StackTraceElement[] stackTrace = e.getStackTrace();
         for (StackTraceElement stackTraceElement : stackTrace) {
