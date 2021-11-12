@@ -5,15 +5,30 @@ import java.util.Collection;
 
 public class Test {
     public static void main(String[] args) {
-        Collection<Integer> List1 = new ArrayList<>();
-        List1.add(1);
-        List1.add(2);
-        List1.add(3);
-      //  System.out.println(List1.add(1));
-        // System.out.println(List1.size());
-        Collection<Integer> List2 = new ArrayList<>();
-        List2.addAll(List1);
-        System.out.println(List2+ " " +List2.size());
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Zaur");
+        list.add("Ivan");
+        list.add("Mar");
+        list.add(1, "Misha");
+        for (String s : list) {
+            System.out.print(s + " ");
+        }
+        System.out.println();
+//        System.out.println();
+//        ArrayList <Integer> list2 = new ArrayList<>();
+//        list2.add(6);
+//        System.out.println(list2);
+//        for (int i = 0; i < list.size(); i++) {
+//            System.out.println(list.get(i));
+        list.set(1, "Masha");
+        list.remove(0);
+        list.remove(1);
+        System.out.println(list);
+        }
     }
 
-}
+
+
+
+

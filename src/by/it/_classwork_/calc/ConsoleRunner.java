@@ -16,8 +16,13 @@ public class ConsoleRunner {
         for (; ; ) {
             String expression = scanner.nextLine();
             if (!expression.equals(FINAL_APP_CMD)) {
-                Var var = parser.calc(expression);
-                printer.print(var);
+                Var var = null;
+                try {
+                    var = parser.calc(expression);
+                    printer.print(var);
+                } catch (CalcException e) {
+                    printer.print(e);
+                }
             } else {
                 break;
             }
