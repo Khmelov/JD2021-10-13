@@ -1,11 +1,16 @@
 package by.it.karpovich.jd01_14;
 
 import java.io.*;
+import java.util.Locale;
 
 public class TaskA {
 
+    public static final String BIN_FILE_NAME = "dataTaskA.bin";
+    public static final String TXT_FILE_NAME = "resultTaskA.txt";
+
     // Создаем функцию, которая будет определять текущее расположение в которой находится наш Класс:
     private static String directory(Class<?> cl) {
+        Locale.setDefault(Locale.US);
         String getDirection = System.getProperty("user.dir") + File.separator + "src" + File.separator;
         String classDirection = cl.getName().replace(cl.getSimpleName(), "").replace(".", File.separator);
         return getDirection + classDirection;
@@ -23,7 +28,7 @@ public class TaskA {
         try {
             dos = new DataOutputStream(
                     new BufferedOutputStream(
-                            new FileOutputStream(directory(TaskA.class)+"dataTaskA.bin")));
+                            new FileOutputStream(directory(TaskA.class)+BIN_FILE_NAME)));
             // Файловый поток создан, теперь сюда можно записывать данные.
             for (int i = 0; i < 20; i++) {
                dos.writeInt((int) (Math.random() * 20));
@@ -44,8 +49,8 @@ public class TaskA {
         }
             try (DataInputStream inputStream = new DataInputStream(
                     new BufferedInputStream(
-                            new FileInputStream(directory(TaskA.class)+"dataTaskA.bin")));
-            PrintWriter out2 = new PrintWriter(new FileWriter(directory(TaskA.class)+"resultTaskA.txt")))
+                            new FileInputStream(directory(TaskA.class)+BIN_FILE_NAME)));
+            PrintWriter out2 = new PrintWriter(new FileWriter(directory(TaskA.class)+TXT_FILE_NAME)))
 
             {
 
