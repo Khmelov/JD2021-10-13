@@ -1,7 +1,6 @@
-package by.it.karpovich.jd01_08;
+package by.it.karpovich.jd01_09;
 
 interface Operation {
-
     Var add(Var other);
 
     Var sub(Var other);

@@ -1,13 +1,8 @@
-package by.it.karpovich.Test;
+package by.it.karpovich.Test.Person;
 
 public class Person {
     /* Здесь по дефолту прописан Public*/ int height; // Высота
     /* Public */ float weight; // Вес
-
-    void say(String str) {
-        System.out.println(str);
-    }
-
 
     // Создаем первый конструктор:
     public Person(int height, float weight) {
@@ -17,11 +12,16 @@ public class Person {
         this.height = height; // То что после =, это параметр/значение.
         this.weight = weight;
     }
-    // В одном нашем классе Person может быть 9999+ конструкторов.
-    // Компилятор сам выберет какой конструктор ему использовать конкретно для объекта.
+
 
     // Создаем второй пустой конструктор:
     Person() {
+    }
+    // В одном нашем классе Person может быть 9999+ конструкторов.
+    // Компилятор сам выберет какой конструктор ему использовать конкретно для объекта.
+
+    void say(String str) {
+        System.out.println(str);
     }
 
 }
