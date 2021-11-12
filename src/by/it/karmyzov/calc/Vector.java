@@ -33,7 +33,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcExeption {
         if (other instanceof Scalar) {
             double[] res = Arrays.copyOf(values, values.length);
             for (int i = 0; i < res.length; i++) {
@@ -41,19 +41,21 @@ public class Vector extends Var {
             }
             return new Vector(res);
         }
-        else if (other instanceof Vector) {
-            double[] res = Arrays.copyOf(values, values.length);
-            for (int i = 0; i < res.length; i++) {
-                res[i] = res[i] + ((Vector) other).values[i];
+        if (other instanceof Vector vector) {
+            if (this.values.length != vector.values.length) {
+                return super.add(vector);
             }
-            return new Vector(res);
+                double[] res = Arrays.copyOf(values, values.length);
+                for (int i = 0; i < res.length; i++) {
+                    res[i] = res[i] + ((Vector) other).values[i];
+                }
+                return new Vector(res);
+            } else
+                return super.add(other);
         }
-        else
-            return super.add(other);
 
-        }
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcExeption {
         if (other instanceof Scalar) {
             double[] res = Arrays.copyOf(values, values.length);
             for (int i = 0; i < res.length; i++) {
@@ -63,7 +65,7 @@ public class Vector extends Var {
         }
         if (other instanceof Vector vector) {
             if (this.values.length != vector.values.length) {
-                return super.add(vector);
+                return super.sub(vector);
             }
             double[] res = Arrays.copyOf(values, values.length);
             for (int i = 0; i < res.length; i++) {
@@ -75,8 +77,7 @@ public class Vector extends Var {
             return super.sub(other);
     }
     @Override
-    public Var mul(Var other)
-    {  double sum=0;
+    public Var mul(Var other) throws CalcExeption {  double sum=0;
         if (other instanceof Scalar) {
             double[] res = Arrays.copyOf(values, values.length);
             for (int i = 0; i < res.length; i++) {
@@ -98,7 +99,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcExeption {
         if (other instanceof Scalar) {
             double[] res = Arrays.copyOf(values, values.length);
             for (int i = 0; i < res.length; i++) {
