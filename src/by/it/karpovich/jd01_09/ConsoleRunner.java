@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ConsoleRunner {
 
 
-    public static final String APP_STOP_CMD = "end";
+    public static final String APP_CMD_STOP = "end";
 
     public static void main(String[] args) {
         Printer printer = new Printer();
@@ -13,7 +13,7 @@ public class ConsoleRunner {
         Scanner scanner = new Scanner(System.in);
         for (; ; ) {
             String expression = scanner.nextLine();
-            if (!expression.equals(APP_STOP_CMD)) {
+            if (!expression.equals(APP_CMD_STOP)) {
                 Var var = parser.calc(expression);
                 printer.print(var);
             } else {
