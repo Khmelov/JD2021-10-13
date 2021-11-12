@@ -2,7 +2,7 @@ package by.it.shcharbunou.jd01_11;
 
 import java.util.*;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("all")
 public class ListA<T> implements List<T> {
     private int capacity = 10;
     private int size = 0;
