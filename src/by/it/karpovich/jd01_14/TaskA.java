@@ -26,7 +26,7 @@ public class TaskA {
                             new FileOutputStream(directory(TaskA.class)+"dataTaskA.bin")));
             // Файловый поток создан, теперь сюда можно записывать данные.
             for (int i = 0; i < 20; i++) {
-                dos.writeInt((int) Math.random() * 25);
+               dos.writeInt((int) (Math.random() * 20));
             }
         } catch (IOException e) { // Поведение одинаковое, поэтому мы сомкнули всё в один блок.
             e.printStackTrace();
@@ -60,8 +60,8 @@ public class TaskA {
                     sum = sum + i;
                     count++;
                 }
-                System.out.println("\n avg = " +sum/count);
-                out2.print("\n avg = " +sum/count);
+                System.out.println("\navg=" +sum/count);
+                out2.print("\navg=" +sum/count);
             } catch (IOException e) {
                 e.printStackTrace();
             }
