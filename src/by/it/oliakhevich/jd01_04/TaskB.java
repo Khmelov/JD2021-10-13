@@ -19,7 +19,7 @@ public class TaskB {
         }
         for (int i = 0; i < n; i++) {
             System.out.println("Введите зарплату для " + name[i]);
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j <4; j++) {
                 salari[i][j] = sc.nextInt();
             }
         }
