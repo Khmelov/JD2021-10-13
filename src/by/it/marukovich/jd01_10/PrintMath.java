@@ -35,7 +35,6 @@ public class PrintMath {
         Field [] fields=mathClass.getDeclaredFields();
         for(Field field:fields){
             StringBuilder out=new StringBuilder();
-            int modifiers=field.getModifiers();
             if (addModifaersField(field, out)) continue;
             Class<?> returnType=field.getType();
             String returnTypeName=returnType.getSimpleName();
