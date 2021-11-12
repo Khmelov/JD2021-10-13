@@ -3,7 +3,7 @@ package by.it.karmyzov.jd01_12;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class TaskB1 {
+public class Task_B1 {
 
     public static void main(String[] args) {
         HashMap<String, Integer> map = new HashMap<>();
