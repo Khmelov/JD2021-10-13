@@ -1,6 +1,8 @@
 package by.it.karpovich.jd01_08;
 
 
+import java.util.Arrays;
+
 public class Matrix extends Var {
     private final double[][] value; // Создаем защиту от вмешательства
 
@@ -30,6 +32,25 @@ public class Matrix extends Var {
         this.value = outputArray;
     }
 
+    @Override
+    public Var add(Var other) {
+        return null;
+    }
+
+    @Override
+    public Var sub(Var other) {
+        return null;
+    }
+
+    @Override
+    public Var mul(Var other) {
+        return null;
+    }
+
+    @Override
+    public Var div(Var other) {
+        return null;
+    }
 
     public String toString() {
         StringBuilder output = new StringBuilder("{");

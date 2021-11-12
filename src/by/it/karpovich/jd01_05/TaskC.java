@@ -7,6 +7,8 @@ import static java.lang.Math.cbrt;
 import static java.lang.Math.pow;
 
 public class TaskC {
+    public static final String BIN_FILE_NAME = "TEXT";
+    public static final String TXT_FILE_NAME = "TEXT";
 
     public static void main(String[] args) {
         step6();
@@ -24,13 +26,7 @@ public class TaskC {
     }
 
     private static void step7() {
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.nextLine();
-       // String str = "-1 0 1 2 3 4 5 6 7 8 9 10 12 13";
 
-        double[] array = InOut.getArray(str);
-       // InOut.printArray(array);
-        InOut.printArray(array, "M", 4);
     }
 
 }
