@@ -26,6 +26,7 @@ public class TaskC2 {
             @Override
             public boolean addAll(Collection<? extends T> c) {
                 T[] collectionArray = (T[]) c.toArray();
+
                 return true;
             }
         };
