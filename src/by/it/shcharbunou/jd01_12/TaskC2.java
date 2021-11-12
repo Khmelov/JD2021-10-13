@@ -1,5 +1,6 @@
 package by.it.shcharbunou.jd01_12;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,18 +10,27 @@ public class TaskC2 {
 
     }
 
-    private static Set<?> getCross(Set<?> ... setsArray) {
-        Set<?> crossSet = new HashSet<>(setsArray[0]);
-        for (int i = 0; i < setsArray.length; i++) {
+    @SuppressWarnings("unchecked")
+    private static <T> Set<T> getCross(Set<? extends T> ... setsArray) {
+        Set<T> crossSet = new HashSet<>(setsArray[0]);
+        for (int i = 1; i < setsArray.length; i++) {
             crossSet.retainAll(setsArray[i]);
         }
         return crossSet;
     }
 
-    private static Set<?> getUnion(Set<?> ... setsArray) {
-        Set<?> unionSet = new HashSet<>(setsArray[0]);
-        for (int i = 0; i < setsArray.length; i++) {
-            unionSet.addAll((Set)setsArray[i]);
+    @SuppressWarnings("unchecked")
+    private static <T> Set<T> getUnion(Set<? extends T> ... setsArray) {
+        Set<T> unionSet = new HashSet<>(setsArray[0]) {
+
+            @Override
+            public boolean addAll(Collection<? extends T> c) {
+                T[] collectionArray = (T[]) c.toArray();
+                return true;
+            }
+        };
+        for (int i = 1; i < setsArray.length; i++) {
+            unionSet.addAll(setsArray[i]);
         }
         return unionSet;
     }
