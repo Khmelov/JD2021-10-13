@@ -17,6 +17,7 @@ public class TaskC2 {
         return crossSet;
     }
 
+
     private static Set<?> getUnion(Set<?> ... setsArray) {
         Set<?> unionSet = new HashSet<>(setsArray[0]);
         for (int i = 0; i < setsArray.length; i++) {
