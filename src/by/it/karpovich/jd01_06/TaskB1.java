@@ -27,8 +27,8 @@ public class TaskB1 {
     }
 
     private static boolean checkWord(String text) {
-        boolean checkFirstLetter = VOWELS_RUS.indexOf(text.charAt(0))<0;
-        boolean checkLastLetter = VOWELS_RUS.indexOf(text.charAt(text.length()-1)) >=0;
+        boolean checkFirstLetter = VOWELS_RUS.indexOf(text.charAt(0)) < 0;
+        boolean checkLastLetter = VOWELS_RUS.indexOf(text.charAt(text.length() - 1)) >= 0;
         return checkFirstLetter && checkLastLetter;
     }
 }

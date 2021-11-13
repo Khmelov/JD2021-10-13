@@ -1,6 +1,5 @@
 package by.it.karpovich.jd01_06;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -50,7 +49,7 @@ public class TaskC2 {
         return longtext;
     }
 
-    private static @NotNull String fast(String inputText) {
+    private static String fast(String inputText) {
         StringBuilder text = new StringBuilder(inputText);
         Pattern pattern = Pattern.compile(WORD_PATTERN);
         Random random = new Random(23);
