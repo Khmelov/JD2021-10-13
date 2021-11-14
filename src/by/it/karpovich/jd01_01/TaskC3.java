@@ -1,7 +1,7 @@
 /*
 Ускорение свободного падения на Земле и Марсе таково:
-Марс   3.86
-Земля   9.81
+Марс 3.86
+Земля 9.81
 
 С клавиатуры вводится вес человека в килограммах.
 Рассчитайте вес человека на Марсе и выведите
@@ -29,40 +29,14 @@
 29.51
 _______________________________________________________________________________________________________________________
 */
-                                                                                        /*
-import java.util.Scanner;
-
-class TaskC3 {
-    public static double main(String[] args) {
-        double earth = 9.81;
-        double mars = 3.86;
-
-        //  public static void getWeight(int weight){
-
-        int weight;
-        Scanner console = new Scanner(System.in);
-        System.out.println("Please enter your weight (Kg) on planet Earth");
-        weight = console.nextInt();
-        System.out.println("Your weight:\t" + weight);
-        double x = weight * (mars / earth);
-        //      String result = String.format("%.2f", x);
-        System.out.println("Your weight in mars =\t" + x);
-
-
-        }
-}
-import java.math.RoundingMode;
-import java.text.DecimalFormat;                                                                                           */
-//______________________________________________________________________________________________________________________
-
 
 package by.it.karpovich.jd01_01;
 
 import java.util.Scanner;
 
 class TaskC3 {
-    private static double earth = 9.81;
-    private static double mars = 3.86;
+    private static final double G_EARTH = 9.81;
+    private static final double G_MARS = 3.86;
 
     public static void main(final String[] args) {
         Scanner console = new Scanner(System.in);
@@ -73,8 +47,7 @@ class TaskC3 {
     }
 
     public static double getWeight(int weight) {
-        double weight1 = (int) ((weight * mars / earth) * 100 + 0.5) / 100.0;
-        return weight1;
+        return (int) ((weight * G_MARS / G_EARTH) * 100 + 0.5) / 100.0;
     }
 }
 

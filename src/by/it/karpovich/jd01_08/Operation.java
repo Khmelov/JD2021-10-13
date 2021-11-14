@@ -1,6 +1,7 @@
 package by.it.karpovich.jd01_08;
 
 interface Operation {
+
     Var add(Var other);
 
     Var sub(Var other);

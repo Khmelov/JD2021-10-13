@@ -1,6 +1,6 @@
 package by.it.karpovich.jd01_08;
 
-import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 
 public class Vector extends Var {
@@ -13,12 +13,12 @@ public class Vector extends Var {
     }
 
     // Начало второго конструктора:
-    public Vector(@NotNull Vector vector) {
+    public Vector(Vector vector) {
         this.value = vector.value;
     }
 
     // Начало третьего конструктора:
-    public Vector(@NotNull String strVector) {
+    public Vector(String strVector) {
         String[] strArr = strVector.split("[/{, }]+");
         strArr = Arrays.copyOfRange(strArr, 1, strArr.length);
         double[] array = new double[strArr.length];
