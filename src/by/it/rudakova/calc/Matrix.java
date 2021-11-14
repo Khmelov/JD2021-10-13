@@ -1,4 +1,4 @@
-package by.it.rudakova.calculator;
+package by.it.rudakova.calc;
 
 
 import java.util.Arrays;
@@ -44,7 +44,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[][] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
@@ -68,7 +68,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[][] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
@@ -92,7 +92,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException{
         if (other instanceof Scalar) {
             double[][] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
