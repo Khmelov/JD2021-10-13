@@ -18,6 +18,69 @@ import static org.junit.Assert.*;
 //поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
 public class Test_jd01_02 {
 
+    private final PrintStream oldOut = System.out; //исходный поток вывода
+    private final PrintStream newOut; //поле для перехвата потока вывода
+    private final StringWriter strOut = new StringWriter(); //накопитель строки вывода
+    //переменные теста
+    public Class<?> aClass; //тестируемый класс
+
+    //логический блок перехвата вывода
+    {
+        newOut = new PrintStream(new OutputStream() {
+            private byte[] bytes = new byte[1];
+            private int pos = 0;
+
+            @Override
+            public void write(int b) {
+                if (pos == 0 && b == '\r') //пропуск \r (чтобы win mac и linux одинаково работали
+                    return;
+                if (pos == 0) { //определим кодировку https://ru.wikipedia.org/wiki/UTF-8
+                    if ((b & 0b11110000) == 0b11110000) bytes = new byte[4];
+                    else if ((b & 0b11100000) == 0b11100000) bytes = new byte[3];
+                    else if ((b & 0b11000000) == 0b11000000) bytes = new byte[2];
+                    else bytes = new byte[1];
+                }
+                bytes[pos++] = (byte) b;
+                if (pos == bytes.length) { //символ готов
+                    String s = new String(bytes); //соберем весь символ
+                    strOut.append(s); //запомним вывод для теста
+                    oldOut.append(s); //копию в обычный вывод
+                    pos = 0; //готовим новый символ
+                }
+
+            }
+        });
+    }
+
+    //-------------------------------  тест ----------------------------------------------------------
+    public Test_jd01_02() {
+    }
+
+    //Основной конструктор тестов
+    private Test_jd01_02(String className, String in, boolean runMain) {
+        aClass = null;
+        try {
+            aClass = Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            fail("ERROR:Не найден класс " + className + "\n");
+        }
+        InputStream reader = new ByteArrayInputStream(in.getBytes());
+        System.setIn(reader);   //перехват стандартного ввода
+        System.setOut(newOut);  //перехват стандартного вывода
+
+        if (runMain) //если нужно запускать, то запустим, иначе оставим только вывод
+            try {
+                Class<?>[] argTypes = new Class[]{String[].class};
+                Method main = aClass.getDeclaredMethod("main", argTypes);
+                main.invoke(null, (Object) new String[]{});
+                System.setOut(oldOut); //возврат вывода, нужен, только если был запуск
+            } catch (NoSuchMethodException e) {
+                fail("ERROR:В классе " + aClass.getSimpleName() + " нет метода \"public static void main\"");
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                fail("ERROR:В классе " + aClass.getSimpleName() + "не удалось выполнить метод \"public static void main\"");
+            }
+    }
+
     @Test(timeout = 5000)
     public void testTaskA() throws Exception {
         System.out.println("\n\nПроверка на минимум и максимум");
@@ -95,6 +158,14 @@ public class Test_jd01_02 {
         run("0 2 4 4").include("корней нет");
     }
 
+
+/*
+===========================================================================================================
+НИЖЕ ВСПОМОГАТЕЛЬНЫЙ КОД ТЕСТОВ. НЕ МЕНЯЙТЕ В ЭТОМ ФАЙЛЕ НИЧЕГО.
+Но изучить как он работает - можно, это всегда будет полезно.
+===========================================================================================================
+ */
+
     @Test(timeout = 5000)
     public void testTaskBstep1_Loop__TaskB() throws Exception {
         Test_jd01_02 ok = run("", false);
@@ -136,7 +207,6 @@ public class Test_jd01_02 {
         m.invoke(null, 13);
         ok.include("нет такого месяца");
     }
-
 
     @Test(timeout = 5000)
     public void testTaskBstep3_QEquation__TaskB() throws Exception {
@@ -197,7 +267,6 @@ public class Test_jd01_02 {
 
     }
 
-
     @Test(timeout = 5000)
     public void testTaskCstep2_Sum__TaskC() throws Exception {
         Test_jd01_02 ok = run("", false);
@@ -222,14 +291,6 @@ public class Test_jd01_02 {
         }
         System.out.println("Проверка завершена успешно!");
     }
-
-
-/*
-===========================================================================================================
-НИЖЕ ВСПОМОГАТЕЛЬНЫЙ КОД ТЕСТОВ. НЕ МЕНЯЙТЕ В ЭТОМ ФАЙЛЕ НИЧЕГО.
-Но изучить как он работает - можно, это всегда будет полезно.
-===========================================================================================================
- */
 
     //-------------------------------  методы ----------------------------------------------------------
     private Class<?> findClass(String SimpleName) {
@@ -289,7 +350,6 @@ public class Test_jd01_02 {
         return null;
     }
 
-
     //метод находит и создает класс для тестирования
     //по имени вызывающего его метода, testTaskA1 будет работать с TaskA1
     protected Test_jd01_02 run(String in) {
@@ -313,42 +373,6 @@ public class Test_jd01_02 {
         System.out.println("---------------------------------------------");
         return new Test_jd01_02(clName, in, runMain);
     }
-
-    //-------------------------------  тест ----------------------------------------------------------
-    public Test_jd01_02() {
-    }
-
-    //переменные теста
-    public Class<?> aClass; //тестируемый класс
-    private final PrintStream oldOut = System.out; //исходный поток вывода
-    private final PrintStream newOut; //поле для перехвата потока вывода
-    private final StringWriter strOut = new StringWriter(); //накопитель строки вывода
-
-    //Основной конструктор тестов
-    private Test_jd01_02(String className, String in, boolean runMain) {
-        aClass = null;
-        try {
-            aClass = Class.forName(className);
-        } catch (ClassNotFoundException e) {
-            fail("ERROR:Не найден класс " + className + "\n");
-        }
-        InputStream reader = new ByteArrayInputStream(in.getBytes());
-        System.setIn(reader);   //перехват стандартного ввода
-        System.setOut(newOut);  //перехват стандартного вывода
-
-        if (runMain) //если нужно запускать, то запустим, иначе оставим только вывод
-            try {
-                Class<?>[] argTypes = new Class[]{String[].class};
-                Method main = aClass.getDeclaredMethod("main", argTypes);
-                main.invoke(null, (Object) new String[]{});
-                System.setOut(oldOut); //возврат вывода, нужен, только если был запуск
-            } catch (NoSuchMethodException e) {
-                fail("ERROR:В классе " + aClass.getSimpleName() + " нет метода \"public static void main\"");
-            } catch (IllegalAccessException | InvocationTargetException e) {
-                fail("ERROR:В классе " + aClass.getSimpleName() + "не удалось выполнить метод \"public static void main\"");
-            }
-    }
-
 
     //проверка вывода
     private Test_jd01_02 is(String str) {
@@ -381,34 +405,5 @@ public class Test_jd01_02 {
         assertTrue("ERROR:вывод не содержит паттерн: " + regexp + "\n",
                 matcher.find());
         return this;
-    }
-
-
-    //логический блок перехвата вывода
-    {
-        newOut = new PrintStream(new OutputStream() {
-            private byte[] bytes = new byte[1];
-            private int pos = 0;
-
-            @Override
-            public void write(int b) {
-                if (pos == 0 && b == '\r') //пропуск \r (чтобы win mac и linux одинаково работали
-                    return;
-                if (pos == 0) { //определим кодировку https://ru.wikipedia.org/wiki/UTF-8
-                    if ((b & 0b11110000) == 0b11110000) bytes = new byte[4];
-                    else if ((b & 0b11100000) == 0b11100000) bytes = new byte[3];
-                    else if ((b & 0b11000000) == 0b11000000) bytes = new byte[2];
-                    else bytes = new byte[1];
-                }
-                bytes[pos++] = (byte) b;
-                if (pos == bytes.length) { //символ готов
-                    String s = new String(bytes); //соберем весь символ
-                    strOut.append(s); //запомним вывод для теста
-                    oldOut.append(s); //копию в обычный вывод
-                    pos = 0; //готовим новый символ
-                }
-
-            }
-        });
     }
 }

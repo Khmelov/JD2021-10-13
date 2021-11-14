@@ -33,7 +33,7 @@ public class Vector extends Var {
         String limiter = "";
         for (double out : value) {
             output.append(limiter);
-            //Метод java.lang.StringBuilder.append () используется для добавления
+            //Метод java.lang. StringBuilder.append () используется для добавления
             // строкового представления некоторого аргумента в последовательность.
             output.append(out);
             limiter = ", ";

@@ -33,7 +33,7 @@ public class Matrix extends Var {
         StringBuilder output = new StringBuilder("{");
         for (double[] doubles : value) {
             String limiter = "";
-            //Метод java.lang.StringBuilder.append () используется для добавления
+            //Метод java.lang. StringBuilder.append () используется для добавления
             // строкового представления некоторого аргумента в последовательность.
             output.append("{");
             for (double aDouble : doubles) {

@@ -1,4 +1,4 @@
-package by.it._tasks_.jd01_11;
+package by.it.karpovich.jd01_11;
 
 
 import by.it.HomeWork;

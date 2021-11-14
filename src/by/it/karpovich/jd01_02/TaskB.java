@@ -1,5 +1,5 @@
 /*
-            В классе TaskB (пакет by.it.familiya.jd01_02) создайте Scanner и методы:
+            В классе TaskB (пакет by.it.family.jd01_02) создайте Scanner и методы:
             static void step1()
             static void step2(int month)
             static void step3(double a, double b, double c)
@@ -45,47 +45,19 @@ public class TaskB {
 
     static void step2(int month) {
         switch (month) {
-
-            case 1:
-                System.out.println("январь");
-                break;
-            case 2:
-                System.out.println("февраль");
-                break;
-            case 3:
-                System.out.println("март");
-                break;
-            case 4:
-                System.out.println("апрель");
-                break;
-            case 5:
-                System.out.println("май");
-                break;
-            case 6:
-                System.out.println("июнь");
-                break;
-            case 7:
-                System.out.println("июль");
-                break;
-            case 8:
-                System.out.println("август");
-                break;
-            case 9:
-                System.out.println("сентябрь");
-                break;
-            case 10:
-                System.out.println("октябрь");
-                break;
-            case 11:
-                System.out.println("ноябрь");
-                break;
-            case 12:
-                System.out.println("декабрь");
-                break;
-            default:
-                System.out.println("нет такого месяца");
-                break;
-
+            case 1 -> System.out.println("январь");
+            case 2 -> System.out.println("февраль");
+            case 3 -> System.out.println("март");
+            case 4 -> System.out.println("апрель");
+            case 5 -> System.out.println("май");
+            case 6 -> System.out.println("июнь");
+            case 7 -> System.out.println("июль");
+            case 8 -> System.out.println("август");
+            case 9 -> System.out.println("сентябрь");
+            case 10 -> System.out.println("октябрь");
+            case 11 -> System.out.println("ноябрь");
+            case 12 -> System.out.println("декабрь");
+            default -> System.out.println("нет такого месяца");
         }
     }
 

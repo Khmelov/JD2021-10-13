@@ -1,6 +1,5 @@
 package by.it.karpovich.jd01_06;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -39,7 +38,7 @@ public class TaskB2 {
         sentences[sentences.length - 1] = sentence;
     }
 
-    private static @NotNull String replaceNonLetter(@NotNull String sentence) {
+    private static String replaceNonLetter(String sentence) {
         return sentence.replaceAll(NON_LETTER_PATTERN, " ").trim();
     }
 }

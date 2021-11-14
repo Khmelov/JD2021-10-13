@@ -1,7 +1,7 @@
 /*
-        Создайте в пакете by.it.familiya.jd01_02 класс TaskA.
+        Создайте в пакете by.it.family.jd01_02 класс TaskA.
         В методе main введите 10 чисел с консоли в массив arr через объект типа
-        Scanner. Пример: Scanner scanner=new Scanner(System.in);
+        Scanner. Пример: Scanner=new Scanner(System.in);
         В классе TaskA создайте статические методы
         static void step1(int[ ] arr)
         static void step2(int[ ] arr)

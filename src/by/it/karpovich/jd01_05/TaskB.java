@@ -34,7 +34,7 @@ public class TaskB {
             else if (-1 < x / 2 && x / 2 < 0.2) b = cos(pow(x, 2));
             else if (x / 2 == 0.2) b = 1 / (tan(pow(x, 2)));
             else System.out.println("Выход за пределы");
-            //Недопустить b=0
+            //Не допустить b=0
 
             double a = log10(abs(b + 2.74));
             if (b != 0) System.out.println(a);
