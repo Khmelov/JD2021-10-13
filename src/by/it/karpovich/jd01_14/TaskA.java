@@ -28,10 +28,10 @@ public class TaskA {
         try {
             dos = new DataOutputStream(
                     new BufferedOutputStream(
-                            new FileOutputStream(directory(TaskA.class)+BIN_FILE_NAME)));
+                            new FileOutputStream(directory(TaskA.class) + BIN_FILE_NAME)));
             // Файловый поток создан, теперь сюда можно записывать данные.
             for (int i = 0; i < 20; i++) {
-               dos.writeInt((int) (Math.random() * 20));
+                dos.writeInt((int) (Math.random() * 20));
             }
         } catch (IOException e) { // Поведение одинаковое, поэтому мы сомкнули всё в один блок.
             e.printStackTrace();
@@ -47,29 +47,27 @@ public class TaskA {
                 }
             }
         }
-            try (DataInputStream inputStream = new DataInputStream(
-                    new BufferedInputStream(
-                            new FileInputStream(directory(TaskA.class)+BIN_FILE_NAME)));
-            PrintWriter out2 = new PrintWriter(new FileWriter(directory(TaskA.class)+TXT_FILE_NAME)))
+        try (DataInputStream inputStream = new DataInputStream(
+                new BufferedInputStream(
+                        new FileInputStream(directory(TaskA.class) + BIN_FILE_NAME)));
+             PrintWriter out2 = new PrintWriter(new FileWriter(directory(TaskA.class) + TXT_FILE_NAME))) {
 
-            {
-
-                // Делаем чтение:
-                double sum = 0;
-                double count = 0; // Количество прочитанных элементов.
+            // Делаем чтение:
+            double sum = 0;
+            double count = 0; // Количество прочитанных элементов.
 // Читаем всех по очереди:
-                while (inputStream.available() >0 ) { //Пока есть что-то в файле
-                    int i = inputStream.readInt(); // То мы читаем каждое число
-                    System.out.print(i + " "); // и печатаем его на экран
-                    out2.print(i + " ");
-                    sum = sum + i;
-                    count++;
-                }
-                System.out.println("\navg=" +sum/count);
-                out2.print("\navg=" +sum/count);
-            } catch (IOException e) {
-                e.printStackTrace();
+            while (inputStream.available() > 0) { //Пока есть что-то в файле
+                int i = inputStream.readInt(); // То мы читаем каждое число
+                System.out.print(i + " "); // и печатаем его на экран
+                out2.print(i + " ");
+                sum = sum + i;
+                count++;
             }
+            System.out.println("\navg=" + sum / count);
+            out2.print("\navg=" + sum / count);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

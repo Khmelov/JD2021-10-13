@@ -1,7 +1,7 @@
 package by.it.karpovich.jd01_08;
 
+import static by.it.karpovich.jd01_08.Patterns.*;
 
-import java.util.Arrays;
 
 public class Matrix extends Var {
     private final double[][] value; // Создаем защиту от вмешательства
@@ -19,10 +19,10 @@ public class Matrix extends Var {
     // Начало третьего конструктора:
     public Matrix(String strMatrix) {
         String line = strMatrix.substring(2, strMatrix.length() - 2);
-        String[] strArrI = line.split("[}][,][{]");
-        double[][] outputArray = new double[strArrI.length][strArrI[0].split(",").length];
+        String[] strArrI = line.split(SPLIT_MATRIX);
+        double[][] outputArray = new double[strArrI.length][strArrI[0].split(COMMA).length];
         for (int i = 0; i < strArrI.length; i++) {
-            String[] strArrJ = strArrI[i].split(",");
+            String[] strArrJ = strArrI[i].split(COMMA);
             int k = 0;
             for (int j = 0; j < strArrJ.length; j++) {
                 outputArray[i][j] = Double.parseDouble(strArrJ[k]);
@@ -32,45 +32,25 @@ public class Matrix extends Var {
         this.value = outputArray;
     }
 
-    @Override
-    public Var add(Var other) {
-        return null;
-    }
-
-    @Override
-    public Var sub(Var other) {
-        return null;
-    }
-
-    @Override
-    public Var mul(Var other) {
-        return null;
-    }
-
-    @Override
-    public Var div(Var other) {
-        return null;
-    }
-
     public String toString() {
-        StringBuilder output = new StringBuilder("{");
+        StringBuilder output = new StringBuilder(LEFT_BRACKET);
         for (double[] doubles : value) {
-            String limiter = "";
-            //Метод java.lang. StringBuilder.append () используется для добавления
-            // строкового представления некоторого аргумента в последовательность.
-            output.append("{");
+            String limiter = EMPTY_STRING;
+            output.append(LEFT_BRACKET);
             for (double aDouble : doubles) {
                 output.append(limiter);
                 output.append(aDouble);
-                limiter = ", ";
+                limiter = INDENTED_COMMA;
             }
-            limiter = "}, ";
+            limiter = INDENTED_RIGHT_BRACKET_COMMA;
             output.append(limiter);
         }
         output.delete(output.length() - 2, output.length());
-        output.append("}");
+        output.append(RIGHT_BRACKET);
         return output.toString();
     }
 
-
+    public double[][] getValue() {
+        return value;
+    }
 }

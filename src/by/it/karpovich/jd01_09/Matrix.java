@@ -16,10 +16,6 @@ public class Matrix extends Var {
         this.value = value.value;
     }
 
-    public double[][] getValue() {
-        return value;
-    }
-
     public Matrix(String strMatrix) {
         String line = strMatrix.substring(2, strMatrix.length() - 2);
         String[] strArr = line.split("[}][,][ ]?[{]");
@@ -33,6 +29,10 @@ public class Matrix extends Var {
             }
         }
         this.value = outputArray;
+    }
+
+    public double[][] getValue() {
+        return value;
     }
 
     @Override

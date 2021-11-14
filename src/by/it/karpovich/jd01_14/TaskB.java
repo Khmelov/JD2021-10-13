@@ -11,9 +11,9 @@ import java.util.Locale;
 public class TaskB {
 
 
+    public static final String TXT_FILE_NAME = "resultTaskB.txt";
     static final String WORD_PATTERN = "[а-яА-ЯёЁ]+";
     private static final String PUNCTUATION_PATTERN = "[-/?.!:,]+";
-    public static final String TXT_FILE_NAME = "resultTaskB.txt";
 
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);

@@ -3,6 +3,7 @@ package by.it.karpovich.jd01_05;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+
 import static by.it.karpovich.jd01_05.Patterns.*;
 
 

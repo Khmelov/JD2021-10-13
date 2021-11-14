@@ -7,18 +7,6 @@ import java.util.Random;
 
 public class TaskA1 {
 
-    @SuppressWarnings("Java8CollectionRemoveIf")
-    void clearBad(List<Integer> grades) {
-        Iterator<Integer> iterator = grades.iterator();
-        while (iterator.hasNext()){
-            Integer grade = iterator.next();
-            if (grade<4){
-                iterator.remove();
-            }
-        }
-    }
-
-
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>();
         Random random = new Random();
@@ -31,5 +19,16 @@ public class TaskA1 {
         TaskA1 task = new TaskA1();
         task.clearBad(list);
         System.out.println("List after: " + list);
+    }
+
+    @SuppressWarnings("Java8CollectionRemoveIf")
+    void clearBad(List<Integer> grades) {
+        Iterator<Integer> iterator = grades.iterator();
+        while (iterator.hasNext()) {
+            Integer grade = iterator.next();
+            if (grade < 4) {
+                iterator.remove();
+            }
+        }
     }
 }
