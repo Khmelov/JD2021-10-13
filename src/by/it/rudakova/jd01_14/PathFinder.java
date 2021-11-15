@@ -1,18 +1,18 @@
-package by.it._classwork_.jd01_14;
+package by.it.rudakova.jd01_14;
 
 import java.io.File;
 
-class PathFinder {
-
-    private PathFinder() {
-    }
+public class PathFinder {
 
     public static String getStringPath(Class<?> aClass, String filename) {
         String root = System.getProperty("user.dir");
         System.out.println(root);
+        aClass = TaskA.class;
         String className = aClass.getName();
         String packageName = className.replace(aClass.getSimpleName(), "");
         String packagePath = packageName.replace(".", File.separator);
-        return root + File.separator + "src" + File.separator + packagePath + filename;
+        String result = root + File.separator + "src" + File.separator + packagePath + filename;
+        System.out.println(result);
+        return result;
     }
 }

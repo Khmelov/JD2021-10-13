@@ -1,13 +1,10 @@
-package by.it._classwork_.jd01_14;
+package by.it._classwork_.jd01_15;
 
 import java.io.File;
 
-class PathFinder {
+class PathFinderImpl implements PathFinder {
 
-    private PathFinder() {
-    }
-
-    public static String getStringPath(Class<?> aClass, String filename) {
+    public String getStringPath(Class<?> aClass, String filename) {
         String root = System.getProperty("user.dir");
         System.out.println(root);
         String className = aClass.getName();
