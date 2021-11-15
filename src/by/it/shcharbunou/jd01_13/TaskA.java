@@ -17,7 +17,7 @@ public class TaskA {
     }
 
     static void printRuntimeException(RuntimeException e) {
-        Class<by.it.shcharbunou.jd01_13.TaskA> taskAClass = by.it.shcharbunou.jd01_13.TaskA.class;
+        Class<TaskA> taskAClass = TaskA.class;
         StackTraceElement[] stackTraceElements = e.getStackTrace();
         for (StackTraceElement stackTraceElement : stackTraceElements) {
             String currentClassName = stackTraceElement.getClassName();
