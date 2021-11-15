@@ -20,6 +20,9 @@ public class TaskB {
                 System.out.println(value);
                 valuesAmount += value;
                 sqrtValues = Math.sqrt(valuesAmount);
+                if (Double.isNaN(sqrtValues)) {
+                    throw new ArithmeticException();
+                }
                 System.out.println(sqrtValues);
             } catch (NumberFormatException | ArithmeticException e) {
                 printRuntimeException(e);
