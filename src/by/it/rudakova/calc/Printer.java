@@ -1,4 +1,4 @@
-package by.it.rudakova.calculator;
+package by.it.rudakova.calc;
 
 public class Printer {
     void print(Var var){
