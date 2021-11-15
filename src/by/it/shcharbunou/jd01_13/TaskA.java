@@ -18,18 +18,18 @@ public class TaskA {
 
     static void printRuntimeException(RuntimeException e) {
         Class<by.it.shcharbunou.jd01_13.TaskA> taskAClass = by.it.shcharbunou.jd01_13.TaskA.class;
-        StackTraceElement[] stackTrace = e.getStackTrace();
-        for (StackTraceElement stackTraceElement : stackTrace) {
+        StackTraceElement[] stackTraceElements = e.getStackTrace();
+        for (StackTraceElement stackTraceElement : stackTraceElements) {
             String currentClassName = stackTraceElement.getClassName();
             if (currentClassName.equals(taskAClass.getName())) {
                 Class<? extends RuntimeException> exceptionClass = e.getClass();
-                String classNameException = exceptionClass.getName();
+                String exceptionClassName = exceptionClass.getName();
                 int lineNumber = stackTraceElement.getLineNumber();
                 System.out.printf("" +
                                 " name: %s%n" +
                                 "class: %s%n" +
                                 " line: %d%n",
-                        classNameException,
+                        exceptionClassName,
                         currentClassName,
                         lineNumber
                 );
