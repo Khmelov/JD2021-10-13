@@ -6,6 +6,10 @@ public class TaskB {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        doTask(scanner);
+    }
+
+    private static void doTask(Scanner scanner) {
         String temporaryStringNumber;
         double value;
         double valuesAmount = 0;
