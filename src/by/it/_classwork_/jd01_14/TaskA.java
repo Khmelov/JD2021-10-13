@@ -1,10 +1,7 @@
 package by.it._classwork_.jd01_14;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class TaskA {
 
@@ -60,10 +57,10 @@ public class TaskA {
 
     private static void printToConsole(List<Integer> list) {
         for (Integer integer : list) {
-            System.out.printf("%d ", integer);
+            System.out.printf(Locale.ENGLISH, "%d ", integer);
         }
         double average = getAverage(list);
-        System.out.printf("%navg=%f%n", average);
+        System.out.printf(Locale.ENGLISH, "%navg=%-8.2f%n", average);
     }
 
     private static void printToTextFile(List<Integer> list, String fileTxt) {
@@ -72,7 +69,7 @@ public class TaskA {
                 out.printf("%d ", integer);
             }
             double average = getAverage(list);
-            out.printf("%navg=%f%n", average);
+            out.printf(Locale.ENGLISH, "%navg=%-8.2f%n", average);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
