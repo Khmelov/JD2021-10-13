@@ -23,11 +23,8 @@ public class TaskA {
             String currentClassName = stackTraceElement.getClassName();
             if (currentClassName.equals(taskAClass.getName())) {
                 Class<? extends RuntimeException> exceptionClass = e.getClass();
-
                 String classNameException = exceptionClass.getName();
-
                 int lineNumber = stackTraceElement.getLineNumber();
-
                 System.out.printf("" +
                                 " name: %s%n" +
                                 "class: %s%n" +
