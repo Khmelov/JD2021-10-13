@@ -1,4 +1,4 @@
-package by.it.shcharbunou.jd01_13;
+package by.it.shcharbunou.calculator;
 
 
 import by.it.HomeWork;
