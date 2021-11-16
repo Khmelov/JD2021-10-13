@@ -1,6 +1,6 @@
 package by.it.malyshchik.jd01_06;
 
-class Poem {
+public class Poem {
     static final String text = "У лукоморья дуб зелёный,\n" +
             "Златая цепь на дубе том.\n" +
             "И днём и ночью кот учёный\n" +
