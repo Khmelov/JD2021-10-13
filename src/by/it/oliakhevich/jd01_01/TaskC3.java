@@ -1,4 +1,7 @@
 package by.it.oliakhevich.jd01_01;
+
+import java.util.Scanner;
+
 /*
 Ускорение свободного падения на Земле и Марсе таково:
 Марс   3.86
@@ -31,10 +34,26 @@ package by.it.oliakhevich.jd01_01;
 
 */
 class TaskC3 {
+    private static final double earth = 9.81;
+    private static final double mars = 3.86;
+
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Write please your weight on Earth");
+        int weight1 = sc.nextInt();
+        System.out.println("your weight on mars");
+        System.out.println(getWeight(weight1));
+    }
+
+    public static double getWeight(int weight) {
+        double weight2 = (int) ((weight / earth * mars) * 100 + 0.5) / 100.0;
+        return weight2;
 
     }
 
 
-
 }
+
+
+
+
