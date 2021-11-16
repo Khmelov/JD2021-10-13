@@ -44,14 +44,14 @@ class TaskC3 {
         System.out.println(mm);
     }
 
-        static double getWeight(int me) {
-            double mm = me / G_EARTH * 3.86;
-            int mm100 = (int) (mm * 100);
-            double delta = mm * 100 - mm100;
-            if (delta >= 0.5) {
-                return (mm100 + 1) / 100.0;
-            }
-            return mm100 / 100.0;
+    static double getWeight(int me) {
+        double mm = me / G_EARTH * 3.86;
+        int mm100 = (int) (mm * 100);
+        double delta = mm * 100 - mm100;
+        if (delta >= 0.5) {
+            return (mm100 + 1) / 100.0;
         }
+        return mm100 / 100.0;
+    }
 
 }

@@ -2,7 +2,7 @@ package by.it._classwork_.jd01_14;
 
 import java.io.File;
 
-class PathFinder {
+public class PathFinder {
 
     private PathFinder() {
     }
