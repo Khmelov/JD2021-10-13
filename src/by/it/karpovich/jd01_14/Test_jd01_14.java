@@ -15,6 +15,27 @@ import java.util.Scanner;
 //поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
 public class Test_jd01_14 extends HomeWork {
 
+    private static void showDir(String path, HomeWork run) {
+        File p = new File(path);
+        String name = p.getName();
+        if (p.isFile()) {
+            run.include("file:" + name); //имя файла (должно быть с расширением)
+        } else if (p.isDirectory()) {
+            if (!name.equals(".") && !name.equals("..")) //fix
+                run.include("dir:" + name); //имя каталога, .git - тоже каталог
+            File[] paths = p.listFiles();
+            if (paths != null)
+                for (File iterator : paths) {
+                    showDir(iterator.getAbsolutePath(), run);
+                }
+        }
+    }
+
+    static String dir(Class cl) {
+        return System.getProperty("user.dir") + "/src/" +
+                cl.getName().replace(cl.getSimpleName(), "").replace('.', '/');
+    }
+
     @Test(timeout = 1500)
     public void testTaskA() throws Exception {
         HomeWork run = run("");
@@ -63,7 +84,7 @@ public class Test_jd01_14 extends HomeWork {
     @Test(timeout = 1500)
     public void testTaskC() throws Exception {
         HomeWork run = run("");
-        showDir(dir(this.getClass())+"..",run);
+        showDir(dir(this.getClass()) + "..", run);
         Scanner scanner = new Scanner(new File(dir(this.getClass()) + "resultTaskC.txt"));
         //проверка соответствия вывода и содержимого файла отчета resultTaskC.txt
         scanner.nextLine(); //пропуск потенциально возможного dir:..
@@ -71,27 +92,6 @@ public class Test_jd01_14 extends HomeWork {
             run.include(scanner.nextLine());
         }
         scanner.close();
-    }
-
-    private static void showDir(String path, HomeWork run) {
-        File p = new File(path);
-        String name = p.getName();
-        if (p.isFile()) {
-            run.include("file:" + name); //имя файла (должно быть с расширением)
-        } else if (p.isDirectory()) {
-            if (!name.equals(".") && !name.equals("..")) //fix
-                run.include("dir:" + name); //имя каталога, .git - тоже каталог
-            File[] paths = p.listFiles();
-            if (paths != null)
-                for (File iterator : paths) {
-                    showDir(iterator.getAbsolutePath(),run);
-                }
-        }
-    }
-
-    static String dir(Class cl) {
-        return System.getProperty("user.dir") + "/src/" +
-                cl.getName().replace(cl.getSimpleName(), "").replace('.', '/');
     }
 
 

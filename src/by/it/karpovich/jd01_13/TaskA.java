@@ -11,14 +11,13 @@ public class TaskA {
                 new HashMap<String, String>(null);
             else
                 Integer.parseInt("привет");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             StackTraceElement[] stackTrace = e.getStackTrace();
-            for (StackTraceElement element: stackTrace){
-                if (TaskA.class.getName().equals(element.getClassName())){
+            for (StackTraceElement element : stackTrace) {
+                if (TaskA.class.getName().equals(element.getClassName())) {
                     System.out.println(element);
-                    String name=e.getClass().getName();
-                    String className=element.getClassName();
+                    String name = e.getClass().getName();
+                    String className = element.getClassName();
                     int number = element.getLineNumber();
                     System.out.printf(
                             """
@@ -29,6 +28,6 @@ public class TaskA {
                             name, className, number);
                 }
             }
-            }
         }
+    }
 }
