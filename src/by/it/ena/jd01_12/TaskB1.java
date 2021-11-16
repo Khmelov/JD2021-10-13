@@ -10,7 +10,7 @@ public class TaskB1 {
         Scanner scanner = new Scanner(System.in);
         String text;
         while (!(text = scanner.next()).equals("end")) {
-            String[] words = text.split("[^a-zA-Z]+");
+            String[] words = text.split("[^a-zA-Z']+");
             for (int i=0; i<words.length;i++) {
                 if (!map.containsKey(words[i])) {
                     map.put(words[i],1);

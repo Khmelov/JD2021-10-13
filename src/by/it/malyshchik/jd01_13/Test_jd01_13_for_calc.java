@@ -1,4 +1,4 @@
-package by.it.rudakova.calculator;
+package by.it.malyshchik.jd01_13;
 
 
 import by.it.HomeWork;
