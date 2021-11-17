@@ -1,7 +1,6 @@
 /**
  * java doc
- */
-package by.it.antipov.jd01_15;
+ */package by.it.antipov.jd01_15;
 
 import java.io.*;
 
@@ -48,7 +47,8 @@ public class TaskB {//dfgdfgdfg
         asda
         */
                                     char symboln = (char) reader.read();
-                                    if (symboln == '\n') {continue first;}}}
+                                    if (symboln == '\n') {text.append('\n');
+                                        System.out.println('\n');continue first;}}}
                         else {text.append('/');
                             System.out.print('/');
                             text.append(symbol2);
