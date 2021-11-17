@@ -10,17 +10,8 @@ public class TaskB {
     }
 
     private static void step4() { //задание 4
-        //переменная цикла:
-  /*      double x = 0;
-        int array[] = {1, 2, 3, 4, 5, 6};
-        for (int i = 0; i <= array.length; i++){
-           x += (array[i]);
-        }
-        System.out.println("x =" +x);
 
-   */
         for (double a = 0; a <= 2; a = a + 0.2) { // <-- наше условие
-            //!!!! Спросить как делать сумму чисел автоматом через цикл/рекурсию и т.д. _____________________________
             double y = pow(7, a) - cos(1) + pow(7, a) - cos(2) + pow(7, a) - cos(3) + pow(7, a) - cos(4) + pow(7, a) - cos(5) + pow(7, a) - cos(6);
             System.out.printf("При a=%6.2f y=%g \n", a, y); // 6 позиций, 2 знака после запятой
         }
