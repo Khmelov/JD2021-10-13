@@ -32,6 +32,7 @@ public class Matrix extends Var {
         this.value = outputArray;
     }
 
+
     public String toString() {
         StringBuilder output = new StringBuilder(LEFT_BRACKET);
         for (double[] doubles : value) {
