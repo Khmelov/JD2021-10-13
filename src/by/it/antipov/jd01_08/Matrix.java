@@ -63,15 +63,15 @@ public class Matrix extends Var {
                 }
             }
             return new Matrix(result);
-        } else if ((other instanceof Vector) & (this.value[0].length == ((Vector) other).getValue().length)) {
+        }  if ((other instanceof Vector) && (this.value[0].length == ((Vector)other).getValue().length)) {
             double[] result = new double[this.value[0].length];
             for (int i = 0; i < this.value.length; i++) {
                 for (int j = 0; j < this.value[0].length; j++) {
-                    result[i] = result[i] + this.value[i][j] * ((Vector) other).getValue()[i];
+                    result[i] = result[i] + this.value[i][j] * ((Vector) other).getValue()[j];
                 }
             }
             return new Vector(result);
-        } else if (other instanceof Matrix&((this.value.length == ((Matrix) other).value.length) & (this.value[0].length == ((Matrix) other).value[0].length))) {
+        }  if (other instanceof Matrix&((this.value.length == ((Matrix) other).value.length) & (this.value[0].length == ((Matrix) other).value[0].length))) {
             double[][] result = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result[0].length; j++) {

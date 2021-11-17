@@ -1,5 +1,6 @@
 package by.it.antipov.jd01_02;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -9,8 +10,9 @@ public class TaskC {
         int n = sc.nextInt();
         int[][] array = step1(n);
         System.out.println();
-        System.out.println(step2(array));
-        int[][] array1 = step3(array);
+        System.out.print(step2(array));
+        int [][]array1={{1,0,7,4},{1, 3, 2, 1},{7,2,3,4},{1,3,2,4}};
+        System.out.println(Arrays.deepToString(step3(array)));
     }
 
     static int[][] step1(int n) {
@@ -67,23 +69,51 @@ public class TaskC {
     }
 
     static int[][] step3(int[][] array) {
-        int n = 0;
-        int max = 0;
-
-        int controllerB = -1;
-        int controllerA = -1;
-        for (int[] element1 : array) {
-            n = n + 1;
+        int n = array.length;
+        int max=array[0][0];
+        int[] horizontal = new int[array.length];
+        int[] vertical = new int[array.length];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (array[i][j]>max) {max=array[i][j];}
+            }
         }
-        for (int a = 0; a < n; a++) {
-            for (int b = 0; b < n; b++) {
-                if (array[a][b] > max) {
-                    max = array[a][b];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (array[i][j]==max) {horizontal[j]=1; vertical[i]=1;
                 }
             }
         }
-        System.out.println(" =" + max);
+    //    for (int horizontals:horizontal) {
+       //     System.out.print(horizontals+",");
+       // }
+       // System.out.println();
+       // for (int vs:vertical) {
+       //     System.out.print(vs+",");
+       // }
 
-        return array;
+        int x=0;
+        int y=0;
+        for (int i = 0; i <array.length; i++) { if (vertical[i]==0){y++;} if (horizontal[i] == 0) {x++;}}
+        int []finalValues = new int[x*y];
+        int a=0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if((horizontal[j]==0)&(vertical[i]==0)) {finalValues[a]=array[i][j];a++;}
+            }
+        }
+        int b=0;
+        int[][] finalArray = new int[y][x];
+        for (int i = 0; i < y; i++) {
+            System.out.println();
+            for (int j = 0; j < x; j++) {
+               finalArray[i][j]=finalValues[b];b++;
+                System.out.print(finalArray[i][j]+" ");
+            }
+        }
+        return finalArray;
+        //System.out.println("max="+max);
     }
+
+
 }
