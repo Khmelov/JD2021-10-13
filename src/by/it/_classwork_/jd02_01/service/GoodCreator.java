@@ -9,7 +9,7 @@ import java.util.Set;
 public class GoodCreator {
 
     //TODO non static - need repo
-    private static Set<Good> goods = new HashSet<>();
+    private static final Set<Good> goods = new HashSet<>();
 
     //stub
     static {
@@ -21,10 +21,9 @@ public class GoodCreator {
 
     public static Good random() {
         int i = RandomInt.random(0, goods.size() - 1);
-        Good good = goods.stream()
+        return goods.stream()
                 .skip(i)
                 .findAny()
                 .orElse(new Good());
-        return good;
     }
 }
