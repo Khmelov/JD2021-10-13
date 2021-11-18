@@ -9,9 +9,10 @@ public class VarCreator {
             return new Vector(stringVar);
         } else if (stringVar.matches(Patterns.MATRIX)) {
             return new Matrix(stringVar);
-        } else{
-            System.out.println("Не удается создать Var из: "+ stringVar);
-            return null;}
+        } else {
+            System.out.println("Не удается создать Var из: " + stringVar);
+            return null;
+        }
     }
 
 }

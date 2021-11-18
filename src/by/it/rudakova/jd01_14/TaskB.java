@@ -62,15 +62,7 @@ public class TaskB {
         int total = 0;
         for (int i = 0; i < line.length(); i++) {
             switch (line.charAt(i)) {
-                case '.':
-                case ',':
-                case ':':
-                case '!':
-                case '?':
-                case '-':
-                case ';':
-                    total++;
-                    break;
+                case '.', ',', ':', '!', '?', '-', ';' -> total++;
             }
         }
         return total;

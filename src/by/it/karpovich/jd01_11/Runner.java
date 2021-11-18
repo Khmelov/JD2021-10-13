@@ -14,8 +14,8 @@ public class Runner {
         System.out.println(list);
         list.remove(2);
         System.out.println(list);
-        System.out.println("get(1)="+list.get(1));        
-        
+        System.out.println("get(1)=" + list.get(1));
+
         List<Integer> list2 = new ListA<>();
         list2.add(1);
         list2.add(2);
@@ -24,6 +24,6 @@ public class Runner {
         System.out.println(list2);
         list2.remove(2);
         System.out.println(list2);
-        System.out.println("get(1)="+list2.get(1));
+        System.out.println("get(1)=" + list2.get(1));
     }
 }

@@ -1,7 +1,9 @@
 package by.it.karpovich.jd01_08;
 
-
 import java.util.Arrays;
+
+import static by.it.karpovich.jd01_08.Patterns.*;
+
 
 public class Vector extends Var {
 
@@ -19,7 +21,7 @@ public class Vector extends Var {
 
     // Начало третьего конструктора:
     public Vector(String strVector) {
-        String[] strArr = strVector.split("[/{, }]+");
+        String[] strArr = strVector.split(SPLIT_VECTOR);
         strArr = Arrays.copyOfRange(strArr, 1, strArr.length);
         double[] array = new double[strArr.length];
         for (int i = 0; i < array.length; i++) {
@@ -103,16 +105,18 @@ public class Vector extends Var {
 
     @Override
     public String toString() {
-        StringBuilder output = new StringBuilder("{");
-        String limiter = "";
+        StringBuilder output = new StringBuilder(LEFT_BRACKET);
+        String limiter = EMPTY_STRING;
         for (double out : value) {
             output.append(limiter);
             output.append(out);
-            limiter = ", ";
+            limiter = INDENTED_COMMA;
         }
-        output.append("}");
+        output.append(RIGHT_BRACKET);
         return output.toString();
     }
 
-
+    public double[] getValue() {
+        return value;
+    }
 }
