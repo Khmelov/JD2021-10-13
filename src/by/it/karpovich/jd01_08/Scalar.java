@@ -8,7 +8,6 @@ public class Scalar extends Var {
         this.value = value;
     }
 
-
     // Начало второго конструктора:
     public Scalar(Scalar scalar) {
         this.value = scalar.value;
@@ -19,9 +18,6 @@ public class Scalar extends Var {
         this.value = Double.parseDouble(strScalar);
     }
 
-    public double getValue() {
-        return value;
-    }
 
     @Override
     public Var add(Var other) {
@@ -58,5 +54,9 @@ public class Scalar extends Var {
     @Override
     public String toString() {
         return String.valueOf(value);
+    }
+
+    public double getValue() {
+        return value;
     }
 }
