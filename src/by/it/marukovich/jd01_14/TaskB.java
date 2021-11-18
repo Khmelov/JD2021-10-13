@@ -22,7 +22,7 @@ public class TaskB {
         }
         Map<String, Integer> map = new HashMap<>();
         map.put("words", wordsCounter);
-        map.put("punctuation symbols", punctuationCounter);
+        map.put("marks", punctuationCounter);
         String textPath = PathFinder.getStringPath(TaskB.class, "resultTaskB.txt");
         try (PrintWriter printWriter = new PrintWriter(textPath)) {
             Set<Map.Entry<String, Integer>> s = map.entrySet();
