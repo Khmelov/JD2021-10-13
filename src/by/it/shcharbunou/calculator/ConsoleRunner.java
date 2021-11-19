@@ -9,7 +9,6 @@ public class ConsoleRunner {
     }
 
     private static void runApplication() {
-        Scanner scanner = new Scanner(System.in);
         InputManager inputManager = new InputManager();
         String expression = inputManager.getLine();
         Parser parser = new Parser();
