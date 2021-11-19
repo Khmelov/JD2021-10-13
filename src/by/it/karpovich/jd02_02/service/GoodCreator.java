@@ -8,7 +8,6 @@ import java.util.Set;
 
 public class GoodCreator {
 
-    //TODO non static - need repo
     private static final Set<Good> goods = new HashSet<>();
 
     //stub
