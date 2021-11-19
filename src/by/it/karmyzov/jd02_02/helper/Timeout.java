@@ -1,8 +1,8 @@
-package by.it.karmyzov.jd02_01.helper;
+package by.it.karmyzov.jd02_02.helper;
 
-import by.it.karmyzov.jd02_01.Constans;
-import by.it.karmyzov.jd02_01.service.StoreExeption;
 
+import by.it.karmyzov.jd02_02.Constans;
+import by.it.karmyzov.jd02_02.service.StoreExeption;
 
 public class Timeout {
     public static void sleep(int timeout) {

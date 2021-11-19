@@ -1,8 +1,8 @@
-package by.it.karmyzov.jd02_01.service;
+package by.it.karmyzov.jd02_02.service;
 
 
-import by.it.karmyzov.jd02_01.helper.RandomInt;
-import by.it.karmyzov.jd02_01.model.Good;
+import by.it.karmyzov.jd02_02.helper.RandomInt;
+import by.it.karmyzov.jd02_02.model.Good;
 
 import java.util.HashSet;
 import java.util.Set;
