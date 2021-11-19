@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
+@SuppressWarnings("all")
 public class TaskC {
 
     private static Scanner scanner;
