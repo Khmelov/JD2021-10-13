@@ -4,55 +4,48 @@ import static java.lang.Math.*;
 
 public class TaskB {
     public static void main(String[] args) {
-
-        step3();
         step4();
-
-
+        step5();
     }
-
-    private static void step3() {
-        double calc = 0;
-        for (double a = 0; a <= 2; a = a + 0.2) {
-            System.out.println(calc);
-            for (int x = 1; x <=6 ; x++) {
-                calc = calc+(pow(7, a))- cos(x);
-
-            }
-
-
-        }
-
-
-    }
-
 
     private static void step4() {
+        for (double a = 0; a <= 2; a = a + 0.2) {
+            double y = 0;
+            for (double x = 1; x <= 6; x++) {
+                y = ((pow(7, a) - cos(x))) + y;
+            }
+            System.out.printf("При a=%6.2f y=%g\n", a, y);
+        }
+    }
 
-        for (double x = -6; x <= 2; x = x + 0.5) {
-            double a = log10(abs(sin(x) + 2.74));
-
+    private static void step5() {
+        double a;
+        double b;
+        for (double x = -6; x < 2; x = x + 0.5) {
             if (x / 2 > -2 && x / 2 <= -1) {
-                a = log10(abs(sin(pow(x, 2)) + 2.74));
-                System.out.printf("При x/2 =%x / 2-1.2f a=%e\n", x / 2, a);
+                b = sin(x * x);
+                a = log10(abs(b + 2.74));
+                System.out.print("При x/2="+(x/2));
+                System.out.println("   a="+a);
             }
-
-            if (x / 2 > -1 && x / 2 < 0.2) {
-                a = log10(abs(cos(pow(x, 2)) + 2.74));
-                System.out.printf("При x/2=%-1.2f a=%e\n", x / 2, a);
+            else if (x / 2 > -1 && x / 2 < 0.2) {
+                b = sin(x * x);
+                a = log10(abs(b + 2.74));
+                System.out.print("При x/2="+(x/2));
+                System.out.println("   a="+a);
             }
-            if (x / 2 == 0.2) {
-                a = log10(abs(tan(pow(x , 2)) + 2.74));
-                System.out.printf("При x/2=%-1.2f a=%e\n", x / 2, a);
-            }
-            if ( x/2 < -2 && x/2 >0.2 ) {
-                System.out.printf("При x/2=%-1.2f a=%25b\n", x / 2, "вычисления не определены");
-
-
+            else if (x / 2 ==0.2) {
+                b = sin(x * x);
+                a = log10(abs(b + 2.74));
+                System.out.print("При x/2="+(x/2));
+                System.out.println("   a="+a);
             }
 
 
         }
+
+
     }
+
 }
 
