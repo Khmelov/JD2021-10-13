@@ -9,7 +9,7 @@ public class Queue {
 
     private final Deque<Customer> queue = new LinkedList<>();
 
-    public void add(Customer customer) {
+    public final void add(Customer customer) {
         synchronized (monitorQueue) {
             queue.addLast(customer);
         }
