@@ -46,7 +46,7 @@ removeSingleLineComment(line);
             throw new RuntimeException(e);
         }
     }
-    
+
     private static String removeComments(String line) {
         try {
             while (line.contains("//")) {
