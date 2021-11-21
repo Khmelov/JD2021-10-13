@@ -1,10 +1,9 @@
 package by.it.oliakhevich.jd01_11;
 
-
+import javax.lang.model.element.Element;
 import java.util.*;
 
-public class ListA<T> implements List<T> {
-
+public class ListB<T> implements List<T> {
     private T[] elements = (T[]) new Object[]{};//массив из обьектов типа Т с нулевой длиной
     private int size = 0; //храним размер массива
 
@@ -99,7 +98,10 @@ public class ListA<T> implements List<T> {
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        return false;
+       for (T element:c){
+           this.add(element);
+       }
+        return true;
     }
 
     @Override
@@ -125,7 +127,9 @@ public class ListA<T> implements List<T> {
 
     @Override
     public T set(int index, T element) {
-        return null;
+        T oldElement = elements[index];
+        elements[index]=element;
+        return oldElement;
     }
 
 
