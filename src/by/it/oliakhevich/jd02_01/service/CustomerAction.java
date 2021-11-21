@@ -1,9 +1,11 @@
 package by.it.oliakhevich.jd02_01.service;
 
+import by.it.oliakhevich.jd02_01.model.Good;
+
 public interface CustomerAction {
-    void enteredStore(); //вошел в магазин (мгновенно)
+    void enteredStore();
 
-    Good chooseGood(); //выбрал товар (от 0,5 до 2 секунд)
+    Good chooseGood();
 
-    void goOut(); //отправился на выход(мгновенно)
+    void goOut();
 }

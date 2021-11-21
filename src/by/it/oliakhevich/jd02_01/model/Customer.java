@@ -9,13 +9,10 @@ public class Customer {
 
     public Customer() {
         name = "unknown customer";
-
-
     }
 
     public Customer(int number) {
         this.name = String.format("Customer N%d", number);
-
     }
 
     public String getName() {
