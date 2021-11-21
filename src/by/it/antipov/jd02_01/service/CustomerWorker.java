@@ -23,8 +23,12 @@ this.customer=customer;
         enteredStore();
         chooseGood();
         int a=Randomizer.Randomizer(0,10);
+        int b=Randomizer.Randomizer(2,5);
         if (a>5){takeCart();}
-        if (customer.isHasCart()){GoodCreator goodCreator = new GoodCreator();putToCart(goodCreator.addGood());}
+        if (customer.isHasCart()){GoodCreator goodCreator = new GoodCreator();
+            for (int i = 0; i <b; i++) {
+                putToCart(goodCreator.addGood());}
+            }
         goOut();
     }
     @Override
