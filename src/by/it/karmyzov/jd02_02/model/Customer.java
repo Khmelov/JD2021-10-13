@@ -5,6 +5,10 @@ import java.util.Objects;
 public class Customer {
 
     private final String name;
+
+    private boolean isWaiting;
+
+    private double total;
     @SuppressWarnings("unused")
     public Customer() {
         name = "unknown customer";
@@ -17,6 +21,14 @@ public class Customer {
     public String getName() {
         return name;
     }
+
+    public boolean isWaiting () {return isWaiting;}
+
+    public void setWaiting(boolean waiting) {isWaiting=waiting;}
+
+    public double getTotal () {return total;}
+
+    public void setTotal (double total) {this.total=total;}
 
     @Override
     public boolean equals(Object o) {
@@ -35,5 +47,9 @@ public class Customer {
     @Override
     public String toString() {
         return name;
+    }
+
+    public Object getMonitor () {
+        return this;
     }
 }

@@ -8,5 +8,7 @@ public interface CustomerAction {
 
     Good chooseGood ();
 
+    void goQueue ();
+
     void goOut ();
     }
