@@ -1,14 +1,12 @@
-package by.it.antipov.jd02_01.service;
+package by.it.antipov.jd02_02.service;
 
-import by.it.antipov.jd02_01.Helper.Randomizer;
-import by.it.antipov.jd02_01.model.Customer;
-import by.it.antipov.jd02_01.model.Good;
-import by.it.antipov.jd02_01.model.ShoppingCart;
 
-import java.util.HashMap;
-import java.util.Map;
+import by.it.antipov.jd02_02.Helper.Randomizer;
+import by.it.antipov.jd02_02.model.Customer;
+import by.it.antipov.jd02_02.model.Good;
+import by.it.antipov.jd02_02.model.ShoppingCart;
 
-public class CustomerWorker extends Thread implements CustomerAction,ShoppingCartAction{
+public class CustomerWorker extends Thread implements CustomerAction, ShoppingCartAction {
     private final Customer customer;
 ShoppingCart customerCart;
 
@@ -21,14 +19,12 @@ this.customer=customer;
 
     public void run() {
         enteredStore();
-        chooseGood();
-        int a=Randomizer.Randomizer(0,10);
-        int b=Randomizer.Randomizer(2,5);
+        int a= Randomizer.Randomizer(0,10);
+        int b= Randomizer.Randomizer(2,5);
         if (a>5){takeCart();}
-        if (customer.isHasCart()){GoodCreator goodCreator = new GoodCreator();
-            for (int i = 0; i <b; i++) {
-                putToCart(goodCreator.addGood());}
-            }
+        if (customer.isHasCart()){
+            GoodCreator goodCreator = new GoodCreator();
+            for (int i = 0; i <b; i++) {putToCart(goodCreator.addGood());}}
         goOut();
     }
     @Override
@@ -62,7 +58,6 @@ this.customer=customer;
 
     @Override
     public int putToCart(Good good) {
-
 customerCart.cartAdd(good);
         System.out.println(customer+" put "+good+" into cart");
         return customerCart.cartSize();
