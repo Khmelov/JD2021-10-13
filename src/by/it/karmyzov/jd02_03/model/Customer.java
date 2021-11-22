@@ -1,5 +1,7 @@
 package by.it.karmyzov.jd02_03.model;
 
+import by.it.karmyzov.jd02_03.Constans;
+
 import java.util.Objects;
 
 public class Customer {
@@ -11,7 +13,7 @@ public class Customer {
     private double total;
     @SuppressWarnings("unused")
     public Customer() {
-        name = "unknown customer";
+        name = Constans.UNKNOWN_CUSTOMER;
     }
 
     public Customer(int number) {

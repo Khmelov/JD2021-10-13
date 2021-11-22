@@ -3,21 +3,22 @@ package by.it.karmyzov.jd02_03.service;
 
 import by.it.karmyzov.jd02_03.helper.RandomInt;
 import by.it.karmyzov.jd02_03.helper.Timeout;
-import by.it.karmyzov.jd02_03.model.Customer;
-import by.it.karmyzov.jd02_03.model.Good;
-import by.it.karmyzov.jd02_03.model.Manager;
-import by.it.karmyzov.jd02_03.model.Queue;
+import by.it.karmyzov.jd02_03.model.*;
+
+import java.util.concurrent.Semaphore;
 
 public class CustomerWorker extends Thread implements CustomerAction {
 
     private final Customer customer;
     private final Manager manager;
     private final Queue queue;
+    private final Semaphore semaphore;
 
-    public CustomerWorker(Customer customer, Manager manager, Queue queue) {
+    public CustomerWorker(Customer customer, Store store) {
         this.customer = customer;
-        this.manager = manager;
-        this.queue = queue;
+        this.manager = store.getManager();
+        this.queue = store.getQueue();
+        this.semaphore = store.getSemaphore();
         manager.addOneCustomer();
 
     }
@@ -41,32 +42,41 @@ public class CustomerWorker extends Thread implements CustomerAction {
 
     @Override
     public Good chooseGood() {
-        Good good = GoodCreator.randoom();
-        int timeout = RandomInt.random(500, 2000);
-        Timeout.sleep(timeout);
-        System.out.printf("%s choose %s%n", customer, good);
+        Good good = null;
+        try {
+            semaphore.acquire();
+            good = GoodCreator.randoom();
+            int timeout = RandomInt.random(500, 2000);
+            Timeout.sleep(timeout);
+            System.out.printf("%s choose %s%n", customer, good);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            semaphore.release();
+            }
         return good;
     }
 
-    @Override
-    public void goQueue() {
-    synchronized (customer.getMonitor()) {
-        System.out.printf("%s go to the Queue", customer);
-        queue.add(customer);
-        customer.setWaiting(true);
-        while (customer.isWaiting())
-            try {
-                customer.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+
+        @Override
+        public void goQueue () {
+            synchronized (customer.getMonitor()) {
+                System.out.printf("%s go to the Queue", customer);
+                queue.add(customer);
+                customer.setWaiting(true);
+                while (customer.isWaiting())
+                    try {
+                        customer.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                System.out.printf("%s leaves to the Queue%n", customer);
             }
-        System.out.printf("%s leaves to the Queue%n", customer);
-    }
-    }
+        }
 
-    @Override
-    public void goOut() {
-        System.out.printf("%s leave the Store%n", customer);
+        @Override
+        public void goOut () {
+            System.out.printf("%s leave the Store%n", customer);
 
+        }
     }
-}

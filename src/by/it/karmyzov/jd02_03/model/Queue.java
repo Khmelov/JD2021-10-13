@@ -9,7 +9,6 @@ import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class Queue {
-    private final Object monitorQueue = new Object();
 
     private final BlockingDeque<Customer> queue = new LinkedBlockingDeque<>(Constans.Q_CAPACITY);
 
