@@ -7,18 +7,21 @@ import java.nio.file.Path;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
+@SuppressWarnings("all")
 public class TaskC {
+
+    private static Scanner scanner;
 
     public static void main(String[] args) {
         String stringRoot = "src" + File.separator + "by" + File.separator + "it" + File.separator
                 + "shcharbunou" + File.separator + "jd01_15";
         System.out.println(stringRoot);
+        scanner = new Scanner(System.in);
         runApplication(stringRoot);
     }
 
     private static void runApplication(String stringRoot) {
-        Scanner scanner = new Scanner(System.in);
-        String command = inputCommand(scanner);
+        String command = inputCommand();
         processCommand(command, stringRoot);
     }
 
@@ -48,7 +51,7 @@ public class TaskC {
                 }
             }
         } else if (commandAndPath.length == 1 && commandAndPath[0].equals("end")) {
-            System.exit(0);
+            return;
         } else {
             System.out.println("Error");
             runApplication(stringRoot);
@@ -64,7 +67,7 @@ public class TaskC {
         return stringRoot.substring(0, stringRoot.length() - counter);
     }
 
-    private static String inputCommand(Scanner scanner) {
+    private static String inputCommand() {
         String temporaryString;
         boolean isCorrect;
         do {
@@ -76,4 +79,5 @@ public class TaskC {
         } while (!isCorrect);
         return temporaryString;
     }
+
 }
