@@ -13,4 +13,5 @@ package by.it.karpovich.jd01_12;
 // Выведите полученный ассоциативный массив в консоль методом toString()
 
 public class TaskC1 {
+
 }

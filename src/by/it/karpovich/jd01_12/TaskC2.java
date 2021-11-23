@@ -7,4 +7,5 @@ package by.it.karpovich.jd01_12;
 // В main покажите работоспособность решения.
 
 public class TaskC2 {
+
 }
