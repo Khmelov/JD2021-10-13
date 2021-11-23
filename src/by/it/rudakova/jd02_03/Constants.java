@@ -11,5 +11,5 @@ public class Constants {
     public static final String UNKNOWN_PRODUCT = "unknown product";
     public static final String STORE_IS_OPENED = "Store is opened";
     public static final String STORE_IS_CLOSED = "Store is closed";
-    public static final int PERMITS = 2;
+    public static final int PERMITS = 20;
 }
