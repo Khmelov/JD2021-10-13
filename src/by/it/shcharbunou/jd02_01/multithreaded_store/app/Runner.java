@@ -1,4 +1,4 @@
-package by.it.shcharbunou.jd02_01.multithreaded_store;
+package by.it.shcharbunou.jd02_01.multithreaded_store.app;
 
 public class Runner {
 
