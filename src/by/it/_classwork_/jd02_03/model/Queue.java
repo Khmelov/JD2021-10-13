@@ -8,7 +8,6 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class Queue {
 
-
     private final BlockingDeque<Customer> queue = new LinkedBlockingDeque<>(Constants.QUEUE_CAP);
 
     public final void add(Customer customer) {
