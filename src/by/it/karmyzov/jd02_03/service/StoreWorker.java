@@ -16,7 +16,7 @@ public class StoreWorker extends Thread {
         this.store = store;
     }
     @Override
-    public synchronized void start() {
+    public void start() {
         System.out.println("Store opened");
         int number = 0;
 
@@ -34,14 +34,12 @@ public class StoreWorker extends Thread {
             for (int i = 0; store.getManager().storeIsOpened() && i < count; i++) {
                 Customer customer = new Customer(++number);
                 CustomerWorker customerThread = new CustomerWorker(customer, store);
-
                 customerThread.start();
             }
             Timeout.sleep(1000);
         }
         while (!fixedThreadPool.isTerminated()) {
             Thread.onSpinWait();
-
         }
         System.out.println("Store closed");
     }
