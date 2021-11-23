@@ -11,16 +11,16 @@ public class TaskB {
         String stringPath = PathFinder.getStringPath(TaskB.class, POEM_TXT);
         String text = readText(stringPath);
         int words = getCount(text, WORD_RUS);
-        text = text.replace("...", ".");
-        int punctuation = getCount(text, "[!?,.:-]");
-        System.out.printf("words=%d, punctuation marks=%d%n", words, punctuation);
-        String resultTaskB = PathFinder.getStringPath(TaskB.class, "resultTaskB.txt");
+        text = text.replace(ELLIPSIS, DOT);
+        int punctuation = getCount(text, SYMBOL_TEXT);
+        System.out.printf(WORDS_PUNCTUATION, words, punctuation);
+        String resultTaskB = PathFinder.getStringPath(TaskB.class, RESULT_TASK_B_TXT);
         writeResult(words, punctuation, resultTaskB);
     }
 
     private static void writeResult(int words, int punctuation, String resultTaskB) {
         try (PrintWriter printWriter = new PrintWriter(resultTaskB)) {
-            printWriter.printf("words=%d, punctuation marks=%d%n", words, punctuation);
+            printWriter.printf(WORDS_PUNCTUATION, words, punctuation);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

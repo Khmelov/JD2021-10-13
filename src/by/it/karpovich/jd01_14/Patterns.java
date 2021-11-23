@@ -8,6 +8,11 @@ public interface Patterns {
     String SRC = "src";
     String EMPTY_STRING = "";
     String DOT = ".";
+    String ELLIPSIS = "...";
+    String SYMBOL_TEXT ="[!?,.:-]";
+    String WORDS_PUNCTUATION = "words=%d, punctuation marks=%d%n";
+    String RESULT_TASK_B_TXT = "resultTaskB.txt";
+    String RESULT_TASK_C_TXT = "resultTaskC.txt";
     String INDENTED_STRING = " ";
     String AVG = "\navg=";
     String POEM_TXT = "Poem.txt";
