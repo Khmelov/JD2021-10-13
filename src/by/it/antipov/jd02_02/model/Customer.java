@@ -6,6 +6,11 @@ public class Customer {
     private final String name;
     private boolean hasCart;
     boolean isWaiting;
+   private ShoppingCart customerCart=new ShoppingCart();
+
+    public ShoppingCart getCustomerCart() {
+        return customerCart;
+    }
 
     public boolean isHasCart() {
         return hasCart;

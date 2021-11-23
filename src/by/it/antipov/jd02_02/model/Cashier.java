@@ -6,13 +6,16 @@ public class Cashier {
 
 
     public Cashier(int name) {
-        this.name = "Cashier"+name;
+        this.name = "Cashier "+name;
     }
     public String getName(){return name;}
     public double getRevenue(){return  revenue;}
 
+    public void setRevenue(double revenue) {
+        this.revenue = revenue;
+    }
 
     public String toString() {
-        return ("Cashier"+name);
+        return name;
     }
 }

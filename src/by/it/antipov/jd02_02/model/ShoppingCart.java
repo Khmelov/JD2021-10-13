@@ -1,16 +1,24 @@
 package by.it.antipov.jd02_02.model;
 
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ShoppingCart {
- public   Map<String,Double> cart;
+ private List<Good> cart;
 public ShoppingCart(){
-    cart=new HashMap<>();
+    cart=new ArrayList<>();
 }
     public void cartAdd(Good good){
-        cart.put(good.getName(), PriceList.priceList.get(good.getName()));
+        cart.add(good);
     }
+
+    public List<Good> getCart() {
+        return cart;
+    }
+
     public int cartSize(){
         return cart.size();
     }
