@@ -7,7 +7,9 @@ public class CustomerWorker implements Runnable, CustomerAction {
 
     @Override
     public void run() {
-
+        enteredStore();
+        chooseGood();
+        goOut();
     }
 
     @Override
