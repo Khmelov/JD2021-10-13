@@ -1,4 +1,4 @@
-package by.it._classwork_.jd02_03.model;
+package by.it.malyshchik.jd02_03.model;
 
 import java.util.concurrent.Semaphore;
 
@@ -7,7 +7,6 @@ public class Store {
     private final Manager manager;
     private final Queue queue = new Queue();
     private final Semaphore semaphore = new Semaphore(20);
-
     public Store(Manager manager) {
         this.manager = manager;
     }

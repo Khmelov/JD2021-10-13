@@ -1,12 +1,13 @@
-package by.it._classwork_.jd02_03.model;
+package by.it.malyshchik.jd02_03.model;
 
-import by.it._classwork_.jd02_03.Constants;
-import by.it._classwork_.jd02_03.service.StoreException;
+import by.it.malyshchik.jd02_03.Constants;
+import by.it.malyshchik.jd02_03.service.StoreException;
 
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class Queue {
+
 
     private final BlockingDeque<Customer> queue = new LinkedBlockingDeque<>(Constants.QUEUE_CAP);
 
