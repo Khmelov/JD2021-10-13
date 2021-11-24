@@ -43,6 +43,9 @@ public class Good {
 
     @Override
     public String toString() {
-        return "Good:\nName:" + this.name + "Price:" + this.price + "\n";
+        return "Good{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
