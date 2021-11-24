@@ -1,6 +1,6 @@
 package by.it.shcharbunou.jd02_01.multithreaded_store.services;
 
-public class CustomerWorker implements Runnable {
+public class Store implements Runnable {
 
     @Override
     public void run() {
