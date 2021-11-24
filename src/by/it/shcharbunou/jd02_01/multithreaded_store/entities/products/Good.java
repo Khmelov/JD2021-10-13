@@ -1,6 +1,7 @@
 package by.it.shcharbunou.jd02_01.multithreaded_store.entities.products;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Good {
     private String name;
@@ -28,22 +29,16 @@ public class Good {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Good good = (Good) o;
+        return Objects.equals(name, good.name) && Objects.equals(price, good.price);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (this.hashCode() != obj.hashCode()) {
-            return false;
-        }
-        if (this.getClass() != obj.getClass()) {
-            return false;
-        }
-        return this.price.compareTo(((Good) obj).getPrice()) == 0 && this.name.equals(((Good) obj).getName());
+    public int hashCode() {
+        return Objects.hash(name, price);
     }
 
     @Override
