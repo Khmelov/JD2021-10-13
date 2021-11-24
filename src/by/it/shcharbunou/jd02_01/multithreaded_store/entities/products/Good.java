@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Good {
+
     private String name;
     private BigDecimal price;
 
