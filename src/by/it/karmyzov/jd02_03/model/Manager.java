@@ -12,7 +12,7 @@ public class Manager {
     }
 
     public void addOneCustomer() {
-        countIn.getAndDecrement();
+        countIn.getAndIncrement();
     }
 
     public void goOutOneCustomer() {
