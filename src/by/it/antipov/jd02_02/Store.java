@@ -43,7 +43,7 @@ public class Store extends Thread{
                 threads.add(customerWorker);
                 customerWorker.start();
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
