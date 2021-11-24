@@ -3,7 +3,6 @@ package by.it.shcharbunou.jd02_01.multithreaded_store.entities.products;
 import java.math.BigDecimal;
 
 public class Good {
-
     private String name;
     private BigDecimal price;
 
