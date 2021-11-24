@@ -2,7 +2,7 @@ package by.it._classwork_.calc;
 
 public interface Patterns {
 
-    String OPERATION = "[-+*/=]";
+    String OPERATION = "(?<=[^-+*/={,])[-+*/=]";
 
     // 2341  123.0  -145  -17.11
     String SCALAR = "-?[0-9]+(\\.[0-9]+)?";
