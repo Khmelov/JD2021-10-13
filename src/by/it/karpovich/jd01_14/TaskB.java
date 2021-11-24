@@ -6,17 +6,13 @@ package by.it.karpovich.jd01_14;
 // words=123, punctuation marks=15
 // Продублировать вывод в консоль в файл resultTaskB.txt
 
+
+
+import java.io.*;
+
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TaskB {
-
-
-    public static final String TXT_FILE_NAME = "resultTaskB.txt";
-    static final String WORD_PATTERN = "[а-яА-ЯёЁ]+";
-    private static final String PUNCTUATION_PATTERN = "[-/?.!:,]+";
-
-    public static void main(String[] args) {
-        Locale.setDefault(Locale.US);
-
-    }
 }
