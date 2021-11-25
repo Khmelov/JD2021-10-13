@@ -52,6 +52,6 @@ public class CustomerWorker implements Runnable, CustomerAction {
 
     @Override
     public void goOut() {
-
+        System.out.printf("Customer[%d] has left the shop...", customer.getId());
     }
 }
