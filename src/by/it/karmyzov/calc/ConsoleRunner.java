@@ -2,24 +2,34 @@ package by.it.karmyzov.calc;
 
 import java.util.Scanner;
 
+@SuppressWarnings("DuplicatedCode")
 public class ConsoleRunner {
-    public static void main(String[] args)  {
 
-        Scanner scan = new Scanner(System.in);
-        String line;
+    public static final String FINAL_APP_CMD ="end";
+    public static void main(String[] args) {
 
-        Parser parser = new Parser();
         Printer printer = new Printer();
+        VarRepository varRepository = new VarRepository();
+        Parser parser = new Parser(varRepository);
+        Scanner scan = new Scanner(System.in);
+        for (; ; ) {
+            String expression = scan.nextLine();
+            if (!expression.equals(FINAL_APP_CMD)) {
+                Var var = null;
+                try {
+                    var = parser.calc(expression);
+                    printer.print(var);
 
-        while (!(line = scan.nextLine()).equals("end")) {
-            try {
-               Var result = parser.calc(line);
-                printer.print(result);
+
             } catch (CalcExeption e) {
-                System.out.println(e.getMessage());
-                e.printStackTrace();
+                    printer.print(e);
+                }
+                } else {
+                break;
             }
-
         }
+        System.out.println("Aplication closed");
     }
 }
+
+
