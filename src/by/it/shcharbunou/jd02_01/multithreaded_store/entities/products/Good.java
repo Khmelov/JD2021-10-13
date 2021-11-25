@@ -1,5 +1,7 @@
 package by.it.shcharbunou.jd02_01.multithreaded_store.entities.products;
 
+import by.it.shcharbunou.jd02_01.multithreaded_store.exceptions.GoodException;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -7,6 +9,10 @@ public class Good {
 
     private String name;
     private BigDecimal price;
+
+    public Good() {
+        throw new GoodException("Error: Unknown good.");
+    }
 
     public Good(String name, BigDecimal price) {
         this.name = name;

@@ -1,10 +1,16 @@
 package by.it.shcharbunou.jd02_01.multithreaded_store.entities.clients;
 
+import by.it.shcharbunou.jd02_01.multithreaded_store.exceptions.CustomerException;
+
 import java.util.Objects;
 
 public class Customer {
 
     private final int id;
+
+    public Customer() {
+        throw new CustomerException("Error: Unknown customer.");
+    }
 
     public Customer(int id) {
         this.id = id;
