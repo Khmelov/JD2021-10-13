@@ -1,21 +1,18 @@
 package by.it.shcharbunou.jd02_01.multithreaded_store.services.store_services;
 
-import by.it._classwork_.jd02_01.helper.RandomInt;
 import by.it.shcharbunou.jd02_01.multithreaded_store.entities.products.Good;
 import by.it.shcharbunou.jd02_01.multithreaded_store.repositories.GoodsRepository;
-
-import java.math.BigDecimal;
-import java.util.Set;
+import by.it.shcharbunou.jd02_01.multithreaded_store.utils.Randomizer;
 
 public class GoodsProducer {
 
     private final GoodsRepository goodsRepository;
-    private final Set<Good> goods;
     private static GoodsProducer instance;
+    private final Randomizer randomizer;
 
     private GoodsProducer() {
         goodsRepository = GoodsRepository.getInstance();
-        goods = goodsRepository.getGoods();
+        randomizer = new Randomizer();
     }
 
     public static GoodsProducer getInstance() {
@@ -26,11 +23,11 @@ public class GoodsProducer {
     }
 
     public Good randomGood() {
-        int i = RandomInt.random(0, goods.size() - 1);
-        return goods.stream()
+        int i = randomizer.randomize(0, goodsRepository.getGoods().size() - 1);
+        return goodsRepository.getGoods().stream()
                 .skip(i)
                 .findAny()
-                .orElse(new Good("", new BigDecimal(0)));
+                .orElse(new Good());
     }
 
     public static void setInstance(GoodsProducer instance) {
