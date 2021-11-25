@@ -2,6 +2,7 @@ package by.it.rudakova.calc;
 
 public class CalcException extends Exception {
     public CalcException() {
+        this("no message");
     }
 
     public CalcException(String message) {
@@ -13,10 +14,7 @@ public class CalcException extends Exception {
     }
 
     public CalcException(Throwable cause) {
-        super(cause);
+        this("no message",cause);
     }
 
-    public CalcException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super("ERROR:"+message, cause, enableSuppression, writableStackTrace);
-    }
 }
