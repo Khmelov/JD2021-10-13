@@ -2,7 +2,7 @@ package by.it.malyshchik.calc;
 
 public interface Patterns {
 
-    String OPERATION = "[-+*/=]";
+    String OPERATION = "(?<=[^-+*/={,])[-+*/=]";
 
     // 2341  123.0  -145  -17.11
     String SCALAR = "-?[0-9]+(\\.[0-9]+)?";
@@ -14,4 +14,5 @@ public interface Patterns {
 
     String LEFT_BRACKET = "{";
     String RIGHT_BRACKET = "}";
+    String BKT="\\([^(]+?\\)";
 }
