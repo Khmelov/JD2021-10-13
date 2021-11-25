@@ -1,4 +1,4 @@
-package by.it.marukovich.jd01_09;
+package by.it.marukovich.calc;
 
 import java.util.Arrays;
 
@@ -32,7 +32,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar scalar) {
             double[] result = Arrays.copyOf(values, values.length);
             for (int i = 0; i < result.length; i++) {
@@ -42,7 +42,7 @@ public class Vector extends Var {
         }
         if (other instanceof Vector vector) {
             if (this.values.length != vector.values.length) {
-                return super.add(vector);
+                throw new CalcException(String.format("Incorrect vectors size: %s + %s", this, vector));
             }
             double[] result = Arrays.copyOf(values, values.length);
             for (int i = 0; i < result.length; i++) {
@@ -54,7 +54,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar scalar) {
             double[] result = Arrays.copyOf(values, values.length);
             for (int i = 0; i < result.length; i++) {
@@ -76,7 +76,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         double sum = 0;
         if (other instanceof Scalar scalar) {
             double[] result = Arrays.copyOf(values, values.length);
@@ -98,7 +98,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         if (other instanceof Scalar scalar) {
             double[] result = Arrays.copyOf(values, values.length);
             for (int i = 0; i < result.length; i++) {
@@ -119,10 +119,8 @@ public class Vector extends Var {
             out.append(delimiter);
             out.append(value);
             delimiter = ", ";
-
         }
         out.append("}");
         return out.toString();
     }
-
 }
