@@ -24,10 +24,7 @@ public class GoodsProducer {
 
     public Good randomGood() {
         int i = randomizer.randomize(0, goodsRepository.getGoods().size() - 1);
-        return goodsRepository.getGoods().stream()
-                .skip(i)
-                .findAny()
-                .orElse(new Good());
+        return goodsRepository.getGoods().get(i);
     }
 
     public static void setInstance(GoodsProducer instance) {

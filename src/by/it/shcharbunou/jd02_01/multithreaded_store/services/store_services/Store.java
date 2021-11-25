@@ -9,7 +9,6 @@ import by.it.shcharbunou.jd02_01.multithreaded_store.utils.Timer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Store implements Runnable {
 
@@ -22,7 +21,7 @@ public class Store implements Runnable {
         System.out.println("Store is opened!");
         List<Thread> threads = new ArrayList<>();
         long startTime = System.currentTimeMillis();
-        long workingTime = TimeUnit.MINUTES.toMillis(2);
+        long workingTime = 120 * 1_000;
         long endTime;
         int customersCount;
         do {
@@ -31,6 +30,7 @@ public class Store implements Runnable {
                 Customer customer = new Customer(randomizer.randomize());
                 Thread customerThread = new Thread(new CustomerWorker(customer));
                 threads.add(customerThread);
+                customerThread.start();
             }
             endTime = System.currentTimeMillis();
             suspender.suspend(1000);

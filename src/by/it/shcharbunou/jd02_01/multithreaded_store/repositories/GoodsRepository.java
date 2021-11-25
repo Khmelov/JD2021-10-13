@@ -3,16 +3,16 @@ package by.it.shcharbunou.jd02_01.multithreaded_store.repositories;
 import by.it.shcharbunou.jd02_01.multithreaded_store.entities.products.Good;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GoodsRepository {
 
     private static GoodsRepository instance;
-    private Set<Good> goods;
+    private final List<Good> goods;
 
     private GoodsRepository(){
-        goods = new HashSet<>();
+        goods = new ArrayList<>();
         goods.add(new Good("Trojan", new BigDecimal(300)));
         goods.add(new Good("Bot", new BigDecimal(250)));
         goods.add(new Good("Exploit", new BigDecimal(600)));
@@ -28,7 +28,7 @@ public class GoodsRepository {
         return instance;
     }
 
-    public Set<Good> getGoods() {
+    public List<Good> getGoods() {
         return goods;
     }
 
