@@ -61,7 +61,6 @@ class Employee {//implements Comparable<Employee> {
 //    }
 }
 class IdComparator implements Comparator<Employee> {
-
     @Override
     public int compare(Employee emp1, Employee emp2) {
         if (emp1.id == emp2.id) {

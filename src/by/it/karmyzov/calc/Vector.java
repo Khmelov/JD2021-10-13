@@ -12,23 +12,21 @@ public class Vector extends Var {
     private final double[] values;
 
     public Vector(double[] values) {
-        this.values = values;
+        this.values = Arrays.copyOf(values,values.length);
     }
 
     public Vector(Vector tovector) {
         this.values = tovector.values;
     }
 
-    public Vector(String strVector) {
-
-        strVector = strVector
+    public Vector(String stringVar) {
+       String [] strValues = stringVar
                 .replace(LEFT_BRACKET, "")
                 .replace(RIGHT_BRACKET, "")
-                .trim();
-        String[] strings = strVector.split(DELIMITER);
-        values = new double[strings.length];
+                .split(DELIMITER);
+        values = new double[strValues.length];
         for (int i = 0; i < values.length; i++) {
-            values[i] = Double.parseDouble(strings[i]);
+            values[i] = Double.parseDouble(strValues[i]);
         }
     }
 
