@@ -55,13 +55,14 @@ this.customer=customer;
 
     @Override
     public void takeCart() {
+        customerCart=new ShoppingCart();
         customer.setHasCart(true);
         System.out.println(customer+" took cart ");
     }
 
     @Override
     public int putToCart(Good good) {
-       customerCart=new ShoppingCart();
+
 customerCart.cartAdd(good);
         System.out.println(customer+" put "+good+" into cart");
         return customerCart.cartSize();
