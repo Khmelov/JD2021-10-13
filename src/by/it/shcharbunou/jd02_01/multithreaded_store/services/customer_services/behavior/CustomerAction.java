@@ -1,4 +1,4 @@
-package by.it.shcharbunou.jd02_01.multithreaded_store.services.behavior;
+package by.it.shcharbunou.jd02_01.multithreaded_store.services.customer_services.behavior;
 
 import by.it.shcharbunou.jd02_01.multithreaded_store.entities.products.Good;
 

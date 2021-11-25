@@ -1,7 +1,7 @@
-package by.it.shcharbunou.jd02_01.multithreaded_store.services;
+package by.it.shcharbunou.jd02_01.multithreaded_store.services.customer_services;
 
 import by.it.shcharbunou.jd02_01.multithreaded_store.entities.products.Good;
-import by.it.shcharbunou.jd02_01.multithreaded_store.services.behavior.CustomerAction;
+import by.it.shcharbunou.jd02_01.multithreaded_store.services.customer_services.behavior.CustomerAction;
 
 public class CustomerWorker implements Runnable, CustomerAction {
 
