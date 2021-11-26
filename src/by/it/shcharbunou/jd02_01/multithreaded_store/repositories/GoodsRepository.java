@@ -16,7 +16,7 @@ public class GoodsRepository {
         goods.add(new Good("Trojan", new BigDecimal(300)));
         goods.add(new Good("Bot", new BigDecimal(250)));
         goods.add(new Good("Exploit", new BigDecimal(600)));
-        goods.add(new Good("Crypt", new BigDecimal(1200)));
+        goods.add(new Good("Ransomware", new BigDecimal(1200)));
         goods.add(new Good("DDOS", new BigDecimal(2000)));
         goods.add(new Good("Access", new BigDecimal(1500)));
     }

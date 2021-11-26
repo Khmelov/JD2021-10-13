@@ -4,11 +4,12 @@ import by.it.shcharbunou.jd02_01.multithreaded_store.entities.clients.Customer;
 import by.it.shcharbunou.jd02_01.multithreaded_store.entities.products.Good;
 import by.it.shcharbunou.jd02_01.multithreaded_store.exceptions.CustomerException;
 import by.it.shcharbunou.jd02_01.multithreaded_store.services.customer_services.behavior.CustomerAction;
+import by.it.shcharbunou.jd02_01.multithreaded_store.services.inventory_services.behavior.ShoppingCartAction;
 import by.it.shcharbunou.jd02_01.multithreaded_store.services.store_services.GoodsProducer;
 import by.it.shcharbunou.jd02_01.multithreaded_store.utils.Randomizer;
 import by.it.shcharbunou.jd02_01.multithreaded_store.utils.Timer;
 
-public class CustomerWorker implements Runnable, CustomerAction {
+public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAction {
 
     private final Customer customer;
     private final GoodsProducer goodsProducer = GoodsProducer.getInstance();
@@ -53,5 +54,15 @@ public class CustomerWorker implements Runnable, CustomerAction {
     @Override
     public void goOut() {
         System.out.printf("Customer[%d] has left the shop...\n", customer.getId());
+    }
+
+    @Override
+    public void takeCart() {
+
+    }
+
+    @Override
+    public int putToCart(Good good) {
+        return 0;
     }
 }
