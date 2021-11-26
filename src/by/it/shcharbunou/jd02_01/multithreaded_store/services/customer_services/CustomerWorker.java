@@ -7,8 +7,8 @@ import by.it.shcharbunou.jd02_01.multithreaded_store.exceptions.CustomerExceptio
 import by.it.shcharbunou.jd02_01.multithreaded_store.exceptions.ShoppingCartException;
 import by.it.shcharbunou.jd02_01.multithreaded_store.services.customer_services.behavior.CustomerAction;
 import by.it.shcharbunou.jd02_01.multithreaded_store.services.inventory_services.behavior.ShoppingCartAction;
-import by.it.shcharbunou.jd02_01.multithreaded_store.services.store_services.GoodsProducer;
-import by.it.shcharbunou.jd02_01.multithreaded_store.services.store_services.PriceListProducer;
+import by.it.shcharbunou.jd02_01.multithreaded_store.factories.GoodsProducer;
+import by.it.shcharbunou.jd02_01.multithreaded_store.factories.PriceListProducer;
 import by.it.shcharbunou.jd02_01.multithreaded_store.utils.Randomizer;
 import by.it.shcharbunou.jd02_01.multithreaded_store.utils.Suspender;
 import by.it.shcharbunou.jd02_01.multithreaded_store.utils.Timer;

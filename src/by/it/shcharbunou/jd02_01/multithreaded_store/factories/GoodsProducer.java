@@ -1,4 +1,4 @@
-package by.it.shcharbunou.jd02_01.multithreaded_store.services.store_services;
+package by.it.shcharbunou.jd02_01.multithreaded_store.factories;
 
 import by.it.shcharbunou.jd02_01.multithreaded_store.entities.products.Good;
 import by.it.shcharbunou.jd02_01.multithreaded_store.repositories.GoodsRepository;
