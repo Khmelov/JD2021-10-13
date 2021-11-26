@@ -22,6 +22,8 @@ public class StudentWorker extends CustomerWorker {
     private final Suspender suspender = new Suspender();
     private ShoppingCart shoppingCart;
     private final PriceListProducer priceListProducer = PriceListProducer.getInstance();
+    private static final int MAX_GOODS_COUNT = 2;
+    private static final int MIN_GOODS_COUNT = 0;
 
     public StudentWorker() {
         throw new CustomerException("Error: Unknown customer.");
@@ -36,14 +38,16 @@ public class StudentWorker extends CustomerWorker {
         enteredStore();
         if (randomizer.randomizeBoolean()) {
             takeCart();
-            int goodsCount = randomizer.randomize(2, 5);
+            int goodsCount = randomizer.randomize(0, 2);
             for (int i = 0; i < goodsCount; i++) {
                 Good good = chooseGoodPriceList();
                 int shoppingCartContent = putToCart(good);
                 System.out.printf("The cart of customer[%d] (Student) has %d goods...\n", student.getId(), shoppingCartContent);
             }
         } else {
-            chooseGood();
+            if (randomizer.randomize(0, 1) == 1) {
+                chooseGood();
+            }
         }
         goOut();
     }
