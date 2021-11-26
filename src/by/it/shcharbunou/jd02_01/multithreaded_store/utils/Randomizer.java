@@ -21,4 +21,8 @@ public class Randomizer {
     public int randomize(int max) {
         return random.nextInt(max);
     }
+
+    public boolean randomizeBoolean() {
+        return random.nextBoolean();
+    }
 }
