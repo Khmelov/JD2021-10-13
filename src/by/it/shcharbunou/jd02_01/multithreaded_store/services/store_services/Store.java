@@ -27,9 +27,20 @@ public class Store implements Runnable {
         long workingTime = TimeUnit.MINUTES.toMillis(2);
         long endTime;
         int customersCount;
+        long startMinute = System.currentTimeMillis();
+        long endMinute = System.currentTimeMillis();
         do {
-            customersCount = randomizer.randomize(0, 2);
-            for (int i = 0; i < customersCount; i++) {
+            int secondInOneMinuteCount = (int) (endMinute - startMinute)  / 1000;
+            if (secondInOneMinuteCount < 30) {
+                customersCount = secondInOneMinuteCount + 10;
+            } else if (secondInOneMinuteCount < 60) {
+                customersCount = 40 + 30 - secondInOneMinuteCount;
+            } else {
+                startMinute = System.currentTimeMillis();
+                secondInOneMinuteCount = (int) (endMinute - startMinute)  / 1000;
+                customersCount = secondInOneMinuteCount + 10;
+            }
+            for (int i = 0; i < customersCount - threads.size(); i++) {
                 int chance;
                 chance = randomizer.randomize(1, 4);
                 if (chance == 1) {
@@ -50,7 +61,9 @@ public class Store implements Runnable {
                 }
             }
             endTime = System.currentTimeMillis();
+            endMinute = System.currentTimeMillis();
             suspender.suspend(1000);
+            threads.removeIf(thread -> thread.getState() == Thread.State.TERMINATED);
         } while (timer.isRunning(startTime, endTime, (int) workingTime));
         for (Thread thread : threads) {
             try {
