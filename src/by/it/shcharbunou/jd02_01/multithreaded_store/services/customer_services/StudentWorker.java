@@ -1,6 +1,7 @@
 package by.it.shcharbunou.jd02_01.multithreaded_store.services.customer_services;
 
 import by.it.shcharbunou.jd02_01.multithreaded_store.entities.clients.Customer;
+import by.it.shcharbunou.jd02_01.multithreaded_store.entities.clients.Student;
 import by.it.shcharbunou.jd02_01.multithreaded_store.entities.inventory.ShoppingCart;
 import by.it.shcharbunou.jd02_01.multithreaded_store.entities.products.Good;
 import by.it.shcharbunou.jd02_01.multithreaded_store.exceptions.CustomerException;
@@ -17,7 +18,7 @@ import java.util.Objects;
 
 public class StudentWorker implements Runnable, CustomerAction, ShoppingCartAction {
 
-    private final Customer student;
+    private final Student student;
     private final GoodsProducer goodsProducer = GoodsProducer.getInstance();
     private final Randomizer randomizer = new Randomizer();
     private final Timer timer = new Timer();
@@ -31,7 +32,7 @@ public class StudentWorker implements Runnable, CustomerAction, ShoppingCartActi
         throw new CustomerException("Error: Unknown customer.");
     }
 
-    public StudentWorker(Customer student) {
+    public StudentWorker(Student student) {
         this.student = student;
     }
 
