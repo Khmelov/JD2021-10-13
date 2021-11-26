@@ -5,7 +5,6 @@ import by.it.shcharbunou.jd02_01.multithreaded_store.entities.inventory.Shopping
 import by.it.shcharbunou.jd02_01.multithreaded_store.entities.products.Good;
 import by.it.shcharbunou.jd02_01.multithreaded_store.exceptions.CustomerException;
 import by.it.shcharbunou.jd02_01.multithreaded_store.exceptions.ShoppingCartException;
-import by.it.shcharbunou.jd02_01.multithreaded_store.repositories.PriceListRepo;
 import by.it.shcharbunou.jd02_01.multithreaded_store.services.customer_services.behavior.CustomerAction;
 import by.it.shcharbunou.jd02_01.multithreaded_store.services.inventory_services.behavior.ShoppingCartAction;
 import by.it.shcharbunou.jd02_01.multithreaded_store.services.store_services.GoodsProducer;
@@ -43,7 +42,7 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
             for (int i = 0; i < goodsCount; i++) {
                 Good good = chooseGoodPriceList();
                 int shoppingCartContent = putToCart(good);
-                System.out.printf("The cart of customer[%d] has %d goods...", customer.getId(), shoppingCartContent);
+                System.out.printf("The cart of customer[%d] has %d goods...\n", customer.getId(), shoppingCartContent);
             }
         } else {
             chooseGood();
@@ -97,7 +96,7 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
             throw new ShoppingCartException("Error: Shopping cart is not taken.");
         }
         shoppingCart.add(good);
-        System.out.printf("Customer[%d] put %s to cart...", customer.getId(), good.getName());
+        System.out.printf("Customer[%d] put %s to cart...\n", customer.getId(), good.getName());
         return shoppingCart.getContent().size();
     }
 }
