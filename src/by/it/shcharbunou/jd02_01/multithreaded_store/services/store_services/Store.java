@@ -41,9 +41,6 @@ public class Store implements Runnable {
                 customersCount = secondInOneMinuteCount + 10;
             }
             int threadsCount = customersCount - threads.size();
-            System.out.println(customersCount);
-            System.out.println(threadsCount);
-            System.out.println(threads.size());
             for (int i = 0; i < threadsCount; i++) {
                 int chance;
                 chance = randomizer.randomize(1, 4);
