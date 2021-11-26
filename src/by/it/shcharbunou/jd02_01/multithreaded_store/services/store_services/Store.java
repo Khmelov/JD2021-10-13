@@ -1,8 +1,6 @@
 package by.it.shcharbunou.jd02_01.multithreaded_store.services.store_services;
 
 import by.it.shcharbunou.jd02_01.multithreaded_store.entities.clients.Customer;
-import by.it.shcharbunou.jd02_01.multithreaded_store.entities.clients.Pensioner;
-import by.it.shcharbunou.jd02_01.multithreaded_store.entities.clients.Student;
 import by.it.shcharbunou.jd02_01.multithreaded_store.exceptions.SuspenderException;
 import by.it.shcharbunou.jd02_01.multithreaded_store.services.customer_services.CustomerWorker;
 import by.it.shcharbunou.jd02_01.multithreaded_store.services.customer_services.PensionerWorker;
@@ -35,12 +33,12 @@ public class Store implements Runnable {
                 int chance;
                 chance = randomizer.randomize(1, 4);
                 if (chance == 1) {
-                    Pensioner pensioner = new Pensioner(randomizer.randomize());
+                    Customer pensioner = new Customer(randomizer.randomize());
                     Thread pensionerThread = new Thread(new PensionerWorker(pensioner));
                     threads.add(pensionerThread);
                     pensionerThread.start();
                 } else if (chance == 2 || chance == 3) {
-                    Student student = new Student(randomizer.randomize());
+                    Customer student = new Customer(randomizer.randomize());
                     Thread studentThread = new Thread(new StudentWorker(student));
                     threads.add(studentThread);
                     studentThread.start();

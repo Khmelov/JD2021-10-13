@@ -1,10 +1,12 @@
 package by.it.shcharbunou.jd02_01.multithreaded_store.services.customer_services;
 
-import by.it.shcharbunou.jd02_01.multithreaded_store.entities.clients.Pensioner;
+import by.it.shcharbunou.jd02_01.multithreaded_store.entities.clients.Customer;
 import by.it.shcharbunou.jd02_01.multithreaded_store.entities.inventory.ShoppingCart;
 import by.it.shcharbunou.jd02_01.multithreaded_store.entities.products.Good;
 import by.it.shcharbunou.jd02_01.multithreaded_store.exceptions.CustomerException;
 import by.it.shcharbunou.jd02_01.multithreaded_store.exceptions.ShoppingCartException;
+import by.it.shcharbunou.jd02_01.multithreaded_store.services.customer_services.behavior.CustomerAction;
+import by.it.shcharbunou.jd02_01.multithreaded_store.services.inventory_services.behavior.ShoppingCartAction;
 import by.it.shcharbunou.jd02_01.multithreaded_store.services.store_services.GoodsProducer;
 import by.it.shcharbunou.jd02_01.multithreaded_store.services.store_services.PriceListProducer;
 import by.it.shcharbunou.jd02_01.multithreaded_store.utils.Randomizer;
@@ -13,9 +15,9 @@ import by.it.shcharbunou.jd02_01.multithreaded_store.utils.Timer;
 
 import java.util.Objects;
 
-public class PensionerWorker extends CustomerWorker {
+public class PensionerWorker implements Runnable, CustomerAction, ShoppingCartAction {
 
-    private final Pensioner pensioner;
+    private final Customer pensioner;
     private final GoodsProducer goodsProducer = GoodsProducer.getInstance();
     private final Randomizer randomizer = new Randomizer();
     private final Timer timer = new Timer();
@@ -28,7 +30,7 @@ public class PensionerWorker extends CustomerWorker {
         throw new CustomerException("Error: Unknown customer.");
     }
 
-    public PensionerWorker(Pensioner pensioner) {
+    public PensionerWorker(Customer pensioner) {
         this.pensioner = pensioner;
     }
 
@@ -49,7 +51,6 @@ public class PensionerWorker extends CustomerWorker {
         goOut();
     }
 
-    @Override
     public Good chooseGoodPriceList() {
         suspender.suspend(randomizer.randomize(100, 300) * delay);
         Good good = priceListProducer.randomGood();
