@@ -10,6 +10,8 @@ public class VarCreator {
         this.varRepository = varRepository;
     }
 
+
+
     Var createVar(String stringVar) throws CalcException {
         if (stringVar.matches(Patterns.SCALAR)) {
             return new Scalar(stringVar);

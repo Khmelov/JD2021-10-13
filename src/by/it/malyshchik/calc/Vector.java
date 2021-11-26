@@ -25,7 +25,7 @@ public class Vector extends Var {
 
     public double[] getValues() {
         return Arrays.copyOf(values, values.length);
-    }
+           }
 
     @Override
     public Var add(Var other) throws CalcException {
@@ -48,6 +48,24 @@ public class Vector extends Var {
         }
         return super.add(other);
     }
+    @Override
+    public Var mul(Var other) throws CalcException {
+        if (other instanceof Scalar) {
+            double[] res = Arrays.copyOf(values, values.length);
+            for (int i = 0; i < res.length; i++) {
+                res[i] = res[i] * ((Scalar) other).getValue();
+            }
+            return new Vector(res);
+        } else if (other instanceof Vector) {
+            double[] res = Arrays.copyOf(values, values.length);
+            double sum = 0;
+            for (int i = 0; i < res.length; i++) {
+                sum += res[i] * ((Vector) other).values[i];
+            }
+            return new Scalar(sum);
+        } else
+            return super.mul(other);
+        }
 
     @Override
     public String toString() {

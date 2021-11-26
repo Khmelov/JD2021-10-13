@@ -3,15 +3,13 @@ package by.it.marukovich.jd01_09;
 import java.util.Arrays;
 
 public class Vector extends Var {
+
+
     public static final String SPACES = ",\\s*";
     private final double[] values;
 
     public Vector(double[] values) {
         this.values = Arrays.copyOf(values, values.length);
-    }
-
-    public double[] getValues() {
-        return Arrays.copyOf(values, values.length);
     }
 
     public Vector(Vector vector) {
@@ -27,6 +25,10 @@ public class Vector extends Var {
         for (int i = 0; i < values.length; i++) {
             values[i] = Double.parseDouble(strValues[i]);
         }
+    }
+
+    public double[] getValues() {
+        return Arrays.copyOf(values, values.length);
     }
 
     @Override
