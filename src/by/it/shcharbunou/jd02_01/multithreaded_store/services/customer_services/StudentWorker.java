@@ -38,14 +38,14 @@ public class StudentWorker extends CustomerWorker {
         enteredStore();
         if (randomizer.randomizeBoolean()) {
             takeCart();
-            int goodsCount = randomizer.randomize(0, 2);
+            int goodsCount = randomizer.randomize(MIN_GOODS_COUNT, MAX_GOODS_COUNT);
             for (int i = 0; i < goodsCount; i++) {
                 Good good = chooseGoodPriceList();
                 int shoppingCartContent = putToCart(good);
                 System.out.printf("The cart of customer[%d] (Student) has %d goods...\n", student.getId(), shoppingCartContent);
             }
         } else {
-            if (randomizer.randomize(0, 1) == 1) {
+            if (randomizer.randomize(MIN_GOODS_COUNT, 1) == 1) {
                 chooseGood();
             }
         }
