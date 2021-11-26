@@ -45,8 +45,9 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
                 int shoppingCartContent = putToCart(good);
                 System.out.printf("The cart of customer[%d] has %d goods...", customer.getId(), shoppingCartContent);
             }
+        } else {
+            chooseGood();
         }
-        chooseGood();
         goOut();
     }
 
