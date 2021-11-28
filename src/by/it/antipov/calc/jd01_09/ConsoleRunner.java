@@ -11,7 +11,12 @@ public class ConsoleRunner {
     Scanner scanner = new Scanner(System.in);
         for( ; ;){String expression =scanner.nextLine();
        if (!expression.equals(END)) {
-           Var var = parser.calc(expression);
+           Var var = null;
+           try {
+               var = parser.calcAll(expression);
+           } catch (CalcException e) {
+               printer.print(e);
+           }
            printer.print(var);
        }
        else break;
