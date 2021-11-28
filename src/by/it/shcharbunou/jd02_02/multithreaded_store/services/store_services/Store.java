@@ -25,26 +25,19 @@ public class Store implements Runnable {
         System.out.println("Store is opened!");
         List<Thread> threads = new ArrayList<>();
         List<Thread> cashierThreads = new ArrayList<>();
-        for (int i = 1; i <= 2; i++) {
-            Cashier cashier = new Cashier(i);
-            CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
-            Thread cashierThread = new Thread(cashierWorker);
-            cashierThread.start();
-            cashierThreads.add(cashierThread);
-        }
         int customersCount;
         long startMinute = System.currentTimeMillis();
         long endMinute = System.currentTimeMillis();
         int customersCounter = 1;
-        while (manager.storeIsOpened()){
-            int secondInOneMinuteCount = (int) (endMinute - startMinute)  / 1000;
+        while (manager.storeIsOpened()) {
+            int secondInOneMinuteCount = (int) (endMinute - startMinute) / 1000;
             if (secondInOneMinuteCount < 30) {
                 customersCount = secondInOneMinuteCount + 10;
             } else if (secondInOneMinuteCount < 60) {
                 customersCount = 40 + 30 - secondInOneMinuteCount;
             } else {
                 startMinute = System.currentTimeMillis();
-                secondInOneMinuteCount = (int) (endMinute - startMinute)  / 1000;
+                secondInOneMinuteCount = (int) (endMinute - startMinute) / 1000;
                 customersCount = secondInOneMinuteCount + 10;
             }
             int threadsCount = customersCount - threads.size();
@@ -73,6 +66,52 @@ public class Store implements Runnable {
             }
             endMinute = System.currentTimeMillis();
             threads.removeIf(thread -> thread.getState() == Thread.State.TERMINATED);
+            if (queue.getSize() > 0 && queue.getSize() <= 5) {
+                if (cashierThreads.size() == 0) {
+                    Cashier cashier = new Cashier(cashierThreads.size() + 1);
+                    CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
+                    Thread cashierThread = new Thread(cashierWorker);
+                    cashierThread.start();
+                    cashierThreads.add(cashierThread);
+                }
+            }
+            if (queue.getSize() > 5 && queue.getSize() <= 10) {
+                if (cashierThreads.size() == 1) {
+                    Cashier cashier = new Cashier(cashierThreads.size() + 1);
+                    CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
+                    Thread cashierThread = new Thread(cashierWorker);
+                    cashierThread.start();
+                    cashierThreads.add(cashierThread);
+                }
+            }
+            if (queue.getSize() > 10 && queue.getSize() <= 15) {
+                if (cashierThreads.size() == 2) {
+                    Cashier cashier = new Cashier(cashierThreads.size() + 1);
+                    CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
+                    Thread cashierThread = new Thread(cashierWorker);
+                    cashierThread.start();
+                    cashierThreads.add(cashierThread);
+                }
+            }
+            if (queue.getSize() > 15 && queue.getSize() <= 20) {
+                if (cashierThreads.size() == 3) {
+                    Cashier cashier = new Cashier(cashierThreads.size() + 1);
+                    CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
+                    Thread cashierThread = new Thread(cashierWorker);
+                    cashierThread.start();
+                    cashierThreads.add(cashierThread);
+                }
+            }
+            if (queue.getSize() > 20 && queue.getSize() <= 25) {
+                if (cashierThreads.size() == 4) {
+                    Cashier cashier = new Cashier(cashierThreads.size() + 1);
+                    CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
+                    Thread cashierThread = new Thread(cashierWorker);
+                    cashierThread.start();
+                    cashierThreads.add(cashierThread);
+                }
+            }
+            cashierThreads.removeIf(thread -> thread.getState() == Thread.State.TERMINATED);
         }
         for (Thread thread : threads) {
             try {
@@ -81,9 +120,9 @@ public class Store implements Runnable {
                 throw new StoreException("Error: Thread interrupted.", e);
             }
         }
-        for (Thread cashierThread : cashierThreads) {
+        for (Thread tempCashierThread : cashierThreads) {
             try {
-                cashierThread.join();
+                tempCashierThread.join();
             } catch (InterruptedException e) {
                 throw new StoreException("Error: Thread interrupted.", e);
             }

@@ -1,6 +1,5 @@
 package by.it.shcharbunou.jd02_02.multithreaded_store.services.staff_services;
 
-import by.it.shcharbunou.jd02_01.multithreaded_store.exceptions.CustomerException;
 import by.it.shcharbunou.jd02_02.multithreaded_store.entities.clients.Customer;
 import by.it.shcharbunou.jd02_02.multithreaded_store.entities.clients.Queue;
 import by.it.shcharbunou.jd02_02.multithreaded_store.entities.staff.Cashier;
@@ -30,6 +29,9 @@ public class CashierWorker implements Runnable {
         System.out.printf("-----%s is opened-----\n", cashier.getName());
         while (manager.storeIsOpened() || queue.getSize() != 0) {
             Customer customer = queue.extract();
+            if (customer == null) {
+                break;
+            }
             if (customer != null) {
                 synchronized (customer.getMonitor()) {
                     System.out.printf("Customer[%d] left the queue...\n", customer.getId());
