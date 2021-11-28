@@ -2,34 +2,40 @@ package by.it.shcharbunou.jd02_02.multithreaded_store.services.store_services;
 
 import by.it.shcharbunou.jd02_02.multithreaded_store.entities.clients.Customer;
 import by.it.shcharbunou.jd02_02.multithreaded_store.entities.clients.Pensioner;
+import by.it.shcharbunou.jd02_02.multithreaded_store.entities.clients.Queue;
 import by.it.shcharbunou.jd02_02.multithreaded_store.entities.clients.Student;
-import by.it.shcharbunou.jd02_02.multithreaded_store.exceptions.SuspenderException;
+import by.it.shcharbunou.jd02_02.multithreaded_store.entities.staff.Cashier;
+import by.it.shcharbunou.jd02_02.multithreaded_store.exceptions.StoreException;
 import by.it.shcharbunou.jd02_02.multithreaded_store.services.customer_services.CustomerWorker;
+import by.it.shcharbunou.jd02_02.multithreaded_store.services.staff_services.CashierWorker;
+import by.it.shcharbunou.jd02_02.multithreaded_store.utils.Manager;
 import by.it.shcharbunou.jd02_02.multithreaded_store.utils.Randomizer;
-import by.it.shcharbunou.jd02_02.multithreaded_store.utils.Suspender;
-import by.it.shcharbunou.jd02_02.multithreaded_store.utils.Timer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Store implements Runnable {
 
     private final Randomizer randomizer = new Randomizer();
-    private final Timer timer = new Timer();
-    private final Suspender suspender = new Suspender();
+    private final Queue queue = new Queue();
+    private final Manager manager = new Manager(100);
 
     @Override
     public synchronized void run() {
         System.out.println("Store is opened!");
         List<Thread> threads = new ArrayList<>();
-        long startTime = System.currentTimeMillis();
-        long workingTime = TimeUnit.MINUTES.toMillis(2);
-        long endTime;
+        List<Thread> cashierThreads = new ArrayList<>();
+        for (int i = 1; i < 2; i++) {
+            Cashier cashier = new Cashier(i);
+            CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
+            Thread cashierThread = new Thread(cashierWorker);
+            cashierThread.start();
+            cashierThreads.add(cashierThread);
+        }
         int customersCount;
         long startMinute = System.currentTimeMillis();
         long endMinute = System.currentTimeMillis();
-        do {
+        while (manager.storeIsOpened()){
             int secondInOneMinuteCount = (int) (endMinute - startMinute)  / 1000;
             if (secondInOneMinuteCount < 30) {
                 customersCount = secondInOneMinuteCount + 10;
@@ -46,31 +52,36 @@ public class Store implements Runnable {
                 chance = randomizer.randomize(1, 4);
                 if (chance == 1) {
                     Customer pensioner = new Pensioner(randomizer.randomize());
-                    Thread pensionerThread = new Thread(new CustomerWorker(pensioner));
+                    Thread pensionerThread = new Thread(new CustomerWorker(pensioner, manager, queue));
                     threads.add(pensionerThread);
                     pensionerThread.start();
                 } else if (chance == 2 || chance == 3) {
                     Customer student = new Student(randomizer.randomize());
-                    Thread studentThread = new Thread(new CustomerWorker(student));
+                    Thread studentThread = new Thread(new CustomerWorker(student, manager, queue));
                     threads.add(studentThread);
                     studentThread.start();
                 } else {
                     Customer customer = new Customer(randomizer.randomize());
-                    Thread customerThread = new Thread(new CustomerWorker(customer));
+                    Thread customerThread = new Thread(new CustomerWorker(customer, manager, queue));
                     threads.add(customerThread);
                     customerThread.start();
                 }
             }
-            endTime = System.currentTimeMillis();
             endMinute = System.currentTimeMillis();
-            suspender.suspend(1000);
             threads.removeIf(thread -> thread.getState() == Thread.State.TERMINATED);
-        } while (timer.isRunning(startTime, endTime, (int) workingTime));
+        }
         for (Thread thread : threads) {
             try {
                 thread.join();
             } catch (InterruptedException e) {
-                throw new SuspenderException("Error: Thread interrupted.", e);
+                throw new StoreException("Error: Thread interrupted.", e);
+            }
+        }
+        for (Thread cashierThread : cashierThreads) {
+            try {
+                cashierThread.join();
+            } catch (InterruptedException e) {
+                throw new StoreException("Error: Thread interrupted.", e);
             }
         }
         System.out.println("Store is closed!");

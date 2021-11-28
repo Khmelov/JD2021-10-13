@@ -2,6 +2,7 @@ package by.it.shcharbunou.jd02_02.multithreaded_store.entities.clients;
 
 import by.it.shcharbunou.jd02_02.multithreaded_store.exceptions.CustomerException;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Customer {
@@ -10,6 +11,28 @@ public class Customer {
     private final int selectionRateFactor = 1;
     private final int minGoodsCount = 1;
     private final int maxGoodsCount = 5;
+    private BigDecimal profit;
+    private boolean isWaiting;
+
+    public boolean isWaiting() {
+        return isWaiting;
+    }
+
+    public void setWaiting(boolean waiting) {
+        isWaiting = waiting;
+    }
+
+    public BigDecimal getProfit() {
+        return profit;
+    }
+
+    public void setProfit(BigDecimal profit) {
+        this.profit = profit;
+    }
+
+    public Object getMonitor() {
+        return this;
+    }
 
     public Customer() {
         throw new CustomerException("Error: Unknown customer.");
