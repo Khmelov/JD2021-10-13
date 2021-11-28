@@ -42,7 +42,8 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
             for (int i = 0; i < goodsCount; i++) {
                 Good good = chooseGoodPriceList();
                 int shoppingCartContent = putToCart(good);
-                System.out.printf("The cart of customer[%d] has %d goods...\n", customer.getId(), shoppingCartContent);
+                System.out.printf("The cart of customer[%d] (%s) has %d goods...\n", customer.getId(),
+                        customer.getClass().getSimpleName(), shoppingCartContent);
             }
         } else {
             chooseGood();
@@ -53,13 +54,15 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
     public Good chooseGoodPriceList() {
         suspender.suspend(randomizer.randomize(100, 300));
         Good good = priceListProducer.randomGood();
-        System.out.printf("Customer[%d] has chosen %s...\n", customer.getId(), good.getName());
+        System.out.printf("Customer[%d] (%s) has chosen %s...\n", customer.getId(), customer.getClass().getSimpleName(),
+                good.getName());
         return good;
     }
 
     @Override
     public void enteredStore() {
-        System.out.printf("Customer[%d] entered the store...\n", customer.getId());
+        System.out.printf("Customer[%d] (%s) entered the store...\n", customer.getId(),
+                customer.getClass().getSimpleName());
     }
 
     @Override
@@ -73,20 +76,23 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
             good = goodsProducer.randomGood();
             currentTime = System.currentTimeMillis();
         } while (timer.isRunning(startTime, currentTime, choosingTime));
-        System.out.printf("Customer[%d] has chosen %s...\n", customer.getId(), good.getName());
+        System.out.printf("Customer[%d] (%s) has chosen %s...\n", customer.getId(),
+                customer.getClass().getSimpleName(), good.getName());
         return good;
     }
 
     @Override
     public void goOut() {
-        System.out.printf("Customer[%d] has left the shop...\n", customer.getId());
+        System.out.printf("Customer[%d] (%s) has left the shop...\n", customer.getId(),
+                customer.getClass().getSimpleName());
     }
 
     @Override
     public void takeCart() {
         suspender.suspend(randomizer.randomize(100, 300));
         shoppingCart = new ShoppingCart();
-        System.out.printf("Customer[%d] has taken the cart...\n", customer.getId());
+        System.out.printf("Customer[%d] (%s) has taken the cart...\n", customer.getId(),
+                customer.getClass().getSimpleName());
     }
 
     @Override
@@ -96,7 +102,8 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
             throw new ShoppingCartException("Error: Shopping cart is not taken.");
         }
         shoppingCart.add(good);
-        System.out.printf("Customer[%d] put %s to cart...\n", customer.getId(), good.getName());
+        System.out.printf("Customer[%d] (%s) put %s to cart...\n", customer.getId(),
+                customer.getClass().getSimpleName(), good.getName());
         return shoppingCart.getContent().size();
     }
 }

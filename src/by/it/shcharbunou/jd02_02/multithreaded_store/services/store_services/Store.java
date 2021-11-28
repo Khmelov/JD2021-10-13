@@ -5,8 +5,6 @@ import by.it.shcharbunou.jd02_02.multithreaded_store.entities.clients.Pensioner;
 import by.it.shcharbunou.jd02_02.multithreaded_store.entities.clients.Student;
 import by.it.shcharbunou.jd02_02.multithreaded_store.exceptions.SuspenderException;
 import by.it.shcharbunou.jd02_02.multithreaded_store.services.customer_services.CustomerWorker;
-import by.it.shcharbunou.jd02_02.multithreaded_store.services.customer_services.PensionerWorker;
-import by.it.shcharbunou.jd02_02.multithreaded_store.services.customer_services.StudentWorker;
 import by.it.shcharbunou.jd02_02.multithreaded_store.utils.Randomizer;
 import by.it.shcharbunou.jd02_02.multithreaded_store.utils.Suspender;
 import by.it.shcharbunou.jd02_02.multithreaded_store.utils.Timer;
@@ -47,13 +45,13 @@ public class Store implements Runnable {
                 int chance;
                 chance = randomizer.randomize(1, 4);
                 if (chance == 1) {
-                    Pensioner pensioner = new Pensioner(randomizer.randomize());
-                    Thread pensionerThread = new Thread(new PensionerWorker(pensioner));
+                    Customer pensioner = new Pensioner(randomizer.randomize());
+                    Thread pensionerThread = new Thread(new CustomerWorker(pensioner));
                     threads.add(pensionerThread);
                     pensionerThread.start();
                 } else if (chance == 2 || chance == 3) {
-                    Student student = new Student(randomizer.randomize());
-                    Thread studentThread = new Thread(new StudentWorker(student));
+                    Customer student = new Student(randomizer.randomize());
+                    Thread studentThread = new Thread(new CustomerWorker(student));
                     threads.add(studentThread);
                     studentThread.start();
                 } else {
