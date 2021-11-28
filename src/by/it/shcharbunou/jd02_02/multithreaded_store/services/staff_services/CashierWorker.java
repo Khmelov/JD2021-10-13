@@ -28,7 +28,7 @@ public class CashierWorker implements Runnable {
     @Override
     public void run() {
         System.out.printf("-----%s is opened-----\n", cashier.getName());
-        while (!manager.storeIsClosed()) {
+        while (manager.storeIsOpened()) {
             Customer customer = queue.extract();
             if (customer != null) {
                 synchronized (customer.getMonitor()) {
@@ -43,8 +43,6 @@ public class CashierWorker implements Runnable {
                     System.out.printf("%s stopped service customer[%d] (%s)...\n", cashier.getName(), customer.getId(),
                             customer);
                 }
-            } else {
-                throw new CustomerException("Error: Unknown customer.");
             }
         }
         System.out.printf("-----%s is closed-----\nPROFIT: %s\n", cashier.getName(), cashier.getProfit().toString());

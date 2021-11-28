@@ -4,15 +4,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Manager {
 
-    private final AtomicInteger countIn;
+    private final AtomicInteger countIn = new AtomicInteger(0);
 
-    private final AtomicInteger countOut;
+    private final AtomicInteger countOut = new AtomicInteger(0);
 
     private final int plan;
 
     public Manager(int plan) {
-        countIn = new AtomicInteger(0);
-        countOut = new AtomicInteger(0);
         this.plan = plan;
     }
 
@@ -25,10 +23,6 @@ public class Manager {
     }
 
     public boolean storeIsOpened() {
-        return plan != countIn.get();
-    }
-
-    public boolean storeIsClosed() {
-        return plan == countOut.get();
+        return plan > countIn.get();
     }
 }

@@ -25,7 +25,7 @@ public class Store implements Runnable {
         System.out.println("Store is opened!");
         List<Thread> threads = new ArrayList<>();
         List<Thread> cashierThreads = new ArrayList<>();
-        for (int i = 1; i < 2; i++) {
+        for (int i = 1; i <= 2; i++) {
             Cashier cashier = new Cashier(i);
             CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
             Thread cashierThread = new Thread(cashierWorker);
