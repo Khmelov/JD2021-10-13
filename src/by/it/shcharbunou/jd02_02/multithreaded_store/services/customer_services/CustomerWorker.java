@@ -38,7 +38,7 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
         enteredStore();
         if (randomizer.randomizeBoolean()) {
             takeCart();
-            int goodsCount = randomizer.randomize(2, 5);
+            int goodsCount = randomizer.randomize(2, customer.getMaxGoodsCount());
             for (int i = 0; i < goodsCount; i++) {
                 Good good = chooseGoodPriceList();
                 int shoppingCartContent = putToCart(good);
@@ -46,7 +46,9 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
                         customer.getClass().getSimpleName(), shoppingCartContent);
             }
         } else {
-            chooseGood();
+            if (randomizer.randomize(customer.getMinGoodsCount(), customer.getMaxGoodsCount()) != 0) {
+                chooseGood();
+            }
         }
         goOut();
     }
