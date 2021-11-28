@@ -1,15 +1,15 @@
 package by.it.marukovich.jd01_09;
 
-
 public class Scalar extends Var {
+
     private final double value;
 
     public Scalar(double value) {
         this.value = value;
     }
 
-    public Scalar(Scalar otherScalar) {
-        this.value = otherScalar.value;
+    public Scalar(Scalar scalar) {
+        this.value = scalar.value;
     }
 
     public Scalar(String stringValue) {
@@ -25,7 +25,6 @@ public class Scalar extends Var {
         if (other instanceof Scalar scalar) {
             double result = this.value + scalar.value;
             return new Scalar(result);
-
         }
         return other.add(this);
     }
@@ -35,7 +34,6 @@ public class Scalar extends Var {
         if (other instanceof Scalar scalar) {
             double result = this.value - scalar.value;
             return new Scalar(result);
-
         }
         return other.sub(this).mul(new Scalar(-1));
     }

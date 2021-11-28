@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class ConsoleRunner {
     public static void main(String[] args) {
         Printer printer = new Printer();
-        Parser parser = new Parser();
+        VarRepository varRepository=new VarRepository();
+        Parser parser = new Parser(varRepository);
         Scanner scanner = new Scanner(System.in);
         for (; ; ) {
             String expression = scanner.nextLine();
@@ -20,6 +21,7 @@ public class ConsoleRunner {
                 }
             }
         }
+        System.out.println("Calculator is closed");
     }
 }
 
