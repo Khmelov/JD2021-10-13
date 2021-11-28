@@ -17,6 +17,10 @@ public class Queue {
         }
     }
 
+    public int getSize() {
+        return queue.size();
+    }
+
     public Customer extract() {
         return queue.pollFirst();
     }

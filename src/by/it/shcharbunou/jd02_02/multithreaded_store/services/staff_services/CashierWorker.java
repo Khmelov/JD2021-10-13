@@ -28,10 +28,11 @@ public class CashierWorker implements Runnable {
     @Override
     public void run() {
         System.out.printf("-----%s is opened-----\n", cashier.getName());
-        while (manager.storeIsOpened()) {
+        while (manager.storeIsOpened() && queue.getSize() != 0) {
             Customer customer = queue.extract();
             if (customer != null) {
                 synchronized (customer.getMonitor()) {
+                    System.out.printf("Customer[%d] left the queue...\n", customer.getId());
                     System.out.printf("%s serves customer[%d] (%s) now...\n", cashier.getName(), customer.getId(),
                             customer);
                     cashier.setProfit(cashier.getProfit().add(customer.getProfit()));

@@ -35,6 +35,7 @@ public class Store implements Runnable {
         int customersCount;
         long startMinute = System.currentTimeMillis();
         long endMinute = System.currentTimeMillis();
+        int customersCounter = 1;
         while (manager.storeIsOpened()){
             int secondInOneMinuteCount = (int) (endMinute - startMinute)  / 1000;
             if (secondInOneMinuteCount < 30) {
@@ -51,17 +52,20 @@ public class Store implements Runnable {
                 int chance;
                 chance = randomizer.randomize(1, 4);
                 if (chance == 1) {
-                    Customer pensioner = new Pensioner(randomizer.randomize());
+                    Customer pensioner = new Pensioner(customersCounter);
+                    customersCounter++;
                     Thread pensionerThread = new Thread(new CustomerWorker(pensioner, manager, queue));
                     threads.add(pensionerThread);
                     pensionerThread.start();
                 } else if (chance == 2 || chance == 3) {
-                    Customer student = new Student(randomizer.randomize());
+                    Customer student = new Student(customersCounter);
+                    customersCounter++;
                     Thread studentThread = new Thread(new CustomerWorker(student, manager, queue));
                     threads.add(studentThread);
                     studentThread.start();
                 } else {
-                    Customer customer = new Customer(randomizer.randomize());
+                    Customer customer = new Customer(customersCounter);
+                    customersCounter++;
                     Thread customerThread = new Thread(new CustomerWorker(customer, manager, queue));
                     threads.add(customerThread);
                     customerThread.start();

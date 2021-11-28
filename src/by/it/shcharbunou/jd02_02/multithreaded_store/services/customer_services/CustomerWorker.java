@@ -141,7 +141,6 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
                     throw new StoreException("Error: Interrupted.", e);
                 }
             }
-            System.out.printf("Customer[%d] left the queue...\n", customer.getId());
         }
     }
 }
