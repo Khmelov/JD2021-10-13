@@ -52,7 +52,8 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
     }
 
     public Good chooseGoodPriceList() {
-        suspender.suspend(randomizer.randomize(100, 300));
+        suspender.suspend(randomizer.randomize(100 * customer.getSelectionRateFactor(),
+                300 * customer.getSelectionRateFactor()));
         Good good = priceListProducer.randomGood();
         System.out.printf("Customer[%d] (%s) has chosen %s...\n", customer.getId(), customer.getClass().getSimpleName(),
                 good.getName());
@@ -67,7 +68,8 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
 
     @Override
     public Good chooseGood() {
-        int choosingTime = randomizer.randomize(500, 2000);
+        int choosingTime = randomizer.randomize(500 * customer.getSelectionRateFactor(),
+                2000 * customer.getSelectionRateFactor());
         long startTime;
         long currentTime;
         Good good;
@@ -89,7 +91,8 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
 
     @Override
     public void takeCart() {
-        suspender.suspend(randomizer.randomize(100, 300));
+        suspender.suspend(randomizer.randomize(100 * customer.getSelectionRateFactor(),
+                300 * customer.getSelectionRateFactor()));
         shoppingCart = new ShoppingCart();
         System.out.printf("Customer[%d] (%s) has taken the cart...\n", customer.getId(),
                 customer.getClass().getSimpleName());
@@ -97,7 +100,8 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
 
     @Override
     public int putToCart(Good good) {
-        suspender.suspend(randomizer.randomize(100, 300));
+        suspender.suspend(randomizer.randomize(100 * customer.getSelectionRateFactor(),
+                300 * customer.getSelectionRateFactor()));
         if (Objects.isNull(shoppingCart)) {
             throw new ShoppingCartException("Error: Shopping cart is not taken.");
         }
