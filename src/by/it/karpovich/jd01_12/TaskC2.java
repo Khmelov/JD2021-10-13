@@ -39,20 +39,25 @@ public class TaskC2 {
     }
 
 
-    private static Set<Float> getUnion(Collection<Set<Float>> sets) {
-        Set<Float> result = new HashSet<>();
-        for (Set<Float> set: sets) {
-            result.addAll(set);
+    private static  Set<Number> getUnion(Set<? extends Number>... setsArray) {
+        Set<Number> result = new HashSet<>();
+        for (Set<? extends Number> set: setsArray) {
+            result.addAll(listToFloat(set));
+        }
+        return result;
+    }
+
+    private static  Set<Number> getCross(Set<? extends Number>... setsArray) {
+        Set<Number> result = new HashSet<>();
+
+        result.addAll(listToFloat(setsArray[0]));
+        for (int i = 1; i < setsArray.length; i++) {
+            result.retainAll(listToFloat(setsArray[i]));
         }
         return result;
     }
 
 
-    private static Set<Float> getCross(Set<Set<Float>> sets) {
-        HashSet<Float> result = new HashSet<>();
-        for (Set<Float> set: sets) {
-            result.retainAll(set);
-        }
-        return result;
-    }
+
+
 }
