@@ -38,9 +38,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                '}';
+        return "Customer";
     }
 
     public int getSelectionRateFactor() {

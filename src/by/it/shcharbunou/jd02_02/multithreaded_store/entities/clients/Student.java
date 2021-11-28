@@ -18,4 +18,9 @@ public class Student extends Customer {
     public int getMaxGoodsCount() {
         return maxGoodsCount;
     }
+
+    @Override
+    public String toString() {
+        return "Student";
+    }
 }

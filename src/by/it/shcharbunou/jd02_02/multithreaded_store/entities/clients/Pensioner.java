@@ -12,4 +12,9 @@ public class Pensioner extends Customer {
     public int getSelectionRateFactor() {
         return selectionRateFactor;
     }
+
+    @Override
+    public String toString() {
+        return "Pensioner";
+    }
 }
