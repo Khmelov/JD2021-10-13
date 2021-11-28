@@ -104,7 +104,7 @@ public class Vector extends Var {
         for (double arr : value) {
             out.append(devider);
             out.append(arr);
-            devider = ", ";
+            devider = ",";
 
 
         }

@@ -15,13 +15,14 @@ public class Parser implements Patterns {
     );
 
 //Parser parser= new Parser();
+VarRepository saver = new VarRepository();
 
     Var calcAll(String expression) throws CalcException {
-        Pattern pattern1 = Pattern.compile("(?<=[a-zA-Z0-9])[-/+=*]");
+        Pattern pattern1 = Pattern.compile("(?<=[a-zA-Z0-9}])[-/+=*]");
         Matcher matcher1 = pattern1.matcher(expression);
         List<String> operations = new ArrayList<>();
         while (matcher1.find()) {operations.add(matcher1.group());}
-        List<String> scalars = new ArrayList<>(List.of(expression.split("(?<=[a-zA-Z0-9])[-/+=*]")));
+        List<String> vars = new ArrayList<>(List.of(expression.split("(?<=[a-zA-Z0-9}])[-/+=*]")));
         Var result = null;
             for (int i = 2; i >= 0; i--) {
                 Iterator <String> iterator = operations.iterator();
@@ -29,31 +30,32 @@ public class Parser implements Patterns {
                 while (iterator.hasNext()){
                     String currentOper=iterator.next();
                     if (priorities.get(currentOper) == i){
-                        Var newValue = Parser.calc(scalars.get(k) + currentOper + scalars.get(k + 1));
-                        scalars.remove(k);scalars.remove(k);Scalar scalar = new Scalar((Scalar) newValue);
-                        String finalValue =scalar.toString();
+                        Var newValue = calc(vars.get(k) + currentOper + vars.get(k + 1));
+                        vars.remove(k);vars.remove(k);
+                        String finalValue = getStringOfVar(newValue);
                         result = VarCreator.createVar(finalValue);
-                        scalars.add(k,finalValue);
-
+                        vars.add(k,finalValue);
                     }else{ if (priorities.get(currentOper) <= i)k++;}
                 }
-               /* for (int j=0;j<operations.size();j++) { //вставь сюда итерратор и через него удали
-                    if (priorities.get(operations.get(j)) == i) {
-                        Var newValue = Parser.calc(scalars.get(j) + operations.get(j) + scalars.get(j + 1));
-scalars.remove(j);scalars.remove(j);operations.remove(j);Scalar scalar = new Scalar((Scalar) newValue);
-                        String finalValue =scalar.toString();
-                        result = VarCreator.createVar(finalValue);
-scalars.add(j,finalValue);
-                    }
-                }*/
             }
         return result;
     }
 
+    private String getStringOfVar(Var newValue) {
+        String finalValue =null;
+        if (newValue instanceof Scalar){Scalar var = new Scalar((Scalar) newValue);
+             finalValue =var.toString();}
+        if (newValue instanceof Vector){Vector var = new Vector((Vector) newValue);
+            finalValue =var.toString();}
+        if (newValue instanceof Matrix){Matrix var = new Matrix((Matrix) newValue);
+            finalValue =var.toString();}
+        return finalValue;
+    }
 
-    static Var calc(String expression) throws CalcException {
+
+    Var calc(String expression) throws CalcException {
         expression = expression.trim().replaceAll(" ", "");
-        String[] stringVars = expression.split("(?<=[a-zA-Z0-9])[-/+=*]");
+        String[] stringVars = expression.split("(?<=[a-zA-Z0-9}])[-/+=*]");
         Var left = VarCreator.createVar(stringVars[0]);
         Var right = VarCreator.createVar(stringVars[1]);
 
@@ -66,7 +68,7 @@ scalars.add(j,finalValue);
             return right;
         }
 
-        Pattern pattern = Pattern.compile("(?<=[a-zA-Z0-9])[-/+=*]");
+        Pattern pattern = Pattern.compile("(?<=[a-zA-Z0-9}])[-/+=*]");
         Matcher matcher = pattern.matcher(expression);
         if (matcher.find()) {
             switch (matcher.group()) {
@@ -79,11 +81,25 @@ scalars.add(j,finalValue);
                 case "/":
                     return left.div(right);
                 case "=":
-                    VarRepository saver = new VarRepository();
+
                     saver.saveVar(stringVars[0], right);
                     return right;
             }
         }
         return null;
     }
+
+  String calcInBrackets (String expression) throws CalcException {
+      //String newExpression= expression;
+Pattern pattern = Pattern.compile("(\\(([}{,0-9a-zA-Z-+*/.]+)\\))");
+Matcher matcher = pattern.matcher(expression);
+if (matcher.find()){ String firstGroup = matcher.group();
+    String newGroup= firstGroup.replace("(","").replace(")","");
+Var newVar = calcAll(newGroup);
+expression=expression.replace(firstGroup,getStringOfVar(newVar));
+ expression=calcInBrackets(expression) ;}
+      return expression;
+  }
+
+
 }

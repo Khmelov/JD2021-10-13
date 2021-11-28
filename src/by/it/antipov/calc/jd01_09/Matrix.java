@@ -111,19 +111,19 @@ public class Matrix extends Var {
             j++;
         }
         j = j - 1;
-        System.out.println(j);
+        //System.out.println(j);
         while (matcher1.find()) {
             i++;
         }
         int k = i / j;
-        System.out.println(k);
+       // System.out.println(k);
         double[][] resMatrix = new double[j][k];
         int l = k - 1;
         k = 0;
         j = 0;
         while (matcher3.find()) {
             resMatrix[j][k] = Double.parseDouble(matcher3.group());
-            System.out.println(j + " " + k + "   " + resMatrix[j][k]);
+          //  System.out.println(j + " " + k + "   " + resMatrix[j][k]);
             if (k == l) {
                 j++;
                 k = 0;
@@ -143,13 +143,13 @@ public class Matrix extends Var {
         String devider1 = "";
         for (double[] arr : value) {
             out.append(devider1);
-            devider1 = ", ";
+            devider1 = ",";
             out.append("{");
             String devider = "";
             for (double arr1 : value[i]) {
                 out.append(devider);
                 out.append(arr1);
-                devider = ", ";
+                devider = ",";
 
 
             }

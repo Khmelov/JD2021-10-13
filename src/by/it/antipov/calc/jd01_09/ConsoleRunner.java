@@ -13,6 +13,7 @@ public class ConsoleRunner {
        if (!expression.equals(END)) {
            Var var = null;
            try {
+              expression=parser.calcInBrackets(expression);
                var = parser.calcAll(expression);
            } catch (CalcException e) {
                printer.print(e);
