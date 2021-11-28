@@ -77,39 +77,49 @@ public class Store implements Runnable {
                     }
                 }
                 if (queue.getSize() > 5 && queue.getSize() <= 10) {
-                    if (cashierThreads.size() == 1) {
-                        Cashier cashier = new Cashier(cashierThreads.size() + 1);
-                        CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
-                        Thread cashierThread = new Thread(cashierWorker);
-                        cashierThread.start();
-                        cashierThreads.add(cashierThread);
+                    if (cashierThreads.size() == 1 || cashierThreads.size() == 0) {
+                        for (int i = 0; i < 2 - cashierThreads.size(); i++) {
+                            Cashier cashier = new Cashier(cashierThreads.size() + 1);
+                            CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
+                            Thread cashierThread = new Thread(cashierWorker);
+                            cashierThread.start();
+                            cashierThreads.add(cashierThread);
+                        }
                     }
                 }
                 if (queue.getSize() > 10 && queue.getSize() <= 15) {
-                    if (cashierThreads.size() == 2) {
-                        Cashier cashier = new Cashier(cashierThreads.size() + 1);
-                        CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
-                        Thread cashierThread = new Thread(cashierWorker);
-                        cashierThread.start();
-                        cashierThreads.add(cashierThread);
+                    if (cashierThreads.size() == 2 || cashierThreads.size() == 1 || cashierThreads.size() == 0) {
+                        for (int i = 0; i < 3 - cashierThreads.size(); i++) {
+                            Cashier cashier = new Cashier(cashierThreads.size() + 1);
+                            CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
+                            Thread cashierThread = new Thread(cashierWorker);
+                            cashierThread.start();
+                            cashierThreads.add(cashierThread);
+                        }
                     }
                 }
                 if (queue.getSize() > 15 && queue.getSize() <= 20) {
-                    if (cashierThreads.size() == 3) {
-                        Cashier cashier = new Cashier(cashierThreads.size() + 1);
-                        CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
-                        Thread cashierThread = new Thread(cashierWorker);
-                        cashierThread.start();
-                        cashierThreads.add(cashierThread);
+                    if (cashierThreads.size() == 3 || cashierThreads.size() == 2
+                            || cashierThreads.size() == 1 || cashierThreads.size() == 0) {
+                        for (int i = 0; i < 4 - cashierThreads.size(); i++) {
+                            Cashier cashier = new Cashier(cashierThreads.size() + 1);
+                            CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
+                            Thread cashierThread = new Thread(cashierWorker);
+                            cashierThread.start();
+                            cashierThreads.add(cashierThread);
+                        }
                     }
                 }
                 if (queue.getSize() > 20 && queue.getSize() <= 25) {
-                    if (cashierThreads.size() == 4) {
-                        Cashier cashier = new Cashier(cashierThreads.size() + 1);
-                        CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
-                        Thread cashierThread = new Thread(cashierWorker);
-                        cashierThread.start();
-                        cashierThreads.add(cashierThread);
+                    if (cashierThreads.size() == 4 || cashierThreads.size() == 3 || cashierThreads.size() == 2
+                            || cashierThreads.size() == 1 || cashierThreads.size() == 0) {
+                        for (int i = 0; i < 5 - cashierThreads.size(); i++) {
+                            Cashier cashier = new Cashier(cashierThreads.size() + 1);
+                            CashierWorker cashierWorker = new CashierWorker(manager, queue, cashier);
+                            Thread cashierThread = new Thread(cashierWorker);
+                            cashierThread.start();
+                            cashierThreads.add(cashierThread);
+                        }
                     }
                 }
             }
