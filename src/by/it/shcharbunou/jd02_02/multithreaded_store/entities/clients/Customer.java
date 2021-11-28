@@ -7,6 +7,9 @@ import java.util.Objects;
 public class Customer {
 
     private final int id;
+    private static final int selectionRateFactor = 1;
+    private static final int minGoodsCount = 1;
+    private static final int maxGoodsCount = 5;
 
     public Customer() {
         throw new CustomerException("Error: Unknown customer.");
