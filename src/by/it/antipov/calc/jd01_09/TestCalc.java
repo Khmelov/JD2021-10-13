@@ -36,7 +36,7 @@ public  void TaskC() throws CalcException{
 
     Assert.assertEquals("{{27.55,29.55},{31.55,33.55}}",matrix.toString());
     Assert.assertEquals("{{32.0,50.0},{48.0,74.0}}",matrix1.toString());
-
+//
 }
 
 
