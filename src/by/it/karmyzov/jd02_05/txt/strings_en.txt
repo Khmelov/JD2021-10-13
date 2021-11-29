@@ -1,5 +1,5 @@
-user.firstname=Alexander
-user.lastname=Khmelev
+user.firstname=Sergei
+user.lastname=Karmyzov
 message.question=How are you?
 message.welcome=Hi!
 message.about=My name:
