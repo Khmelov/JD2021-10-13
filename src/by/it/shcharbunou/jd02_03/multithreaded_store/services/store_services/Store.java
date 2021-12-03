@@ -1,15 +1,15 @@
-package by.it.shcharbunou.jd02_02.multithreaded_store.services.store_services;
+package by.it.shcharbunou.jd02_03.multithreaded_store.services.store_services;
 
-import by.it.shcharbunou.jd02_02.multithreaded_store.entities.clients.Customer;
-import by.it.shcharbunou.jd02_02.multithreaded_store.entities.clients.Pensioner;
-import by.it.shcharbunou.jd02_02.multithreaded_store.entities.clients.Queue;
-import by.it.shcharbunou.jd02_02.multithreaded_store.entities.clients.Student;
-import by.it.shcharbunou.jd02_02.multithreaded_store.entities.staff.Cashier;
-import by.it.shcharbunou.jd02_02.multithreaded_store.exceptions.StoreException;
-import by.it.shcharbunou.jd02_02.multithreaded_store.services.customer_services.CustomerWorker;
-import by.it.shcharbunou.jd02_02.multithreaded_store.services.staff_services.CashierWorker;
-import by.it.shcharbunou.jd02_02.multithreaded_store.utils.Manager;
-import by.it.shcharbunou.jd02_02.multithreaded_store.utils.Randomizer;
+import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.Customer;
+import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.Pensioner;
+import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.Queue;
+import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.Student;
+import by.it.shcharbunou.jd02_03.multithreaded_store.entities.staff.Cashier;
+import by.it.shcharbunou.jd02_03.multithreaded_store.exceptions.StoreException;
+import by.it.shcharbunou.jd02_03.multithreaded_store.services.customer_services.CustomerWorker;
+import by.it.shcharbunou.jd02_03.multithreaded_store.services.staff_services.CashierWorker;
+import by.it.shcharbunou.jd02_03.multithreaded_store.utils.Manager;
+import by.it.shcharbunou.jd02_03.multithreaded_store.utils.Randomizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,7 +125,7 @@ public class Store implements Runnable {
             }
             cashierThreads.removeIf(thread -> thread.getState() == Thread.State.TERMINATED);
         }
-
+        
         for (Thread thread : threads) {
             try {
                 thread.join();
