@@ -2,17 +2,17 @@ package by.it.karpovich.jd01_14;
 
 import java.io.*;
 import java.util.Locale;
+import static by.it.karpovich.jd01_14.Patterns.*;
+
 
 public class TaskA {
 
-    public static final String BIN_FILE_NAME = "dataTaskA.bin";
-    public static final String TXT_FILE_NAME = "resultTaskA.txt";
 
     // Создаем функцию, которая будет определять текущее расположение в которой находится наш Класс:
     private static String directory(Class<?> cl) {
         Locale.setDefault(Locale.US);
-        String getDirection = System.getProperty("user.dir") + File.separator + "src" + File.separator;
-        String classDirection = cl.getName().replace(cl.getSimpleName(), "").replace(".", File.separator);
+        String getDirection = System.getProperty(USER_DIR) + File.separator + SRC + File.separator;
+        String classDirection = cl.getName().replace(cl.getSimpleName(), EMPTY_STRING).replace(DOT, File.separator);
         return getDirection + classDirection;
         //user.dir - указывает на наш "каталог проекта"
         /*          Чтобы не писать разделитель \\ - Windows, // - Линукс, мы используем готовую штуку separator.    */
@@ -21,7 +21,6 @@ public class TaskA {
 
 
     public static void main(String[] args) {
-        //System.out.println(directory(TaskA.class));
 
         // Выбираем каталог в который будем записывать файлы:
         DataOutputStream dos = null;
@@ -58,13 +57,13 @@ public class TaskA {
 // Читаем всех по очереди:
             while (inputStream.available() > 0) { //Пока есть что-то в файле
                 int i = inputStream.readInt(); // То мы читаем каждое число
-                System.out.print(i + " "); // и печатаем его на экран
-                out2.print(i + " ");
+                System.out.print(i + INDENTED_STRING); // и печатаем его на экран
+                out2.print(i + INDENTED_STRING);
                 sum = sum + i;
                 count++;
             }
-            System.out.println("\navg=" + sum / count);
-            out2.print("\navg=" + sum / count);
+            System.out.println(AVG + sum / count);
+            out2.print(AVG + sum / count);
         } catch (IOException e) {
             e.printStackTrace();
         }

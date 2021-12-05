@@ -5,12 +5,16 @@ import by.it.oliakhevich.jd02_01.model.Customer;
 import by.it.oliakhevich.jd02_01.helperstore.Timeout;
 import by.it.oliakhevich.jd02_01.service.StoreException;
 import by.it.oliakhevich.jd02_01.service.CustomerWorker;
+import by.it.oliakhevich.jd02_03.model.Manager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Store extends Thread {
+    public Store(Manager manager) {
+    }
+
     @Override
     public synchronized void start() {
         System.out.println("Store open");

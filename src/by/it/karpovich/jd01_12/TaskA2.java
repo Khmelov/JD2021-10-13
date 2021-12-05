@@ -19,7 +19,7 @@ public class TaskA2 {
     }
 
     private static Set<Integer> getUnion(Set<Integer> left, Set<Integer> right) {
-        HashSet<Integer> result = new HashSet<>(left);
+        Set<Integer> result = new HashSet<>(left);
         result.addAll(right);
         return result;
     }
