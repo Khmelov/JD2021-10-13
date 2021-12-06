@@ -1,4 +1,4 @@
-package by.it.antipov.calc.jd01_09;
+package by.it.antipov.calc;
 
 import java.util.Arrays;
 
@@ -8,7 +8,7 @@ public class Vector extends Var {
         return value;
     }
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[] result = Arrays.copyOf(value, value.length);
             for (int i = 0; i < result.length; i++) {
@@ -27,7 +27,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[] result = Arrays.copyOf(value, value.length);
             for (int i = 0; i < result.length; i++) {
@@ -46,7 +46,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[] result = Arrays.copyOf(value, value.length);
             for (int i = 0; i < result.length; i++) {
@@ -65,7 +65,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[] result = Arrays.copyOf(value, value.length);
             for (int i = 0; i < result.length; i++) {

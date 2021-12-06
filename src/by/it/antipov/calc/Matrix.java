@@ -1,4 +1,4 @@
-package by.it.antipov.calc.jd01_09;
+package by.it.antipov.calc;
 
 
 
@@ -10,7 +10,7 @@ public class Matrix extends Var {
     private double[][] value;
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[][] result = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < this.value.length; i++) {
@@ -32,7 +32,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[][] result = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < this.value.length; i++) {
@@ -54,7 +54,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[][] result = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < this.value.length; i++) {
@@ -87,7 +87,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         return super.div(other);
     }
 

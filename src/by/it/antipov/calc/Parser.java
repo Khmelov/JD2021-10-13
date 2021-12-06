@@ -1,4 +1,4 @@
-package by.it.antipov.calc.jd01_09;
+package by.it.antipov.calc;
 
 import java.util.*;
 import java.util.List;
@@ -30,18 +30,19 @@ VarRepository saver = new VarRepository();
                 while (iterator.hasNext()){
                     String currentOper=iterator.next();
                     if (priorities.get(currentOper) == i){
+                        if (Objects.isNull(vars.get(k))){throw new CalcException("There is no such variable");}
                         Var newValue = calc(vars.get(k) + currentOper + vars.get(k + 1));
                         vars.remove(k);vars.remove(k);
                         String finalValue = getStringOfVar(newValue);
-                        result = VarCreator.createVar(finalValue);
                         vars.add(k,finalValue);
+                        result = VarCreator.createVar(finalValue);
                     }else{ if (priorities.get(currentOper) <= i)k++;}
                 }
             }
         return result;
     }
 
-    private String getStringOfVar(Var newValue) {
+    public static String getStringOfVar(Var newValue) {
         String finalValue =null;
         if (newValue instanceof Scalar){Scalar var = new Scalar((Scalar) newValue);
              finalValue =var.toString();}
@@ -58,27 +59,32 @@ VarRepository saver = new VarRepository();
         String[] stringVars = expression.split("(?<=[a-zA-Z0-9}])[-/+=*]");
         Var left = VarCreator.createVar(stringVars[0]);
         Var right = VarCreator.createVar(stringVars[1]);
-
-        if (stringVars.length == 1) {
-            return left;
-        }
-
         if (Objects.isNull(right)) {
-            System.out.println("Incorrect variable " + right);
-            return right;
+            throw  new CalcException("Incorrect variable " + right);
         }
-
         Pattern pattern = Pattern.compile("(?<=[a-zA-Z0-9}])[-/+=*]");
         Matcher matcher = pattern.matcher(expression);
         if (matcher.find()) {
             switch (matcher.group()) {
                 case "+":
+                    if (Objects.isNull(left)) {
+                        throw  new CalcException("Incorrect variable " + left);
+                    }
                     return left.add(right);
                 case "-":
+                    if (Objects.isNull(left)) {
+                        throw  new CalcException("Incorrect variable " + left);
+                    }
                     return left.sub(right);
                 case "*":
+                    if (Objects.isNull(left)) {
+                        throw  new CalcException("Incorrect variable " + left);
+                    }
                     return left.mul(right);
                 case "/":
+                    if (Objects.isNull(left)) {
+                        throw  new CalcException("Incorrect variable " + left);
+                    }
                     return left.div(right);
                 case "=":
 

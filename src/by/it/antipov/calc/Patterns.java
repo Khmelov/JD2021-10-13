@@ -1,4 +1,4 @@
-package by.it.antipov.calc.jd01_09;
+package by.it.antipov.calc;
 
 public interface Patterns {
 String OPERATION = "[-+*/=]";
