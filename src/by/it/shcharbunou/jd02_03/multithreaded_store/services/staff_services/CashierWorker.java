@@ -46,9 +46,21 @@ public class CashierWorker implements Runnable {
                     customer.notify();
                     System.out.printf("%s stopped service customer[%d] (%s)...\n", cashier.getName(), customer.getId(),
                             customer);
+                    System.out.println("------------------------------------------------------------------------" +
+                            "-----------------------------------------------------------------------------");
+                    System.out.print("| ");
+                    BigDecimal storeProfit = new BigDecimal(0);
+                    for (Cashier temporaryCashier : cashiers) {
+                        System.out.printf("%s - %s | ", temporaryCashier.getName(), temporaryCashier.getProfit());
+                        storeProfit = storeProfit.add(temporaryCashier.getProfit());
+                    }
+                    System.out.printf("Store profit - %s | ", storeProfit);
+                    System.out.printf("Queue size - %d |\n", queue.getSize());
+                    System.out.println("------------------------------------------------------------------------" +
+                            "-----------------------------------------------------------------------------");
                 }
             }
         }
-        System.out.printf("-----%s is closed-----\nPROFIT: %s\n", cashier.getName(), cashier.getProfit().toString());
+        System.out.printf("-----%s is closed-----\n", cashier.getName());
     }
 }

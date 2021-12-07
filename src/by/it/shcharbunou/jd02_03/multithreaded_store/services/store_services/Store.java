@@ -146,11 +146,6 @@ public class Store implements Runnable {
                 throw new StoreException("Error: Thread interrupted.", e);
             }
         }
-        for (Cashier cashier : cashiers) {
-            System.out.println("-------------------------------");
-            System.out.println(cashier.getProfit());
-            System.out.println("-------------------------------");
-        }
         System.out.println("Store is closed!");
     }
 }
