@@ -48,11 +48,11 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
 
     @Override
     public void run() {
-        System.out.printf("Customer[%d] went to the door...\n", customer.getId());
+        boolean haveGoods = false;
+        enteredStore();
         try {
+            System.out.printf("Customer[%d] want to choose goods...\n", customer.getId());
             semaphore.acquire();
-            boolean haveGoods = false;
-            enteredStore();
             if (randomizer.randomizeBoolean()) {
                 haveGoods = true;
                 takeCart();
@@ -69,16 +69,15 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
                     haveGoods = true;
                 }
             }
-            if (haveGoods) {
-                goQueue();
-            }
-
-            goOut();
-            manager.goOutOneCustomer();
             semaphore.release();
         } catch (InterruptedException e) {
             throw new StoreException("Error: Interrupted!", e);
         }
+            if (haveGoods) {
+                goQueue();
+            }
+            goOut();
+            manager.goOutOneCustomer();
     }
 
     public Good chooseGoodPriceList() {
