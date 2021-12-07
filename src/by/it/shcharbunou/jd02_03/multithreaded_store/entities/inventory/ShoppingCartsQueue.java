@@ -1,4 +1,4 @@
-package by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients;
+package by.it.shcharbunou.jd02_03.multithreaded_store.entities.inventory;
 
 import by.it.shcharbunou.jd02_03.multithreaded_store.entities.inventory.ShoppingCart;
 import by.it.shcharbunou.jd02_03.multithreaded_store.exceptions.StoreException;

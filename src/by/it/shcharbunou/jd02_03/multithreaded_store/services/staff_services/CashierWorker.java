@@ -8,6 +8,7 @@ import by.it.shcharbunou.jd02_03.multithreaded_store.utils.Randomizer;
 import by.it.shcharbunou.jd02_03.multithreaded_store.utils.Suspender;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class CashierWorker implements Runnable {
 
@@ -16,16 +17,19 @@ public class CashierWorker implements Runnable {
     private final Cashier cashier;
     private final Suspender suspender = new Suspender();
     private final Randomizer randomizer = new Randomizer();
+    private final List<Cashier> cashiers;
 
-    public CashierWorker(Manager manager, Queue queue, Cashier cashier) {
+    public CashierWorker(Manager manager, Queue queue, Cashier cashier, List<Cashier> cashiers) {
         this.manager = manager;
         this.queue = queue;
+        this.cashiers = cashiers;
         this.cashier = cashier;
         cashier.setProfit(new BigDecimal(0));
     }
 
     @Override
     public void run() {
+        cashiers.add(cashier);
         System.out.printf("-----%s is opened-----\n", cashier.getName());
         while (manager.storeIsOpened() || queue.getSize() != 0) {
             Customer customer = queue.extract();

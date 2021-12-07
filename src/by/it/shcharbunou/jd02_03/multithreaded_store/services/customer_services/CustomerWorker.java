@@ -2,7 +2,7 @@ package by.it.shcharbunou.jd02_03.multithreaded_store.services.customer_services
 
 import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.Customer;
 import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.Queue;
-import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.ShoppingCartsQueue;
+import by.it.shcharbunou.jd02_03.multithreaded_store.entities.inventory.ShoppingCartsQueue;
 import by.it.shcharbunou.jd02_03.multithreaded_store.entities.inventory.ShoppingCart;
 import by.it.shcharbunou.jd02_03.multithreaded_store.entities.products.Good;
 import by.it.shcharbunou.jd02_03.multithreaded_store.exceptions.CustomerException;
