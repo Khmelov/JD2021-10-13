@@ -75,6 +75,7 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
 
             goOut();
             manager.goOutOneCustomer();
+            semaphore.release();
         } catch (InterruptedException e) {
             throw new StoreException("Error: Interrupted!", e);
         }
