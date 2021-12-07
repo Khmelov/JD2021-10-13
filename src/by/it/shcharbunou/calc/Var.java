@@ -1,4 +1,4 @@
-package by.it.shcharbunou.calculator;
+package by.it.shcharbunou.calc;
 
 public abstract class Var implements Operation {
 

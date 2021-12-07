@@ -1,6 +1,4 @@
-package by.it.shcharbunou.calculator;
-
-import java.util.Scanner;
+package by.it.shcharbunou.calc;
 
 public class ConsoleRunner {
 
