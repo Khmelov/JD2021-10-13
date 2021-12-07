@@ -1,7 +1,7 @@
-package by.it.antipov.jd02_02;
+package by.it.antipov.jd02_03;
 
 
-import by.it.antipov.jd02_02.model.Manager;
+import by.it.antipov.jd02_03.model.Manager;
 
 public class Runner {
     public static void main(String[] args) {

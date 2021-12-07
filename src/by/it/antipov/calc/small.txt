@@ -1,0 +1,4 @@
+Report small
+Path: F:\JD2021-10-13\src\by\it\antipov\calc\jd01_09\small.txt
+Time:start time:Fri Dec 03 13:43:23 MSK 2021 final time:Fri Dec 03 13:43:36 MSK 2021
+OperAndRes:Operations:[4+4, F=3, A=fsdf, end] Results:[8.0, 3.0, CalcException: ERROR: Incorrect variable null]
