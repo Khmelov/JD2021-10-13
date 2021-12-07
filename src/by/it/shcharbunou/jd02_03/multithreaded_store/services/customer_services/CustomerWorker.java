@@ -18,6 +18,7 @@ import by.it.shcharbunou.jd02_03.multithreaded_store.utils.Timer;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.concurrent.Semaphore;
 
 public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAction {
 
@@ -30,45 +31,53 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
     private final Suspender suspender = new Suspender();
     private ShoppingCart shoppingCart;
     private final PriceListProducer priceListProducer = PriceListProducer.getInstance();
+    private final Semaphore semaphore;
 
     public CustomerWorker() {
         throw new CustomerException("Error: Unknown customer.");
     }
 
-    public CustomerWorker(Customer customer, Manager manager, Queue queue) {
+    public CustomerWorker(Customer customer, Manager manager, Queue queue, Semaphore semaphore) {
         this.customer = customer;
         this.manager = manager;
         this.queue = queue;
+        this.semaphore = semaphore;
         manager.addOneCustomer();
         customer.setProfit(new BigDecimal(0));
     }
 
     @Override
     public void run() {
-        boolean haveGoods = false;
-        enteredStore();
-        if (randomizer.randomizeBoolean()) {
-            haveGoods = true;
-            takeCart();
-            int goodsCount = randomizer.randomize(2, customer.getMaxGoodsCount());
-            for (int i = 0; i < goodsCount; i++) {
-                Good good = chooseGoodPriceList();
-                int shoppingCartContent = putToCart(good);
-                System.out.printf("The cart of customer[%d] (%s) has %d goods...\n", customer.getId(),
-                        customer, shoppingCartContent);
-            }
-        } else {
-            if (randomizer.randomize(customer.getMinGoodsCount(), customer.getMaxGoodsCount()) != 0) {
-                chooseGood();
+        System.out.printf("Customer[%d] went to the door...\n", customer.getId());
+        try {
+            semaphore.acquire();
+            boolean haveGoods = false;
+            enteredStore();
+            if (randomizer.randomizeBoolean()) {
                 haveGoods = true;
+                takeCart();
+                int goodsCount = randomizer.randomize(2, customer.getMaxGoodsCount());
+                for (int i = 0; i < goodsCount; i++) {
+                    Good good = chooseGoodPriceList();
+                    int shoppingCartContent = putToCart(good);
+                    System.out.printf("The cart of customer[%d] (%s) has %d goods...\n", customer.getId(),
+                            customer, shoppingCartContent);
+                }
+            } else {
+                if (randomizer.randomize(customer.getMinGoodsCount(), customer.getMaxGoodsCount()) != 0) {
+                    chooseGood();
+                    haveGoods = true;
+                }
             }
-        }
-        if (haveGoods) {
-            goQueue();
-        }
+            if (haveGoods) {
+                goQueue();
+            }
 
-        goOut();
-        manager.goOutOneCustomer();
+            goOut();
+            manager.goOutOneCustomer();
+        } catch (InterruptedException e) {
+            throw new StoreException("Error: Interrupted!", e);
+        }
     }
 
     public Good chooseGoodPriceList() {

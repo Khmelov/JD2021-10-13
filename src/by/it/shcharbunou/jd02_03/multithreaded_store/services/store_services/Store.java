@@ -13,12 +13,14 @@ import by.it.shcharbunou.jd02_03.multithreaded_store.utils.Randomizer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 public class Store implements Runnable {
 
     private final Randomizer randomizer = new Randomizer();
     private final Queue queue = new Queue();
     private final Manager manager = new Manager(100);
+    private final Semaphore semaphore = new Semaphore(20);
 
     @Override
     public synchronized void run() {
@@ -47,19 +49,19 @@ public class Store implements Runnable {
                 if (chance == 1) {
                     Customer pensioner = new Pensioner(customersCounter);
                     customersCounter++;
-                    Thread pensionerThread = new Thread(new CustomerWorker(pensioner, manager, queue));
+                    Thread pensionerThread = new Thread(new CustomerWorker(pensioner, manager, queue, semaphore));
                     threads.add(pensionerThread);
                     pensionerThread.start();
                 } else if (chance == 2 || chance == 3) {
                     Customer student = new Student(customersCounter);
                     customersCounter++;
-                    Thread studentThread = new Thread(new CustomerWorker(student, manager, queue));
+                    Thread studentThread = new Thread(new CustomerWorker(student, manager, queue, semaphore));
                     threads.add(studentThread);
                     studentThread.start();
                 } else {
                     Customer customer = new Customer(customersCounter);
                     customersCounter++;
-                    Thread customerThread = new Thread(new CustomerWorker(customer, manager, queue));
+                    Thread customerThread = new Thread(new CustomerWorker(customer, manager, queue, semaphore));
                     threads.add(customerThread);
                     customerThread.start();
                 }
