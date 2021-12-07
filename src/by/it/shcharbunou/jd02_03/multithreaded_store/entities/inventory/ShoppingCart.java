@@ -27,7 +27,21 @@ public class ShoppingCart {
         }
     }
 
+    public Object getMonitor() {
+        return this;
+    }
+
     public void setContent(List<Good> content) {
         this.content = content;
+    }
+
+    private boolean isTaken;
+
+    public boolean isTaken() {
+        return isTaken;
+    }
+
+    public void setTaken(boolean waiting) {
+        isTaken = waiting;
     }
 }

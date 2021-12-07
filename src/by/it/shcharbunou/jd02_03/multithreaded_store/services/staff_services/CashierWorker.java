@@ -29,9 +29,6 @@ public class CashierWorker implements Runnable {
         System.out.printf("-----%s is opened-----\n", cashier.getName());
         while (manager.storeIsOpened() || queue.getSize() != 0) {
             Customer customer = queue.extract();
-            if (customer == null) {
-                break;
-            }
             if (customer != null) {
                 synchronized (customer.getMonitor()) {
                     System.out.printf("Customer[%d] left the queue...\n", customer.getId());

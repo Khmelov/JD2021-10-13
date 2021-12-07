@@ -1,9 +1,7 @@
 package by.it.shcharbunou.jd02_03.multithreaded_store.services.store_services;
 
-import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.Customer;
-import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.Pensioner;
-import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.Queue;
-import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.Student;
+import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.*;
+import by.it.shcharbunou.jd02_03.multithreaded_store.entities.inventory.ShoppingCart;
 import by.it.shcharbunou.jd02_03.multithreaded_store.entities.staff.Cashier;
 import by.it.shcharbunou.jd02_03.multithreaded_store.exceptions.StoreException;
 import by.it.shcharbunou.jd02_03.multithreaded_store.services.customer_services.CustomerWorker;
@@ -21,6 +19,7 @@ public class Store implements Runnable {
     private final Queue queue = new Queue();
     private final Manager manager = new Manager(100);
     private final Semaphore semaphore = new Semaphore(20);
+    private final ShoppingCartsQueue shoppingCartsQueue = new ShoppingCartsQueue();
 
     @Override
     public synchronized void run() {
@@ -49,19 +48,22 @@ public class Store implements Runnable {
                 if (chance == 1) {
                     Customer pensioner = new Pensioner(customersCounter);
                     customersCounter++;
-                    Thread pensionerThread = new Thread(new CustomerWorker(pensioner, manager, queue, semaphore));
+                    Thread pensionerThread = new Thread(new CustomerWorker(pensioner, manager, queue, semaphore,
+                            shoppingCartsQueue));
                     threads.add(pensionerThread);
                     pensionerThread.start();
                 } else if (chance == 2 || chance == 3) {
                     Customer student = new Student(customersCounter);
                     customersCounter++;
-                    Thread studentThread = new Thread(new CustomerWorker(student, manager, queue, semaphore));
+                    Thread studentThread = new Thread(new CustomerWorker(student, manager, queue, semaphore,
+                            shoppingCartsQueue));
                     threads.add(studentThread);
                     studentThread.start();
                 } else {
                     Customer customer = new Customer(customersCounter);
                     customersCounter++;
-                    Thread customerThread = new Thread(new CustomerWorker(customer, manager, queue, semaphore));
+                    Thread customerThread = new Thread(new CustomerWorker(customer, manager, queue, semaphore,
+                            shoppingCartsQueue));
                     threads.add(customerThread);
                     customerThread.start();
                 }

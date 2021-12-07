@@ -2,6 +2,7 @@ package by.it.shcharbunou.jd02_03.multithreaded_store.services.customer_services
 
 import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.Customer;
 import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.Queue;
+import by.it.shcharbunou.jd02_03.multithreaded_store.entities.clients.ShoppingCartsQueue;
 import by.it.shcharbunou.jd02_03.multithreaded_store.entities.inventory.ShoppingCart;
 import by.it.shcharbunou.jd02_03.multithreaded_store.entities.products.Good;
 import by.it.shcharbunou.jd02_03.multithreaded_store.exceptions.CustomerException;
@@ -32,15 +33,18 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
     private ShoppingCart shoppingCart;
     private final PriceListProducer priceListProducer = PriceListProducer.getInstance();
     private final Semaphore semaphore;
+    private final ShoppingCartsQueue shoppingCartsQueue;
 
     public CustomerWorker() {
         throw new CustomerException("Error: Unknown customer.");
     }
 
-    public CustomerWorker(Customer customer, Manager manager, Queue queue, Semaphore semaphore) {
+    public CustomerWorker(Customer customer, Manager manager, Queue queue, Semaphore semaphore,
+                          ShoppingCartsQueue shoppingCartsQueue) {
         this.customer = customer;
         this.manager = manager;
         this.queue = queue;
+        this.shoppingCartsQueue = shoppingCartsQueue;
         this.semaphore = semaphore;
         manager.addOneCustomer();
         customer.setProfit(new BigDecimal(0));
@@ -55,6 +59,17 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
             semaphore.acquire();
             if (randomizer.randomizeBoolean()) {
                 haveGoods = true;
+                if (shoppingCartsQueue.getSize() == 50) {
+                    while (shoppingCartsQueue.getSize() == 50) {
+                        synchronized (customer.getMonitor()) {
+                            System.out.printf("Customer[%d] waiting for shopping cart...\n", customer.getId());
+                            customer.setWaiting(true);
+                            customer.wait();
+                        }
+                    }
+                    customer.setWaiting(false);
+                    customer.notify();
+                }
                 takeCart();
                 int goodsCount = randomizer.randomize(2, customer.getMaxGoodsCount());
                 for (int i = 0; i < goodsCount; i++) {
@@ -73,11 +88,11 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
         } catch (InterruptedException e) {
             throw new StoreException("Error: Interrupted!", e);
         }
-            if (haveGoods) {
-                goQueue();
-            }
-            goOut();
-            manager.goOutOneCustomer();
+        if (haveGoods) {
+            goQueue();
+        }
+        goOut();
+        manager.goOutOneCustomer();
     }
 
     public Good chooseGoodPriceList() {
@@ -115,6 +130,10 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
 
     @Override
     public void goOut() {
+        if (Objects.nonNull(shoppingCart)) {
+            shoppingCartsQueue.extract();
+            System.out.printf("Customer[%d] put shopping cart back...\n", customer.getId());
+        }
         System.out.printf("Customer[%d] (%s) has left the shop...\n", customer.getId(), customer);
     }
 
@@ -123,6 +142,7 @@ public class CustomerWorker implements Runnable, CustomerAction, ShoppingCartAct
         suspender.suspend(randomizer.randomize(100 * customer.getSelectionRateFactor(),
                 300 * customer.getSelectionRateFactor()));
         shoppingCart = new ShoppingCart();
+        shoppingCartsQueue.add(shoppingCart);
         System.out.printf("Customer[%d] (%s) has taken the cart...\n", customer.getId(), customer);
     }
 
