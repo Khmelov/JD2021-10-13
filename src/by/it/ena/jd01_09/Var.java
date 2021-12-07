@@ -1,6 +1,5 @@
 package by.it.ena.jd01_09;
 
-import by.it._classwork_.Main;
 import by.it._classwork_.jd01_09.Matrix;
 import by.it._classwork_.jd01_09.Patterns;
 

@@ -1,0 +1,5 @@
+user.firstname=Olga
+user.lastname=Ena
+message.question=How are you?
+message.welcome=Hello!
+message.about=My name:
