@@ -1,8 +1,6 @@
 package by.it.karmyzov.calc;
 
 public class CalcExeption extends Exception {
-    public CalcExeption() {
-    }
 
     public CalcExeption(String message) {
         super("ERROR:" + message);
