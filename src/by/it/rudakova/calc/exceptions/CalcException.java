@@ -1,4 +1,4 @@
-package by.it.rudakova.calc;
+package by.it.rudakova.calc.exceptions;
 
 public class CalcException extends Exception {
     public CalcException() {

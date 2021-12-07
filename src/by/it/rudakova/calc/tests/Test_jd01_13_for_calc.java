@@ -1,4 +1,4 @@
-package by.it.rudakova.calc;
+package by.it.rudakova.calc.tests;
 
 
 import by.it.HomeWork;

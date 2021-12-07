@@ -1,4 +1,10 @@
-package by.it.rudakova.calc;
+package by.it.rudakova.calc.variables;
+
+import by.it.rudakova.calc.constants.Patterns;
+import by.it.rudakova.calc.exceptions.CalcException;
+import by.it.rudakova.calc.repository.VarRepository;
+import by.it.rudakova.calc.variables.Var;
+import by.it.rudakova.calc.variables.VarCreator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +30,39 @@ public class Parser {
         this.varCreator=new VarCreator(varRepository);
     }
 
-    Var calc(String expression)throws CalcException {
+   public Var calc(String expression)throws CalcException {
+        expression=expression.trim().replace(" ","");
+        while(expression.contains("(")){
+            int start=0;
+            int finish=0;
+            int countBrackets=0;
+            for(int i=0;i<expression.length();i++){
+                if(expression.charAt(i)=='('){
+                    if(countBrackets == 0) {
+                        start = i + 1;
+                    }
+                    countBrackets++;
+                    continue;
+                }
+                if(expression.charAt(i)==')'){
+                    countBrackets--;
+                    if(countBrackets == 0) {
+                        finish = i;
+                        break;
+                    }
+                    continue;
+                }
+            }
+
+            StringBuilder sb = new StringBuilder(expression);
+
+            String brExpression = expression.substring(start,finish);
+            Var res = calc(brExpression);
+            sb.deleteCharAt(start-1);
+            sb.deleteCharAt(finish-1);
+            sb.replace(start-1, finish-1, res.toString());
+            expression = sb.toString();
+        }
         expression=expression.trim().replace(" ","");
         String [] operand=expression.split(Patterns.OPERATION);
         List<String> operands=new ArrayList<>(List.of(operand));
@@ -42,9 +80,8 @@ public class Parser {
             Var var=calcOneOperation(left,operation,right);
             operands.add(index,var.toString());
         }
-        return varCreator.createVar(operands.get(0));
-
-
+        String finalOperand=operands.get(0).trim().replace(" ","");
+        return varCreator.createVar(finalOperand);
     }
 
     private Var calcOneOperation(String left, String operation, String right) throws CalcException {
