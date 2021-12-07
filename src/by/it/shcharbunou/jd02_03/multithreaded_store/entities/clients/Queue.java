@@ -7,7 +7,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class Queue {
 
-    private final BlockingDeque<Customer> queue = new LinkedBlockingDeque<>(45);
+    private final BlockingDeque<Customer> queue = new LinkedBlockingDeque<>(30);
 
     public void add(Customer customer) {
         try {
