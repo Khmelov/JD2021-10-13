@@ -1,5 +1,7 @@
-package by.it.rudakova.calc;
+package by.it.rudakova.calc.variables;
 
+
+import by.it.rudakova.calc.exceptions.CalcException;
 
 public class Scalar extends Var {
     private double value;

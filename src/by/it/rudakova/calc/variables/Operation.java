@@ -1,6 +1,9 @@
-package by.it.rudakova.calc;
+package by.it.rudakova.calc.variables;
 
-interface Operation {
+import by.it.rudakova.calc.exceptions.CalcException;
+import by.it.rudakova.calc.variables.Var;
+
+public interface Operation {
     Var add(Var other) throws CalcException;
 
     Var sub(Var other) throws CalcException;

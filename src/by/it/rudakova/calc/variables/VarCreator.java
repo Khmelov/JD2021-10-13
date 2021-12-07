@@ -1,4 +1,12 @@
-package by.it.rudakova.calc;
+package by.it.rudakova.calc.variables;
+
+import by.it.rudakova.calc.constants.Patterns;
+import by.it.rudakova.calc.exceptions.CalcException;
+import by.it.rudakova.calc.repository.VarRepository;
+import by.it.rudakova.calc.variables.Matrix;
+import by.it.rudakova.calc.variables.Scalar;
+import by.it.rudakova.calc.variables.Var;
+import by.it.rudakova.calc.variables.Vector;
 
 import java.util.Objects;
 
@@ -10,7 +18,7 @@ public class VarCreator {
         this.varRepository=varRepository;
     }
 
-    Var createVar(String stringVar) throws CalcException {
+   public Var createVar(String stringVar) throws CalcException {
         if(stringVar.matches(Patterns.SCALAR)){
             return new Scalar(stringVar);
         }

@@ -1,5 +1,7 @@
-package by.it.rudakova.calc;
+package by.it.rudakova.calc.variables;
 
+
+import by.it.rudakova.calc.exceptions.CalcException;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;

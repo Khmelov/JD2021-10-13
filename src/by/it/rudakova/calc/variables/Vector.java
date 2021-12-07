@@ -1,4 +1,6 @@
-package by.it.rudakova.calc;
+package by.it.rudakova.calc.variables;
+
+import by.it.rudakova.calc.exceptions.CalcException;
 
 import java.util.Arrays;
 
@@ -27,7 +29,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) throws CalcException{
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
@@ -35,6 +37,9 @@ public class Vector extends Var {
             }
             return new Vector(res);
         } else if (other instanceof Vector) {
+            if(this.value.length!=((Vector) other).value.length){
+                throw new CalcException("Размеры не равны");
+            }
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i] + ((Vector) other).value[i];
@@ -55,6 +60,9 @@ public class Vector extends Var {
             return new Vector(res);
 
         } else if (other instanceof Vector) {
+            if(this.value.length!=((Vector) other).value.length){
+                throw new CalcException("Размеры не равны");
+            }
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i] - ((Vector) other).value[i];

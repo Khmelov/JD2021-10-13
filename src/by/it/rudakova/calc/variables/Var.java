@@ -1,4 +1,7 @@
-package by.it.rudakova.calc;
+package by.it.rudakova.calc.variables;
+
+import by.it.rudakova.calc.exceptions.CalcException;
+import by.it.rudakova.calc.constants.Patterns;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +16,7 @@ public abstract class Var implements Operation {
 
     }
 
-    static Var createVar(String operand) throws CalcException{
+    static Var createVar(String operand) throws CalcException {
         operand=operand.trim().replace("\\s+","");
         if(operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
