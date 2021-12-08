@@ -15,6 +15,10 @@ public class Store extends Thread {
     public Store(Manager manager) {
     }
 
+    public Store() {
+
+    }
+
     @Override
     public synchronized void start() {
         System.out.println("Store open");
