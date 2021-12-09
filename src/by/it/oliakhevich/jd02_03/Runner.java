@@ -1,6 +1,5 @@
 package by.it.oliakhevich.jd02_03;
 
-import by.it.oliakhevich.jd02_01.Store;
 import by.it.oliakhevich.jd02_03.model.Manager;
 
 public class Runner {

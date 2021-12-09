@@ -1,7 +1,7 @@
 package by.it.oliakhevich.jd02_02;
 
-import by.it.oliakhevich.jd02_01.Store;
-import by.it.oliakhevich.jd02_03.model.Manager;
+import by.it.oliakhevich.jd02_02.Store;
+import by.it.oliakhevich.jd02_02.model.Manager;
 
 public class Runner {
     public static void main(String[] args) {

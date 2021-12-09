@@ -1,28 +1,24 @@
 package by.it.oliakhevich.jd02_02.service;
 
-import by.it.oliakhevich.jd02_03.helper.Randomize;
-import by.it.oliakhevich.jd02_03.model.*;
+import by.it.oliakhevich.jd02_02.helper.Randomize;
+import by.it.oliakhevich.jd02_02.model.*;
 
-import java.util.concurrent.Semaphore;
 
 public class CustomerWorker extends Thread implements CustomerAction, ShoppingCardAction {
     private final Customer customer;
     Queue queue;
     Manager manager;
-    Semaphore semaphore;
 
     public CustomerWorker()  {
         throw new StoreException("customer is not existed");
     }
-    public CustomerWorker(Customer customer, Queue queue, Manager manager,Semaphore semaphore){
-        this.customer=customer;this.queue=queue;this.manager=manager; manager.addOneCustomer();this.semaphore=semaphore;
+    public CustomerWorker(Customer customer,Queue queue,Manager manager){
+        this.customer=customer;this.queue=queue;this.manager=manager; manager.addOneCustomer();
     }
 
     public void run() {
         enteredStore();
-        // int a= Randomizee.Randomize(0,10);
         int b= Randomize.Randomize(2,5);
-        // if (a>5)
         takeCart();
         if (customer.isHasCart()){
             GoodCreator goodCreator = new GoodCreator();
@@ -38,21 +34,13 @@ public class CustomerWorker extends Thread implements CustomerAction, ShoppingCa
 
     @Override
     public Good chooseGood() {
-        GoodCreator goodCreator=null;
         try {
-            semaphore.acquire();
-            try {
-                Thread.sleep(Randomize.Randomize(500,2000));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            goodCreator = new GoodCreator();
-            System.out.println(customer+" chose "+goodCreator.addGood());
+            Thread.sleep(Randomize.Randomize(500,2000));
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } finally {
-            semaphore.release();
         }
+        GoodCreator goodCreator = new GoodCreator();
+        System.out.println(customer+" chose "+goodCreator.addGood());
         return goodCreator.addGood();
     }
 
