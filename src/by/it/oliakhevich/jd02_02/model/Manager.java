@@ -1,11 +1,9 @@
 package by.it.oliakhevich.jd02_02.model;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class Manager {
-    private AtomicInteger countIn= new AtomicInteger(0);
+    private volatile int countIn;
 
-    private AtomicInteger countOut= new AtomicInteger(0);
+    private volatile int countOut;
 
     private final int PLAN;
 
@@ -14,18 +12,18 @@ public class Manager {
     }
 
     public synchronized void addOneCustomer(){
-        countIn.getAndIncrement();
+        countIn++;
     }
 
     public synchronized void goOutOneCustomer(){
-        countOut.getAndIncrement();
+        countOut++;
     }
 
     public boolean storeIsOpened(){
-        return  PLAN!=countIn.get();
+        return PLAN!=countIn;
     }
 
     public boolean storeIsClosed(){
-        return PLAN==countOut.get();
+        return PLAN==countOut;
     }
 }

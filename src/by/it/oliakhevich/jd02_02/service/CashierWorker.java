@@ -1,7 +1,7 @@
 package by.it.oliakhevich.jd02_02.service;
 
-import by.it.oliakhevich.jd02_03.helper.Randomize;
-import by.it.oliakhevich.jd02_03.model.*;
+import by.it.oliakhevich.jd02_02.helper.Randomize;
+import by.it.oliakhevich.jd02_02.model.*;
 
 public class CashierWorker implements Runnable {
     Cashier cashier;
