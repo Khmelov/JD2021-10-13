@@ -1,4 +1,4 @@
-package by.it.shcharbunou.calculator;
+package by.it.shcharbunou.calc;
 
 public enum ApplicationReservedWords {
     END("end");

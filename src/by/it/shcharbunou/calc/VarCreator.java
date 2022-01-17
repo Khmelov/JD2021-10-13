@@ -1,4 +1,4 @@
-package by.it.shcharbunou.calculator;
+package by.it.shcharbunou.calc;
 
 import static by.it.shcharbunou.jd01_09.Samples.*;
 

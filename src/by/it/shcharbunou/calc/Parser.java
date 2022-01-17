@@ -1,4 +1,4 @@
-package by.it.shcharbunou.calculator;
+package by.it.shcharbunou.calc;
 
 import java.util.Objects;
 import java.util.regex.Matcher;
