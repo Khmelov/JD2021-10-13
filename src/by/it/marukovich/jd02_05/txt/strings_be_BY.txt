@@ -1,5 +1,0 @@
-user.firstname=Макім
-user.lastname=Маруковіч
-message.question=Як справы?
-message.welcome=Вiтаю!
-message.about=Мае імя:

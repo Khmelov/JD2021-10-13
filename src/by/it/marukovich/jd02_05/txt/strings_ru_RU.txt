@@ -1,5 +1,0 @@
-user.firstname=Максим
-user.lastname=Марукович
-message.question=Как дела?
-message.welcome=Привет!
-message.about=Мое имя:

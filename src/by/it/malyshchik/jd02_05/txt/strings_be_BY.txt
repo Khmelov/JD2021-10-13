@@ -1,5 +1,0 @@
-user.firstname=Ася
-user.lastname=Малыщик
-message.question=Як справы?
-message.welcome=Вiтаю!
-message.about=Мае имя:
