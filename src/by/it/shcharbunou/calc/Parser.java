@@ -1,5 +1,7 @@
 package by.it.shcharbunou.calc;
 
+import by.it.shcharbunou.calc.log.Report;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,7 +9,7 @@ import java.util.regex.Pattern;
 import static by.it.shcharbunou.calc.Samples.*;
 
 public class Parser {
-    protected Var calc(String expression, Map<String, Var> valuesAndVariables, Locale locale) {
+    protected Var calc(String expression, Map<String, Var> valuesAndVariables, Locale locale, Report report) {
         String separationOperator = findMainOperator(expression);
         String[] stringOperands = splitManual(separationOperator, expression);
         if (stringOperands.length == 2) {
@@ -60,15 +62,19 @@ public class Parser {
         return operator;
     }
 
-    public Var testCalc(String expression, Map<String, Var> valuesAndVariables, Locale locale) {
+    public Var testCalc(String expression, Map<String, Var> valuesAndVariables, Locale locale, Report report) {
+        report.getOperationsAndResults().add(expression);
         expression = expression.replaceAll(" ", "");
+        report.getOperationsAndResults().add(expression);
         if (expression.contains("=")) {
             String variable = findVariable(expression);
+            report.getOperationsAndResults().add(variable);
             String expressionOnly = findExpressionOnly(expression);
-            valuesAndVariables.put(variable, calcFull(expressionOnly, valuesAndVariables, locale));
+            report.getOperationsAndResults().add(expressionOnly);
+            valuesAndVariables.put(variable, calcFull(expressionOnly, valuesAndVariables, locale, report));
             return valuesAndVariables.get(variable);
         } else {
-            return calcFull(expression, valuesAndVariables, locale);
+            return calcFull(expression, valuesAndVariables, locale, report);
         }
     }
 
@@ -94,22 +100,26 @@ public class Parser {
         return variable;
     }
 
-    public Var calcFull(String expression, Map<String, Var> valuesAndVariables, Locale locale) {
+    public Var calcFull(String expression, Map<String, Var> valuesAndVariables, Locale locale, Report report) {
         Stack<String> values = new Stack<>();
         Stack<String> operations = new Stack<>();
         Map<Integer, String> valueMap = getValues(expression);
         Map<Integer, String> operationMap = getOperations(expression);
         List<String> expressionList = createExpressionList(valueMap, operationMap);
         processUnaryMinuses(expressionList);
+        report.getOperationsAndResults().addAll(expressionList);
         for (int i = 0; i < expressionList.size(); i++) {
             if (valueMap.containsValue(expressionList.get(i)) || Objects.equals(expressionList.get(i), "0")) {
                 values.push(expressionList.get(i));
+                report.getOperationsAndResults().add(expressionList.get(i));
             } else {
                 if (operations.empty()) {
                     operations.push(expressionList.get(i));
+                    report.getOperationsAndResults().add(expressionList.get(i));
                 } else if (Objects.equals(operations.peek(), "(")
                         || checkPriority(expressionList.get(i), operations.peek())
                         || Objects.equals(expressionList.get(i), "(")) {
+                    report.getOperationsAndResults().add(expressionList.get(i));
                     operations.push(expressionList.get(i));
                 } else if (Objects.equals(expressionList.get(i), ")")) {
                     while (!Objects.equals(operations.peek(), "(")) {
@@ -118,7 +128,8 @@ public class Parser {
                         String firstOperand = values.pop();
                         String operator = operations.pop();
                         oneOperationExpression = firstOperand + operator + secondOperand;
-                        values.push(calc(oneOperationExpression, valuesAndVariables, locale).toString());
+                        report.getOperationsAndResults().add(oneOperationExpression);
+                        values.push(calc(oneOperationExpression, valuesAndVariables, locale, report).toString());
                     }
                     operations.pop();
                 } else if (!checkPriority(expressionList.get(i), operations.peek())) {
@@ -129,7 +140,8 @@ public class Parser {
                         String firstOperand = values.pop();
                         String operator = operations.pop();
                         oneOperationExpression = firstOperand + operator + secondOperand;
-                        values.push(calc(oneOperationExpression, valuesAndVariables, locale).toString());
+                        report.getOperationsAndResults().add(oneOperationExpression);
+                        values.push(calc(oneOperationExpression, valuesAndVariables, locale, report).toString());
                         if (operations.empty()) {
                             break;
                         }
@@ -147,7 +159,8 @@ public class Parser {
             String firstOperand = values.pop();
             String operator = operations.pop();
             oneOperationExpression = firstOperand + operator + secondOperand;
-            values.push(calc(oneOperationExpression, valuesAndVariables, locale).toString());
+            report.getOperationsAndResults().add(oneOperationExpression);
+            values.push(calc(oneOperationExpression, valuesAndVariables, locale, report).toString());
         }
         return VarCreator.createVar(values.pop().replaceAll(" ", ""), valuesAndVariables);
     }
