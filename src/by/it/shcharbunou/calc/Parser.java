@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 import static by.it.shcharbunou.calc.Samples.*;
 
 public class Parser {
-    protected Var calc(String expression, Map<String, Var> valuesAndVariables) {
+    protected Var calc(String expression, Map<String, Var> valuesAndVariables, Locale locale) {
         String separationOperator = findMainOperator(expression);
         String[] stringOperands = splitManual(separationOperator, expression);
         if (stringOperands.length == 2) {
@@ -18,10 +18,10 @@ public class Parser {
                 Matcher operationMatcher = operationPattern.matcher(expression);
                 if (operationMatcher.find()) {
                     return switch (operationMatcher.group()) {
-                        case "+" -> firstOperand.add(secondOperand);
-                        case "-" -> firstOperand.sub(secondOperand);
-                        case "*" -> firstOperand.mul(secondOperand);
-                        case "/" -> firstOperand.div(secondOperand);
+                        case "+" -> firstOperand.add(secondOperand, locale);
+                        case "-" -> firstOperand.sub(secondOperand, locale);
+                        case "*" -> firstOperand.mul(secondOperand, locale);
+                        case "/" -> firstOperand.div(secondOperand, locale);
                         default -> null;
                     };
                 }
@@ -60,15 +60,15 @@ public class Parser {
         return operator;
     }
 
-    public Var testCalc(String expression, Map<String, Var> valuesAndVariables) {
+    public Var testCalc(String expression, Map<String, Var> valuesAndVariables, Locale locale) {
         expression = expression.replaceAll(" ", "");
         if (expression.contains("=")) {
             String variable = findVariable(expression);
             String expressionOnly = findExpressionOnly(expression);
-            valuesAndVariables.put(variable, calcFull(expressionOnly, valuesAndVariables));
+            valuesAndVariables.put(variable, calcFull(expressionOnly, valuesAndVariables, locale));
             return valuesAndVariables.get(variable);
         } else {
-            return calcFull(expression, valuesAndVariables);
+            return calcFull(expression, valuesAndVariables, locale);
         }
     }
 
@@ -94,7 +94,7 @@ public class Parser {
         return variable;
     }
 
-    public Var calcFull(String expression, Map<String, Var> valuesAndVariables) {
+    public Var calcFull(String expression, Map<String, Var> valuesAndVariables, Locale locale) {
         Stack<String> values = new Stack<>();
         Stack<String> operations = new Stack<>();
         Map<Integer, String> valueMap = getValues(expression);
@@ -118,7 +118,7 @@ public class Parser {
                         String firstOperand = values.pop();
                         String operator = operations.pop();
                         oneOperationExpression = firstOperand + operator + secondOperand;
-                        values.push(calc(oneOperationExpression, valuesAndVariables).toString());
+                        values.push(calc(oneOperationExpression, valuesAndVariables, locale).toString());
                     }
                     operations.pop();
                 } else if (!checkPriority(expressionList.get(i), operations.peek())) {
@@ -129,7 +129,7 @@ public class Parser {
                         String firstOperand = values.pop();
                         String operator = operations.pop();
                         oneOperationExpression = firstOperand + operator + secondOperand;
-                        values.push(calc(oneOperationExpression, valuesAndVariables).toString());
+                        values.push(calc(oneOperationExpression, valuesAndVariables, locale).toString());
                         if (operations.empty()) {
                             break;
                         }
@@ -147,7 +147,7 @@ public class Parser {
             String firstOperand = values.pop();
             String operator = operations.pop();
             oneOperationExpression = firstOperand + operator + secondOperand;
-            values.push(calc(oneOperationExpression, valuesAndVariables).toString());
+            values.push(calc(oneOperationExpression, valuesAndVariables, locale).toString());
         }
         return VarCreator.createVar(values.pop().replaceAll(" ", ""), valuesAndVariables);
     }

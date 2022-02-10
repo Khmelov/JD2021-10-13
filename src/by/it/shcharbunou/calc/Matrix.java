@@ -1,6 +1,7 @@
 package by.it.shcharbunou.calc;
 
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -89,7 +90,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other, Locale locale) {
         if (other instanceof Scalar) {
             double[][] additionMatrix = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < additionMatrix.length; i++) {
@@ -114,15 +115,15 @@ public class Matrix extends Var {
                 }
                 return new Matrix(additionMatrix);
             } else {
-                return super.add(other);
+                return super.add(other, locale);
             }
         } else {
-            return super.add(other);
+            return super.add(other, locale);
         }
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other, Locale locale) {
         if (other instanceof Scalar) {
             double[][] deductedMatrix = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < deductedMatrix.length; i++) {
@@ -147,15 +148,15 @@ public class Matrix extends Var {
                 }
                 return new Matrix(deductedMatrix);
             } else {
-                return super.sub(other);
+                return super.sub(other, locale);
             }
         } else {
-            return super.sub(other);
+            return super.sub(other, locale);
         }
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other, Locale locale) {
         if (other instanceof Scalar) {
             double[][] multipliedMatrix = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < multipliedMatrix.length; i++) {
@@ -178,7 +179,7 @@ public class Matrix extends Var {
                 }
                 return new Vector(multipliedVector);
             } else {
-                return super.mul(other);
+                return super.mul(other, locale);
             }
         } else if (other instanceof Matrix) {
             if (this.value[0].length == ((Matrix) other).value.length) {
@@ -193,15 +194,15 @@ public class Matrix extends Var {
                 }
                 return new Matrix(multipliedMatrix);
             } else {
-                return super.mul(other);
+                return super.mul(other, locale);
             }
         } else {
-            return super.mul(other);
+            return super.mul(other, locale);
         }
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other, Locale locale) {
         if (other instanceof Scalar) {
             double[][] dividedMatrix = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < dividedMatrix.length; i++) {
@@ -209,7 +210,7 @@ public class Matrix extends Var {
             }
             for (double[] row : dividedMatrix) {
                 if (Arrays.asList(row).contains(0)) {
-                    return super.div(other);
+                    return super.div(other, locale);
                 }
             }
             for (int i = 0; i < dividedMatrix.length; i++) {
@@ -219,7 +220,7 @@ public class Matrix extends Var {
             }
             return new Matrix(dividedMatrix);
         } else {
-            return super.div(other);
+            return super.div(other, locale);
         }
     }
 
