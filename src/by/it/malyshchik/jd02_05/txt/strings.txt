@@ -1,5 +1,0 @@
-user.firstname=Asya
-user.lastname=Malyschik
-message.question=How are you?
-message.welcome=Hi!
-message.about=My name:
