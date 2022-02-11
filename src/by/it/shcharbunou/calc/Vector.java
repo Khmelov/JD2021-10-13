@@ -1,6 +1,7 @@
 package by.it.shcharbunou.calc;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 public class Vector extends Var {
     private final double[] value;
@@ -40,7 +41,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other, Locale locale) {
         if (other instanceof Scalar) {
             double[] additionVector = Arrays.copyOf(value, value.length);
             for (int i = 0; i < additionVector.length; i++) {
@@ -55,15 +56,15 @@ public class Vector extends Var {
                 }
                 return new Vector(additionVector);
             } else {
-                return super.add(other);
+                return super.add(other, locale);
             }
         } else {
-            return super.add(other);
+            return super.add(other, locale);
         }
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other, Locale locale) {
         if (other instanceof Scalar) {
             double[] deductedVector = Arrays.copyOf(value, value.length);
             for (int i = 0; i < deductedVector.length; i++) {
@@ -78,15 +79,15 @@ public class Vector extends Var {
                 }
                 return new Vector(additionVector);
             } else {
-                return super.add(other);
+                return super.add(other, locale);
             }
         } else {
-            return super.sub(other);
+            return super.sub(other, locale);
         }
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other, Locale locale) {
         if (other instanceof Scalar) {
             double[] multipliedVector = Arrays.copyOf(value, value.length);
             for (int i = 0; i < multipliedVector.length; i++) {
@@ -101,15 +102,15 @@ public class Vector extends Var {
                 }
                 return new Scalar(multipliedScalar);
             } else {
-                return super.mul(other);
+                return super.mul(other, locale);
             }
         } else {
-            return super.mul(other);
+            return super.mul(other, locale);
         }
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other, Locale locale) {
         if (other instanceof Scalar) {
             double[] dividedVector = Arrays.copyOf(value, value.length);
             if (!Arrays.asList(dividedVector).contains(0)) {
@@ -117,11 +118,11 @@ public class Vector extends Var {
                     dividedVector[i] /= ((Scalar) other).getValue();
                 }
             } else {
-                return super.div(other);
+                return super.div(other, locale);
             }
             return new Vector(dividedVector);
         } else {
-            return super.div(other);
+            return super.div(other, locale);
         }
     }
 

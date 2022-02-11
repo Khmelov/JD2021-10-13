@@ -1,5 +1,7 @@
 package by.it.shcharbunou.calc;
 
+import java.util.Locale;
+
 public class Scalar extends Var {
     private final double value;
 
@@ -21,42 +23,42 @@ public class Scalar extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other, Locale locale) {
         if (other instanceof Scalar) {
             double amount = this.value + ((Scalar) other).value;
             return new Scalar(amount);
         } else {
-            return other.add(this);
+            return other.add(this, locale);
         }
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other, Locale locale) {
         if (other instanceof Scalar) {
             double difference = this.value - ((Scalar) other).value;
             return new Scalar(difference);
         } else {
-            return new Scalar(-1).mul(other).add(this);
+            return new Scalar(-1).mul(other, locale).add(this, locale);
         }
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other, Locale locale) {
         if (other instanceof Scalar) {
             double multiplied = this.value * ((Scalar) other).value;
             return new Scalar(multiplied);
         } else {
-            return other.mul(this);
+            return other.mul(this, locale);
         }
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other, Locale locale) {
         if (other instanceof Scalar) {
             double quotient = this.value / ((Scalar) other).value;
             return new Scalar(quotient);
         } else {
-            return super.div(other);
+            return super.div(other, locale);
         }
     }
 
