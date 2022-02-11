@@ -1,0 +1,7 @@
+user.firstname=Сергей
+user.lastname=Кармызов
+message.question=Как дела?
+message.welcome=Привет!
+message.about=Мое имя:
+
+

@@ -1,0 +1,5 @@
+user.firstname=Ольга
+user.lastname=Ена
+message.question=Как дела?
+message.welcome=Привет!
+message.about=Мое имя:
